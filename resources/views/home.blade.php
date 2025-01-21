@@ -44,6 +44,39 @@
         </div>
     </section>
 
+    <section class="Categories py-5 bg-light">
+        <div class="container">
+            <div class="title text-center mb-4">
+                <h2 class="d-inline-block text-uppercase position-relative">Catégories</h2>
+            </div>
+            <div class="row">
+                @if(getCategories()->isNotEmpty())
+                    @foreach (getCategories() as $category)
+                        <div class="col-12 col-md-3">
+                            <a class="nav-link" href="">
+                                <div class="card rounded-1 shadow-sm border-0 mb-4">
+                                    <div class="row g-0">
+                                        <div class="col-md-4">
+                                            @if($category->image != "")
+                                                <img class="bd-placeholder-img" width="100" height="125" src="{{ asset('uploads/categories/'.$category->image) }}" alt="{{ $category->name }}">
+                                            @endif
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body text-center align-content-center">
+                                                <h5 class="card-title fw-bold text-uppercase">{{ $category->name }}</h5>
+                                                <h5 class="card-title">100 produits</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+        </div>
+    </section>
+
     <section class="Featured py-5 bg-light">
         <div class="container-xl">
             <div class="title text-center mb-2">
@@ -61,218 +94,101 @@
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                         <div class="row">
-                            <div class="col-12 col-md-3">
-                                <a class=" nav-link" href="">
-                                    <div class="card p-2 rounded-0 shadow-sm border-0 h-100 position-relative">
-                                        <span class="badge bg-danger position-absolute m-2 rounded-5">Stock</span>
-                                        <img src="{{ asset('assets-front/images/on_sale_1.jpg') }}" alt="">
-                                        <h6 class="pt-2 text-center text-uppercase">gray shirt</h6>
-                                        <h6 class="text-center fw-bold">12.000 CFA</h6>
-                                        <div class="rating d-flex justify-content-center">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
+                            @if($latestProducts->isNotEmpty())
+                                @foreach ($latestProducts as $latestProduct)
+                                @php
+                                    $productImage = $latestProduct->product_images->first();
+                                @endphp
+                                    <div class="col-12 col-md-3">
+                                        <a class=" nav-link" href="">
+                                            <div class="card p-2 rounded-0 shadow-sm border-0 h-100 position-relative">
+                                                <span class="badge bg-danger position-absolute m-2 rounded-5">Stock {{ $latestProduct->qty }}</span>
+
+                                                @if (!empty($productImage->image))
+                                                    <img src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $latestProduct->title }}">
+                                                @else
+                                                    <img src="" alt="{{ $latestProduct->title }}">
+                                                @endif
+                                                <h6 class="pt-2 text-center text-uppercase">{{ $latestProduct->title }}</h6>
+                                                <h6 class="text-center fw-bold">{{ $latestProduct->price }} CFA</h6>
+                                                <div class="rating d-flex justify-content-center">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-md-3">
-                                <a class=" nav-link" href="">
-                                    <div class="card p-2 rounded-0 shadow-sm border-0 h-100 position-relative">
-                                        <span class="badge bg-primary position-absolute m-2 rounded-5">Nouveau</span>
-                                        <img src="{{ asset('assets-front/images/on_sale_2.jpg') }}" alt="">
-                                        <h6 class="pt-2 text-center text-uppercase">gray shirt</h6>
-                                        <h6 class="text-center fw-bold">12.000 CFA</h6>
-                                        <div class="rating d-flex justify-content-center">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-md-3">
-                                <a class=" nav-link" href="">
-                                    <div class="card p-2 rounded-0 shadow-sm border-0 h-100 position-relative">
-                                        <span class="badge bg-primary position-absolute m-2 rounded-5">Vente</span>
-                                        <img src="{{ asset('assets-front/images/on_sale_3.jpg') }}" alt="">
-                                        <h6 class="pt-2 text-center text-uppercase">gray shirt</h6>
-                                        <h6 class="text-center fw-bold">12.000 CFA</h6>
-                                        <div class="rating d-flex justify-content-center">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-md-3">
-                                <a class=" nav-link" href="">
-                                    <div class="card p-2 rounded-0 shadow-sm border-0 h-100 position-relative">
-                                        <span class="badge bg-danger position-absolute m-2 rounded-5">Stock</span>
-                                        <img src="{{ asset('assets-front/images/on_sale_1.jpg') }}" alt="">
-                                        <h6 class="pt-2 text-center text-uppercase">gray shirt</h6>
-                                        <h6 class="text-center fw-bold">12.000 CFA</h6>
-                                        <div class="rating d-flex justify-content-center">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                         <div class="row">
-                            <div class="col-12 col-md-3">
-                                <a class=" nav-link" href="">
-                                    <div class="card p-2 rounded-0 shadow-sm border-0 h-100 position-relative">
-                                        <span class="badge bg-info position-absolute m-2 rounded-5">Vente</span>
-                                        <img src="{{ asset('assets-front/images/on_sale_3.jpg') }}" alt="">
-                                        <h6 class="pt-2 text-center text-uppercase">gray shirt</h6>
-                                        <h6 class="text-center fw-bold">12.000 CFA</h6>
-                                        <div class="rating d-flex justify-content-center">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
+                            @if($featuredProducts->isNotEmpty())
+                                @foreach ($featuredProducts as $featuredProduct)
+                                @php
+                                    $productImage = $featuredProduct->product_images->first();
+                                @endphp
+                                    <div class="col-12 col-md-3">
+                                        <a class=" nav-link" href="">
+                                            <div class="card p-2 rounded-0 shadow-sm border-0 h-100 position-relative">
+                                                <span class="badge bg-danger position-absolute m-2 rounded-5">Stock {{ $featuredProduct->qty }}</span>
+
+                                                @if (!empty($productImage->image))
+                                                    <img src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $featuredProduct->title }}">
+                                                @else
+                                                    <img src="" alt="{{ $featuredProduct->title }}">
+                                                @endif
+                                                <h6 class="pt-2 text-center text-uppercase">{{ $featuredProduct->title }}</h6>
+                                                <h6 class="text-center fw-bold">{{ $featuredProduct->price }} CFA</h6>
+                                                <div class="rating d-flex justify-content-center">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-md-3">
-                                <a class=" nav-link" href="">
-                                    <div class="card p-2 rounded-0 shadow-sm border-0 h-100 position-relative">
-                                        <span class="badge bg-info position-absolute m-2 rounded-5">Vente</span>
-                                        <img src="{{ asset('assets-front/images/on_sale_2.jpg') }}" alt="">
-                                        <h6 class="pt-2 text-center text-uppercase">gray shirt</h6>
-                                        <h6 class="text-center fw-bold">12.000 CFA</h6>
-                                        <div class="rating d-flex justify-content-center">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-md-3">
-                                <a class=" nav-link" href="">
-                                    <div class="card p-2 rounded-0 shadow-sm border-0 h-100 position-relative">
-                                        <span class="badge bg-info position-absolute m-2 rounded-5">Vente</span>
-                                        <img src="{{ asset('assets-front/images/on_sale_1.jpg') }}" alt="">
-                                        <h6 class="pt-2 text-center text-uppercase">gray shirt</h6>
-                                        <h6 class="text-center fw-bold">12.000 CFA</h6>
-                                        <div class="rating d-flex justify-content-center">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-md-3">
-                                <a class=" nav-link" href="">
-                                    <div class="card p-2 rounded-0 shadow-sm border-0 h-100 position-relative">
-                                        <span class="badge bg-info position-absolute m-2 rounded-5">Vente</span>
-                                        <img src="{{ asset('assets-front/images/on_sale_3.jpg') }}" alt="">
-                                        <h6 class="pt-2 text-center text-uppercase">gray shirt</h6>
-                                        <h6 class="text-center fw-bold">12.000 CFA</h6>
-                                        <div class="rating d-flex justify-content-center">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                         <div class="row">
-                            <div class="col-12 col-md-3">
-                                <a class=" nav-link" href="">
-                                    <div class="card p-2 rounded-0 shadow-sm border-0 h-100 position-relative">
-                                        <span class="badge bg-primary position-absolute m-2 rounded-5">Nouveau</span>
-                                        <img src="{{ asset('assets-front/images/on_sale_2.jpg') }}" alt="">
-                                        <h6 class="pt-2 text-center text-uppercase">gray shirt</h6>
-                                        <h6 class="text-center fw-bold">12.000 CFA</h6>
-                                        <div class="rating d-flex justify-content-center">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
+                            @if($olderProducts->isNotEmpty())
+                                @foreach ($olderProducts as $olderProduct)
+                                @php
+                                    $productImage = $olderProduct->product_images->first();
+                                @endphp
+                                    <div class="col-12 col-md-3">
+                                        <a class=" nav-link" href="">
+                                            <div class="card p-2 rounded-0 shadow-sm border-0 h-100 position-relative">
+                                                <span class="badge bg-danger position-absolute m-2 rounded-5">Stock {{ $olderProduct->qty }}</span>
+
+                                                @if (!empty($productImage->image))
+                                                    <img src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $olderProduct->title }}">
+                                                @else
+                                                    <img src="" alt="{{ $olderProduct->title }}">
+                                                @endif
+                                                <h6 class="pt-2 text-center text-uppercase">{{ $olderProduct->title }}</h6>
+                                                <h6 class="text-center fw-bold">{{ $olderProduct->price }} CFA</h6>
+                                                <div class="rating d-flex justify-content-center">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-md-3">
-                                <a class=" nav-link" href="">
-                                    <div class="card p-2 rounded-0 shadow-sm border-0 h-100 position-relative">
-                                        <span class="badge bg-primary position-absolute m-2 rounded-5">Nouveau</span>
-                                        <img src="{{ asset('assets-front/images/on_sale_3.jpg') }}" alt="">
-                                        <h6 class="pt-2 text-center text-uppercase">gray shirt</h6>
-                                        <h6 class="text-center fw-bold">12.000 CFA</h6>
-                                        <div class="rating d-flex justify-content-center">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-md-3">
-                                <a class=" nav-link" href="">
-                                    <div class="card p-2 rounded-0 shadow-sm border-0 h-100 position-relative">
-                                        <span class="badge bg-primary position-absolute m-2 rounded-5">Nouveau</span>
-                                        <img src="{{ asset('assets-front/images/on_sale_1.jpg') }}" alt="">
-                                        <h6 class="pt-2 text-center text-uppercase">gray shirt</h6>
-                                        <h6 class="text-center fw-bold">12.000 CFA</h6>
-                                        <div class="rating d-flex justify-content-center">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-md-3">
-                                <a class=" nav-link" href="">
-                                    <div class="card p-2 rounded-0 shadow-sm border-0 h-100 position-relative">
-                                        <span class="badge bg-primary position-absolute m-2 rounded-5">Nouveau</span>
-                                        <img src="{{ asset('assets-front/images/on_sale_1.jpg') }}" alt="">
-                                        <h6 class="pt-2 text-center text-uppercase">gray shirt</h6>
-                                        <h6 class="text-center fw-bold">12.000 CFA</h6>
-                                        <div class="rating d-flex justify-content-center">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -281,7 +197,7 @@
         </div>
     </section>
 
-    <section class="Special py-5 bg-light">
+    <section class="Specials py-5 bg-light">
         <div class="container-xl">
             <div class="title text-center mb-2">
                 <h2 class="d-inline-block text-uppercase position-relative">Spécial collections</h2>
@@ -376,7 +292,7 @@
         </div>
     </section>
 
-    <section class="Popular py-5 bg-light">
+    <section class="Populaires py-5 bg-light">
         <div class="container-xl">
             <div class="title text-center mb-4">
                 <h2 class="d-inline-block text-uppercase position-relative">Produits populaires</h2>

@@ -10,6 +10,7 @@ use App\Http\Controllers\admin\ProductSubCategoryController;
 use App\Http\Controllers\admin\SubCategoryController;
 use App\Http\Controllers\admin\TempImagesController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ShopController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
@@ -26,6 +27,7 @@ use Illuminate\Support\Str;
 */
 
 Route::get('/',[HomeController::class, 'home'])->name('home');
+Route::get('/shop', [ShopController::class, 'shop'])->name('shop');
 
 Route::group(['prefix' => 'admin'], function(){
     Route::group(['middleware' => 'admin.guest'], function(){

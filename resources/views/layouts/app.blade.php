@@ -52,9 +52,9 @@
                     </a>
 
                     <div class="order-lg-2 d-flex align-items-center">
-                        <form class="" role="search">
+                        {{-- <form class="" role="search">
                             <input type="search" class="form-control rounded-5 shadow-sm" placeholder="Chercher ici...">
-                        </form>
+                        </form> --}}
                         <a href="" class="position-relative px-2">
                             <i class="fa-solid fa-cart-shopping"></i>
                             <span class="position-absolute shadow-sm top-0 start-50 translate-middle badge rounded-circle bg-primary">2</span>
@@ -70,36 +70,25 @@
                             <li class="nav-item">
                                 <a class="nav-link fw-semibold text-uppercase text-center active" aria-current="page" href="{{ route('home') }}">Accueil</a>
                             </li>
-                            <li class="nav-item dropdown text-uppercase text-center">
-                                <a class="nav-link fw-semibold dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    HOMMES
-                                </a>
-                                <ul class="dropdown-menu rounded-1">
-                                    <li><a class="dropdown-item" href="#">Collection 1</a></li>
-                                    <li><a class="dropdown-item" href="#">Collection 2</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown text-uppercase text-center">
-                                <a class="nav-link fw-semibold dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    FEMMES
-                                </a>
-                                <ul class="dropdown-menu rounded-1">
-                                    <li><a class="dropdown-item" href="#">Collection 1</a></li>
-                                    <li><a class="dropdown-item" href="#">Collection 2</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown text-uppercase text-center">
-                                <a class="nav-link fw-semibold dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    ENFANTS
-                                </a>
-                                <ul class="dropdown-menu rounded-1">
-                                    <li><a class="dropdown-item" href="#">Collection 1</a></li>
-                                    <li><a class="dropdown-item" href="#">Collection 2</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
+                            @if(getCategories()->isNotEmpty())
+                                @foreach (getCategories() as $category)
+                                    <li class="nav-item dropdown text-uppercase text-center">
+                                        <a class="nav-link fw-semibold dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            {{ $category->name }}
+                                        </a>
+                                        @if($category->sub_categories->isNotEmpty())
+                                            <ul class="dropdown-menu rounded-1">
+                                                @foreach ($category->sub_categories as $subCategory)
+                                                    <li><a class="dropdown-item" href="#">{{ $subCategory->name }}</a></li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
+                                    </li>
+                                @endforeach
+                            @endif
+                            {{-- <li class="nav-item">
                                 <a class="nav-link fw-semibold text-uppercase text-center" aria-current="page" href="#">blogs</a>
-                            </li>
+                            </li> --}}
                             <li class="nav-item">
                                 <a class="nav-link fw-semibold text-uppercase text-center" aria-current="page" href="#">contact</a>
                             </li>
