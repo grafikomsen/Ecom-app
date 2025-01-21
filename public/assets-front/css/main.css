@@ -1,0 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@400;500;700&family=Poppins:wght@300;400;500&display=swap");
+
+:root {
+    --primaryColor: #6cbe02;
+    --white: #ffffff;
+    --black: #000000;
+    --grey: #e9d7d3;
+    --Kaisei-font: "Kaisei Tokumin", serif;
+    --Poppins-font: "Poppins", sans-serif;
+}
+
+body {
+  font-family: var(--Poppins-font);
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  font-family: var(--Kaisei-font);
+  color: var(--primaryColor);
+  font-size: 50px;
+  font-weight: 800;
+}
+
+h2 {
+  font-family: var(--Kaisei-font);
+  color: var(--primaryColor);
+  font-size: 40px;
+  font-weight: 500;
+}
+
+h3 {
+  font-family: var(--Kaisei-font);
+  color: var(--primaryColor);
+  font-size: 24px;
+  font-weight: 300;
+}
+
+i {
+    width: 20px;
+    height: 20px;
+    color: var(--primaryColor) !important;
+}
+
+.bg-primary {
+  background: var(--primaryColor) !important;
+}
+
+.btn-primary {
+  background: var(--white) !important;
+  color: var(--primaryColor);
+  font-weight: 500;
+}
+
+.btn-primary:hover {
+  background: var(--primaryColor) !important;
+  color: var(--white) !important;
+}
+
+.active {
+  color: var(--primaryColor) !important;
+}
+
+/**************** HEADER ******************/
+.top-nav {
+  background-color: var(--primaryColor);
+}
+
+.navbar i{
+    width: 50px;
+}
+
+.navbar-brand .logo{
+    width: 50px;
+    font-family: var(--Kaisei-font);
+}
+
+.navbar-brand span{
+    font-family: var(--Kaisei-font);
+}
+
+.nav-link:hover {
+  color: var(--primaryColor);
+}
+
+/********** FEATURED PRODUCT ***********/
+.title h2::before {
+  position: absolute;
+  content: "";
+  width: 4px;
+  height: 50px;
+  background-color: var(--primaryColor);
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.nav-tabs .active{
+  background-color: var(--primaryColor) !important;
+  color: var(--white) !important;
+}
+
+/********** BANNER OFFERT ***********/
+.Banner-offer {
+  background: url(../images/offer_img.jpg) top/cover no-repeat;
+  height: 70vh;
+}
+
+.Banner-offer .btn-primary{
+  background-color: var(--white) !important;
+  color: var(--primaryColor) !important;
+}
+
+.Banner-offer .btn-primary:hover {
+  background-color: var(--primaryColor) !important;
+  color: var(--white) !important;
+}
+
+/********** NEWSLETTERS ***********/
+.Newsletter button{
+  background-color: var(--primaryColor) !important;
+  color: var(--white);
+}
+
+/********** FOOTER ***********/
+.footer{
+  background-color: var(--primaryColor);
+}
+
+.footer i .fab {
+  width: 1.5rem;
+  height: 1.5rem;
+}
