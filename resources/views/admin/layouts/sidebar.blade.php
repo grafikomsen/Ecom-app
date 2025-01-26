@@ -1,81 +1,86 @@
-<!-- Brand Logo -->
-<a href="{{ route('admin.dashboard') }}" class="brand-link">
-    <img src="{{ asset('assets-admin/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-    <span class="brand-text font-weight-light">SHOP</span>
-</a>
-<!-- Sidebar -->
-<div class="sidebar">
-    <!-- Sidebar user (optional) -->
-    <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <!-- Add icons to the links using the .nav-icon class
-                with font-awesome or any other icon font library -->
+<div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="sidebarMenuLabel">BOUTIQUE</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
+        <ul class="nav flex-column">
             <li class="nav-item">
-                <a href="{{ route('admin.dashboard') }}" class="nav-link">
-                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                    <p>Dashboard</p>
+                <a class="nav-link d-flex align-items-center gap-2 fw-bolder fs-4 text-uppercase active" aria-current="page" href="{{ route('admin.dashboard') }}">
+                <svg class="bi"><use xlink:href="#house-fill"/></svg>
+                    Dashboard
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('admin.categorie') }}" class="nav-link">
-                    <i class="nav-icon fas fa-file-alt"></i>
-                    <p>Category</p>
+                <a class="nav-link d-flex align-items-center fs-6 fw-bold gap-2" href="{{ route('admin.categorie') }}">
+                <svg class="bi"><use xlink:href="#file-earmark"/></svg>
+                    CATÉGORIES
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('admin.subcategorie') }}" class="nav-link">
-                    <i class="nav-icon fas fa-file-alt"></i>
-                    <p>Sub Category</p>
+                <a class="nav-link d-flex align-items-center fs-6 fw-bold gap-2" href="{{ route('admin.subcategorie') }}">
+                <svg class="bi"><use xlink:href="#cart"/></svg>
+                    SOUS CATÉGORIES
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('admin.brand') }}" class="nav-link">
-                    <svg class="h-6 nav-icon w-6 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M16 4v12l-4-2-4 2V4M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                      </svg>
-                    <p>Brands</p>
+                <a class="nav-link d-flex align-items-center fs-6 fw-bold gap-2" href="{{ route('admin.brand') }}">
+                <svg class="bi"><use xlink:href="#people"/></svg>
+                    MARQUES
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('admin.product') }}" class="nav-link">
-                    <i class="nav-icon fas fa-tag"></i>
-                    <p>Products</p>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <!-- <i class="nav-icon fas fa-tag"></i> -->
-                    <i class="fas fa-truck nav-icon"></i>
-                    <p>Shipping</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="orders.html" class="nav-link">
-                    <i class="nav-icon fas fa-shopping-bag"></i>
-                    <p>Orders</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="discount.html" class="nav-link">
-                    <i class="nav-icon  fa fa-percent" aria-hidden="true"></i>
-                    <p>Discount</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="users.html" class="nav-link">
-                    <i class="nav-icon  fas fa-users"></i>
-                    <p>Users</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="pages.html" class="nav-link">
-                    <i class="nav-icon  far fa-file-alt"></i>
-                    <p>Pages</p>
+                <a class="nav-link d-flex align-items-center fs-6 fw-bold gap-2" href="{{ route('admin.product') }}">
+                <svg class="bi"><use xlink:href="#graph-up"/></svg>
+                    PRODUITS
                 </a>
             </li>
         </ul>
-    </nav>
-    <!-- /.sidebar-menu -->
+
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
+            <span>Saved reports</span>
+            <a class="link-secondary" href="#" aria-label="Add a new report">
+                <svg class="bi"><use xlink:href="#plus-circle"/></svg>
+            </a>
+        </h6>
+        <ul class="nav flex-column mb-auto">
+            <li class="nav-item">
+                <a class="nav-link d-flex align-items-center gap-2" href="#">
+                <svg class="bi"><use xlink:href="#file-earmark-text"/></svg>
+                Current month
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link d-flex align-items-center gap-2" href="#">
+                <svg class="bi"><use xlink:href="#file-earmark-text"/></svg>
+                Last quarter
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link d-flex align-items-center gap-2" href="#">
+                <svg class="bi"><use xlink:href="#file-earmark-text"/></svg>
+                Social engagement
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link d-flex align-items-center gap-2" href="#">
+                <svg class="bi"><use xlink:href="#file-earmark-text"/></svg>
+                Year-end sale
+                </a>
+            </li>
+        </ul>
+
+        <hr class="my-3">
+
+        <ul class="nav flex-column mb-auto">
+            <li class="nav-item">
+                <a class="nav-link d-flex align-items-center gap-2" href="#">
+                <svg class="bi"><use xlink:href="#gear-wide-connected"/></svg>
+                    Paramétres
+                </a>
+            </li>
+        </ul>
+    </div>
 </div>
-<!-- /.sidebar -->
+
+

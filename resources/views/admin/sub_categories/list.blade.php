@@ -5,10 +5,10 @@
         <div class="container-fluid my-2">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Sub categories</h1>
+                    <h1>Sous catégories</h1>
                 </div>
-                <div class="col-sm-6 text-right">
-                    <a href="{{ route('admin.subcategorie.create') }}" class="btn btn-primary">New Sub category</a>
+                <div class="col-sm-6 text-end">
+                    <a href="{{ route('admin.subcategorie.create') }}" class="btn btn-primary rounded-1 border-0">Nouvelle sous catégorie</a>
                 </div>
             </div>
         </div>
@@ -19,18 +19,18 @@
         <!-- Default box -->
         <div class="container-fluid">
             @include('admin.messages')
-            <div class="card">
+            <div class="card rounded-1">
                 <form action="" method="GET">
                     <div class="card-header">
-                        <div class="card-title">
-                            <a class="btn btn-default btn-sm" href="{{ route('admin.subcategorie') }}">Reset</a>
+                        <div class="card-title float-end">
+                            <a class="btn btn-primary rounded-1 border-0 btn-sm" href="{{ route('admin.subcategorie') }}">Actualisé la page</a>
                         </div>
                         <div class="card-tools">
                             <div class="input-group input-group" style="width: 250px;">
-                                <input type="text" value="{{ Request::get('keyword') }}" name="keyword" class="form-control float-right" placeholder="Search">
+                                <input type="text" value="{{ Request::get('keyword') }}" name="keyword" class="form-control float-right" placeholder="Cherchez ici...">
 
                                 <div class="input-group-append">
-                                    <button type="submit" class="btn btn-default">
+                                    <button type="submit" class="btn btn-primary rounded-1 border-0">
                                         <i class="fas fa-search"></i>
                                     </button>
                                 </div>
@@ -43,9 +43,9 @@
                         <thead>
                             <tr>
                                 <th width="60">ID</th>
-                                <th>Name</th>
-                                <th>Slug</th>
-                                <th>Category</th>
+                                <th>Nom</th>
+                                <th>Lien</th>
+                                <th>Catégorie</th>
                                 <th width="100">Status</th>
                                 <th width="100">Action</th>
                             </tr>
@@ -60,20 +60,16 @@
                                         <td>{{ $subCategory->categoryName }}</td>
                                         <td>
                                             @if ($subCategory->status)
-                                                <svg class="text-success-500 h-6 w-6 text-success" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                                </svg>
+                                                <i class="fa fa-check-circle text-primary"></i>
                                             @else
-                                                <svg class="text-danger h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                                </svg>
+                                                <i class="fa fa-check-circle text-danger"></i>
                                             @endif
                                         </td>
                                         <td>
-                                            <a class="btn btn-primary btn-sm" href="{{ route('admin.subcategorie.edit',$subCategory->id) }}">
+                                            <a class="btn btn-primary btn-sm rounded-1 border-0" href="{{ route('admin.subcategorie.edit',$subCategory->id) }}">
                                                 <i class="fa fa-edit"></i>
                                             </a>
-                                            <a class="btn btn-danger btn-sm" onclick="deleteSubcategory({{ $subCategory->id }})">
+                                            <a class="btn btn-danger btn-sm rounded-1 border-0" onclick="deleteSubcategory({{ $subCategory->id }})">
                                                 <i class="fa fa-trash"></i>
                                             </a>
                                         </td>

@@ -5,10 +5,10 @@
         <div class="container-fluid my-2">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Create Sub Category</h1>
+                    <h1>Créer</h1>
                 </div>
-                <div class="col-sm-6 text-right">
-                    <a href="{{ route('admin.subcategorie') }}" class="btn btn-primary">Back</a>
+                <div class="col-sm-6 text-end">
+                    <a href="{{ route('admin.subcategorie') }}" class="btn btn-primary border-0 rounded-1">Retour</a>
                 </div>
             </div>
         </div>
@@ -19,13 +19,13 @@
         <!-- Default box -->
         <div class="container-fluid">
             <form smethod="POST" name="subCategoryForm"  id="subCategoryForm">
-                <div class="card">
+                <div class="card rounded-1">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="category">Category</label>
-                                    <select name="category" id="category" class="form-control">
+                                    <label for="category">Catégorie</label>
+                                    <select name="category" id="category" class="form-control rounded-1">
                                         <option value="">--Selectionnez une catégorie--</option>
                                         @if ($categories->isNotEmpty())
                                             @foreach ($categories as $category)
@@ -39,7 +39,7 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="status">status</label>
-                                    <select name="status" id="status" class="form-control">
+                                    <select name="status" id="status" class="form-control rounded-1">
                                         <option value="1">Active</option>
                                         <option value="0">Block</option>
                                     </select>
@@ -47,14 +47,14 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="name">Name</label>
+                                    <label for="name">Nom</label>
                                     <input type="text" name="name" id="name" class="form-control" placeholder="Name">
                                     <p></p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="email">Slug</label>
+                                    <label for="email">Lien</label>
                                     <input type="text" name="slug" id="slug" class="form-control" placeholder="Slug">
                                     <p></p>
                                 </div>
@@ -62,9 +62,9 @@
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <label for="showHome">Show on home</label>
-                                    <select name="showHome" id="showHome" class="form-control">
-                                        <option value="Yes">Yes</option>
-                                        <option value="No">No</option>
+                                    <select name="showHome" id="showHome" class="form-control rounded-1">
+                                        <option value="Yes">Oui</option>
+                                        <option value="No">Non</option>
                                     </select>
                                 </div>
                             </div>
@@ -72,8 +72,8 @@
                     </div>
                 </div>
                 <div class="pb-5 pt-3">
-                    <button type="submit" class="btn btn-primary">Create</button>
-                    <a href="{{ route('admin.subcategorie') }}" class="btn btn-outline-dark ml-3">Cancel</a>
+                    <button type="submit" class="btn btn-primary rounded-1 border-0">Sauvegardez</button>
+                    <a href="{{ route('admin.subcategorie') }}" class="btn btn-danger rounded-1 float-end ml-3">Annulez</a>
                 </div>
             </form>
         </div>

@@ -5,10 +5,10 @@
         <div class="container-fluid my-2">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Create brand</h1>
+                    <h1>Créer une marque</h1>
                 </div>
-                <div class="col-sm-6 text-right">
-                    <a href="{{ route('admin.brand') }}" class="btn btn-primary">Back</a>
+                <div class="col-sm-6 text-end">
+                    <a href="{{ route('admin.brand') }}" class="btn btn-primary rounded-1 border-0">Retour</a>
                 </div>
             </div>
         </div>
@@ -19,20 +19,20 @@
         <!-- Default box -->
         <div class="container-fluid">
             <form method="POST" name="brandForm" id="brandForm">
-                <div class="card">
+                <div class="card rounded-1">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="name">Name</label>
-                                    <input type="text" name="name" id="name" class="form-control" placeholder="Name">
+                                    <label for="name">Nom</label>
+                                    <input type="text" name="name" id="name" class="form-control rounded-1" placeholder="Nom de la marque">
                                     <p></p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="slug">Slug</label>
-                                    <input type="text" readonly name="slug" id="slug" class="form-control" placeholder="Slug">
+                                    <label for="slug">Lien</label>
+                                    <input type="text" readonly name="slug" id="slug" class="form-control rounded-1" placeholder="Lien de la marque">
                                     <p></p>
                                 </div>
                             </div>
@@ -41,7 +41,7 @@
                                     <label for="image">Image</label>
                                     <input type="hidden" id="image_id" name="image_id" value="">
                                     <div id="image" class="dropzone dz-clickable">
-                                        <div class="dz-message needsclick">
+                                        <div class="dz-message needsclick rounded-1">
                                             <br>Drop files here or click to upload.<br><br>
                                         </div>
                                     </div>
@@ -50,7 +50,7 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="status">Status</label>
-                                    <select name="status" id="status" class="form-control">
+                                    <select name="status" id="status" class="form-control rounded-1">
                                         <option value="1">Active</option>
                                         <option value="0">Block</option>
                                     </select>
@@ -60,8 +60,8 @@
                     </div>
                 </div>
                 <div class="pb-5 pt-3">
-                    <button type="submit" class="btn btn-primary">Create</button>
-                    <a href="{{ route('admin.brand') }}" class="btn btn-outline-dark ml-3">Cancel</a>
+                    <button type="submit" class="btn btn-primary rounded-1 border-0">Sauvegardez</button>
+                    <a href="{{ route('admin.brand') }}" class="btn btn-danger float-end ml-3">Annulez</a>
                 </div>
             </form>
         </div>

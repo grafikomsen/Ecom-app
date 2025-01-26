@@ -20,7 +20,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-4 col-6">
-                    <div class="small-box card">
+                    <div class="small-box card rounded-1 p-4">
                         <div class="inner">
                             <h3>150</h3>
                             <p>Total Orders</p>
@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="col-lg-4 col-6">
-                    <div class="small-box card">
+                    <div class="small-box card rounded-1 p-4">
                         <div class="inner">
                             <h3>50</h3>
                             <p>Total Customers</p>
@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="col-lg-4 col-6">
-                    <div class="small-box card">
+                    <div class="small-box card rounded-1 p-4">
                         <div class="inner">
                             <h3>$1000</h3>
                             <p>Total Sale</p>

@@ -5,10 +5,10 @@
         <div class="container-fluid my-2">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>edit Category</h1>
+                    <h1>Modifiez Catégorie</h1>
                 </div>
-                <div class="col-sm-6 text-right">
-                    <a href="{{ route('admin.categorie') }}" class="btn btn-primary">Back</a>
+                <div class="col-sm-6 text-end">
+                    <a href="{{ route('admin.categorie') }}" class="btn btn-primary rounded-1 border-0">Retour</a>
                 </div>
             </div>
         </div>
@@ -19,20 +19,20 @@
         <!-- Default box -->
         <div class="container-fluid">
             <form method="POST" name="categoryForm" id="categoryForm">
-                <div class="card">
+                <div class="card rounded-1">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="name">Name</label>
-                                    <input type="text" name="name" id="name" value="{{ $category->name }}" class="form-control" placeholder="Name">
+                                    <label for="name">Nom</label>
+                                    <input type="text" name="name" id="name" value="{{ $category->name }}" class="form-control rounded-1" placeholder="Name">
                                     <p></p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="slug">Slug</label>
-                                    <input type="text" readonly name="slug" id="slug" value="{{ $category->slug }}" class="form-control" placeholder="Slug">
+                                    <label for="slug">Lien</label>
+                                    <input type="text" readonly name="slug" id="slug" value="{{ $category->slug }}" class="form-control rounded-1" placeholder="Slug">
                                     <p></p>
                                 </div>
                             </div>
@@ -48,25 +48,25 @@
                                 </div>
                                 @if (!empty($category->image))
                                     <div>
-                                        <img src="{{ asset('uploads/categories/'.$category->image) }}" width="100" height="100" alt="">
+                                        <img src="{{ asset('uploads/categories/'.$category->image) }}" width="100" height="100" alt="$category->name">
                                     </div>
                                 @endif
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="status">Status</label>
-                                    <select name="status" id="status" class="form-control">
+                                    <select name="status" id="status" class="form-control rounded-1">
                                         <option {{ ($category->status == 1) ? 'selected' : '' }} value="1">Active</option>
-                                        <option {{ ($category->status == 0) ? 'selected' : '' }} value="0">Block</option>
+                                        <option {{ ($category->status == 0) ? 'selected' : '' }} value="0">Désactivé</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <label for="showHome">Show on home</label>
-                                    <select name="showHome" id="showHome" class="form-control">
-                                        <option {{ ($category->showHome == 'Yes') ? 'selected' : '' }} value="Yes">Yes</option>
-                                        <option {{ ($category->showHome == 'No') ? 'selected' : '' }} value="No">No</option>
+                                    <select name="showHome" id="showHome" class="form-control rounded-1">
+                                        <option {{ ($category->showHome == 'Yes') ? 'selected' : '' }} value="Oui">Yes</option>
+                                        <option {{ ($category->showHome == 'No') ? 'selected' : '' }} value="Non">No</option>
                                     </select>
                                 </div>
                             </div>
@@ -74,8 +74,8 @@
                     </div>
                 </div>
                 <div class="pb-5 pt-3">
-                    <button type="submit" class="btn btn-primary">Updated</button>
-                    <a href="{{ route('admin.categorie') }}" class="btn btn-outline-dark ml-3">Cancel</a>
+                    <button type="submit" class="btn btn-primary rounded-1 border-0">Modifiez</button>
+                    <a href="{{ route('admin.categorie') }}" class="btn btn-danger rounded-1 float-end ml-3">Annulez</a>
                 </div>
             </form>
         </div>

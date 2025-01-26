@@ -5,10 +5,10 @@
         <div class="container-fluid my-2">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>edit brand</h1>
+                    <h1>Modifiez la marque</h1>
                 </div>
-                <div class="col-sm-6 text-right">
-                    <a href="{{ route('admin.brand') }}" class="btn btn-primary">Back</a>
+                <div class="col-sm-6 text-end">
+                    <a href="{{ route('admin.brand') }}" class="btn btn-primary rounded-1 border-0">Retour</a>
                 </div>
             </div>
         </div>
@@ -19,20 +19,20 @@
         <!-- Default box -->
         <div class="container-fluid">
             <form method="POST" name="brandForm" id="brandForm">
-                <div class="card">
+                <div class="card rounded-1">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="name">Name</label>
-                                    <input type="text" name="name" id="name" value="{{ $brand->name }}" class="form-control" placeholder="Name">
+                                    <label for="name">Nom</label>
+                                    <input type="text" name="name" id="name" value="{{ $brand->name }}" class="form-control rounded-1" placeholder="Name">
                                     <p></p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="slug">Slug</label>
-                                    <input type="text" readonly name="slug" id="slug" value="{{ $brand->slug }}" class="form-control" placeholder="Slug">
+                                    <label for="slug">Lien</label>
+                                    <input type="text" readonly name="slug" id="slug" value="{{ $brand->slug }}" class="form-control rounded-1" placeholder="Slug">
                                     <p></p>
                                 </div>
                             </div>
@@ -55,7 +55,7 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="status">Status</label>
-                                    <select name="status" id="status" class="form-control">
+                                    <select name="status" id="status" class="form-control rounded-1">
                                         <option {{ ($brand->status == 1) ? 'selected' : '' }} value="1">Active</option>
                                         <option {{ ($brand->status == 0) ? 'selected' : '' }} value="0">Block</option>
                                     </select>
@@ -65,8 +65,8 @@
                     </div>
                 </div>
                 <div class="pb-5 pt-3">
-                    <button type="submit" class="btn btn-primary">Updated</button>
-                    <a href="{{ route('admin.brand') }}" class="btn btn-outline-dark ml-3">Cancel</a>
+                    <button type="submit" class="btn btn-primary rounded-1 border-0">Modifiez</button>
+                    <a href="{{ route('admin.brand') }}" class="btn btn-danger rounded-1 float-end ml-3">Annulez</a>
                 </div>
             </form>
         </div>

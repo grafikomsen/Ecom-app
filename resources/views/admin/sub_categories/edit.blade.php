@@ -5,10 +5,10 @@
         <div class="container-fluid my-2">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Update Sub Category</h1>
+                    <h1>Modifier</h1>
                 </div>
-                <div class="col-sm-6 text-right">
-                    <a href="{{ route('admin.subcategorie') }}" class="btn btn-primary">Back</a>
+                <div class="col-sm-6 text-end">
+                    <a href="{{ route('admin.subcategorie') }}" class="btn btn-primary rounded-1 border-0">Retour</a>
                 </div>
             </div>
         </div>
@@ -19,13 +19,13 @@
         <!-- Default box -->
         <div class="container-fluid">
             <form smethod="POST" name="subCategoryForm"  id="subCategoryForm">
-                <div class="card">
+                <div class="card rounded-1">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="category">Category</label>
-                                    <select name="category" id="category" class="form-control">
+                                    <label for="category">Catégorie</label>
+                                    <select name="category" id="category" class="form-control rounded-1">
                                         <option value="">--Selectionnez une catégorie--</option>
                                         @if ($categories->isNotEmpty())
                                             @foreach ($categories as $category)
@@ -39,30 +39,30 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="status">status</label>
-                                    <select name="status" id="status" class="form-control">
+                                    <select name="status" id="status" class="form-control rounded-1">
                                         <option {{ ($subCategory->status == 1 ) ? 'selected' : '' }} value="1">Active</option>
-                                        <option {{ ($subCategory->status == 0 ) ? 'selected' : '' }} value="0">Block</option>
+                                        <option {{ ($subCategory->status == 0 ) ? 'selected' : '' }} value="0">Désactivé</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="name">Name</label>
-                                    <input type="text" name="name" id="name" value="{{ $subCategory->name }}" class="form-control" placeholder="Name">
+                                    <label for="name">Nom</label>
+                                    <input type="text" name="name" id="name" value="{{ $subCategory->name }}" class="form-control rounded-1" placeholder="Name">
                                     <p></p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="email">Slug</label>
-                                    <input type="text" name="slug" id="slug" value="{{ $subCategory->slug }}" class="form-control" placeholder="Slug">
+                                    <label for="email">Lien</label>
+                                    <input type="text" name="slug" id="slug" value="{{ $subCategory->slug }}" class="form-control rounded-1" placeholder="Slug">
                                     <p></p>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <label for="showHome">Show on home</label>
-                                    <select name="showHome" id="showHome" class="form-control">
+                                    <select name="showHome" id="showHome" class="form-control rounded-1">
                                         <option {{ ($subCategory->showHome == 'Yes' ) ? 'selected' : '' }} value="Yes">Yes</option>
                                         <option {{ ($subCategory->showHome == 'No' ) ? 'selected' : '' }} value="No">No</option>
                                     </select>
@@ -72,8 +72,8 @@
                     </div>
                 </div>
                 <div class="pb-5 pt-3">
-                    <button type="submit" class="btn btn-primary">Updated</button>
-                    <a href="{{ route('admin.subcategorie') }}" class="btn btn-outline-dark ml-3">Cancel</a>
+                    <button type="submit" class="btn btn-primary rounded-1 border-0">Modifiez</button>
+                    <a href="{{ route('admin.subcategorie') }}" class="btn btn-danger rounded-1 float-end ml-3">Annulez</a>
                 </div>
             </form>
         </div>

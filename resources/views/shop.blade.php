@@ -129,7 +129,7 @@
                                         <a class="nav-link" href="">
                                             <div class="card p-2 mb-4 rounded-0 shadow-sm border-0 position-relative">
                                                 @if ($product->compare_price > 0)
-                                                    <span class="badge bg-primary position-absolute m-2 rounded-4">{{ $product->compare_price }} CFA</span>
+                                                    <span class="badge bg-danger position-absolute m-2 rounded-4">PROMO</span>
                                                 @endif
 
                                                 @if (!empty($productImage->image))
@@ -139,6 +139,9 @@
                                                 @endif
                                                 <h6 class="pt-2 text-center text-uppercase">{{ $product->title }}</h6>
                                                 <h6 class="text-center fw-bold">{{ $product->price }} CFA</h6>
+                                                @if ($product->compare_price > 0)
+                                                <h6 class="text-center fw-bold">{{ $product->compare_price }} CFA</h6>
+                                                @endif
                                                 <div class="rating d-flex justify-content-center">
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
