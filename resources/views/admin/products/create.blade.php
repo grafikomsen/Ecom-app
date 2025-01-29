@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="mb-3">
-                                        <label for="description">Description</label>
+                                        <label for="">Description</label>
                                         <textarea name="description" id="description" class="summernote rounded-1"></textarea>
                                         <p></p>
                                     </div>
