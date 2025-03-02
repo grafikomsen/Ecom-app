@@ -1,12 +1,13 @@
--- Active: 1737347050139@@127.0.0.1@3306@vitrine_db
 @extends('layouts.app')
 @section('content')
-    <section class="section-5 py-5 mb-3 bg-white">
+    <section class="section-5 py-2 mb-3 bg-white">
         <div class="container">
-            <div class="light-font justify-content-center">
-                <ol class="breadcrumb primary-color mb-0">
-                    <li class="breadcrumb-item"><a class="white-text" href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Shop</li>
+            <div class="light-font">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a class="text-black" href="{{ route('home') }}">Accueil</a>
+                    </li>
+                    <li class="breadcrumb-item active">Boutique</li>
                 </ol>
             </div>
         </div>
@@ -23,29 +24,33 @@
                     <div class="card shadow-sm border-0 rounded-0">
                         <div class="card-body">
                             <div class="accordion accordion-flush" id="accordionExample">
-                            @if ($categories->isNotEmpty())
-                                @foreach ($categories as $key => $categorie)
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingOne">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne-{{ $key }}" aria-expanded="false" aria-controls="collapseOne-{{ $key }}">
-                                            {{ $categorie->name }}
-                                        </button>
-                                    </h2>
-                                    @if ($categorie->sub_categories->isNotEmpty())
-                                       <div id="collapseOne-{{ $key }}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                            <div class="accordion-body">
-                                                <div class="navbar-nav">
-                                                    @foreach ($categorie->sub_categories as $subCategory)
-                                                        <a href="" class="nav-item nav-link">{{ $subCategory->name }}</a>
-                                                    @endforeach
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endif
+                                @if ($categories->isNotEmpty())
+                                    @foreach ($categories as $key => $categorie)
+                                        <div class="accordion-item">
+                                            @if ($categorie->sub_categories->isNotEmpty())
+                                                <h2 class="accordion-header" id="headingOne">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne-{{ $key }}" aria-expanded="false" aria-controls="collapseOne-{{ $key }}">
+                                                        {{ $categorie->name }}
+                                                    </button>
+                                                </h2>
+                                            @else
+                                                <a href="{{ route('shop', $categorie->slug) }}" class="nav-item nav-link  {{ ($categorieSelected == $categorie->id) ? 'active' : '' }}">{{ $categorie->name }}</a>
+                                            @endif
 
-                                </div>
-                                @endforeach
-                            @endif
+                                            @if ($categorie->sub_categories->isNotEmpty())
+                                            <div id="collapseOne-{{ $key }}" class="accordion-collapse collapse {{ ($categorieSelected == $categorie->id) ? 'show' : '' }}" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                                    <div class="accordion-body">
+                                                        <div class="navbar-nav">
+                                                            @foreach ($categorie->sub_categories as $SubCategorie)
+                                                                <a href="{{ route('shop', [$categorie->slug,$SubCategorie->slug]) }}" class="nav-item nav-link {{ ($subCategorieSelected == $SubCategorie->id) ? 'active' : '' }}">{{ $SubCategorie->name }}</a>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        </div>
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -59,8 +64,8 @@
                             @if ($brands->isNotEmpty())
                                 @foreach ($brands as $brand)
                                     <div class="form-check mb-2">
-                                        <input class="form-check-input" type="checkbox" name="brand[]" value="{{ $brand->id }}"  id="brand-{{ $brand->id }}">
-                                        <label class="form-check-label" for="flexCheckDefault">
+                                        <input {{ (in_array($brand->id, $brandsArray)) ? 'checked' : '' }} class="form-check-input brand-label" type="checkbox" name="brand[]" value="{{ $brand->id }}"  id="brand-{{ $brand->id }}">
+                                        <label class="form-check-label" for="brand-{{ $brand->id }}">
                                             {{ $brand->name }}
                                         </label>
                                     </div>
@@ -129,25 +134,30 @@
                                         <a class="nav-link" href="">
                                             <div class="card p-2 mb-4 rounded-0 shadow-sm border-0 position-relative">
                                                 @if ($product->compare_price > 0)
-                                                    <span class="badge bg-danger position-absolute m-2 rounded-4">PROMO</span>
+                                                    <span class="badge bg-danger position-absolute m-2 rounded-4">PROMO: {{ $product->compare_price }} CFA</span>
                                                 @endif
+
 
                                                 @if (!empty($productImage->image))
                                                     <img src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $product->title }}">
                                                 @else
                                                     <img src="" alt="{{ $product->title }}">
                                                 @endif
-                                                <h6 class="pt-2 text-center text-uppercase">{{ $product->title }}</h6>
-                                                <h6 class="text-center fw-bold">{{ $product->price }} CFA</h6>
-                                                @if ($product->compare_price > 0)
-                                                <h6 class="text-center fw-bold">{{ $product->compare_price }} CFA</h6>
-                                                @endif
-                                                <div class="rating d-flex justify-content-center">
+                                                <div class="d-flex justify-content-between">
+                                                    <h6 class="py-1 text-uppercase text-start">{{ $product->title }}</h6>
+                                                    <h6 class="py-1 text-uppercase text-start">{{ $product->category_id }}</h6>
+                                                </div>
+
+                                                <div class="py-1 rating d-flex justify-content-start">
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
+                                                </div>
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <h6 class="fw-bold">{{ $product->price }} CFA</h6>
+                                                    <i class="fa-solid fa-cart-shopping"></i>
                                                 </div>
                                             </div>
                                         </a>
@@ -175,4 +185,24 @@
             </div>
         </div>
     </section>
+@endsection
+@section('customJs')
+    <script>
+        $('.brand-label').change(function(){
+            apply_filters();
+        });
+
+        function apply_filters(){
+            let brands = [];
+
+            $('.brand-label').each(function(){
+                if($(this).is(":checked") == true) {
+                    brands.push($(this).val());
+                }
+            });
+            console.log(brands.toString());
+            const url = '{{ url()->current() }}?';
+            window.location.href = url+'&brand='+brands.toString();
+        }
+    </script>
 @endsection

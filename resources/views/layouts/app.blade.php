@@ -180,5 +180,6 @@
         <script src="{{ asset('assets-front/jquery/jquery.min.js') }}"></script>
         <script src="{{ asset('assets-front/bootstrap/js/bootstrap.bundle.js') }}"></script>
         <script src="{{ asset('assets-front/js/main.js') }}"></script>
+        @yield('customJs')
     </body>
 </html>

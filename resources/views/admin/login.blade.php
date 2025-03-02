@@ -7,20 +7,20 @@
 		<!-- Google Font: Source Sans Pro -->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 		<!-- Font Awesome -->
-		<link rel="stylesheet" href="{{ asset('assets-admin/plugins/fontawesome-free/css/all.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('assets-front/fontawesome/css/all.min.css') }}">
 		<!-- Theme style -->
-		<link rel="stylesheet" href="{{ asset('assets-admin/css/adminlte.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('assets-admin/bootstrap/css/bootstrap.min.css') }}">
 		<link rel="stylesheet" href="{{ asset('assets-admin/css/custom.css') }}">
 	</head>
-	<body class="hold-transition login-page">
-		<div class="login-box">
+	<body>
+		<div class="login-box m-auto">
 			<!-- /.login-logo -->
             @include('admin.messages')
 			<div class="card card-outline card-primary">
 			  	<div class="card-header text-center">
 					<a href="#" class="h3">Administrative Panel</a>
 			  	</div>
-			  	<div class="card-body">
+			  	<div class="card-body m-auto h-25">
 					<p class="login-box-msg">Sign in to start your session</p>
 					<form action="{{ route('admin.authenticate') }}" method="POST">
                         @csrf
