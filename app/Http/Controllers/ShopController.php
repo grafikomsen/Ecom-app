@@ -37,6 +37,11 @@ class ShopController extends Controller
             $subCategorieSelected = $subCategorie->id;
         }
 
+        if ($request->get('price_max') != '' && $request->get('price_min') != '') {
+            # code...
+            $products = $products->whereBetween('price',[intval($request->get('price_min')),intval($request->get('price_max'))]);
+        }
+
         if (!empty($request->get('brand'))) {
             # code...
             $brandsArray = explode(',', $request->get('brand'));
@@ -46,6 +51,9 @@ class ShopController extends Controller
         $products = $products->orderBy('id','DESC');
         $products = $products->get()->take(9);
 
-        return view('shop', compact('categories','products','brands','categorieSelected','subCategorieSelected','brandsArray'));
+        $priceMin = (intval($request->get('price_min')) == 0) ? 100000 : $request->get('price_max');
+        $priceMax = intval($request->get('price_max'));
+
+        return view('shop', compact('categories','products','brands','categorieSelected','subCategorieSelected','brandsArray','priceMin', 'priceMax'));
     }
 }

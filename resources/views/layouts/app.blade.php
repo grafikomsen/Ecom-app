@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="{{ asset('assets-front/fontawesome/css/all.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets-front/bootstrap/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets-front/css/main.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets-front/css/ion.rangeSlider.min.css') }}">
     </head>
 
     <body>
@@ -180,6 +181,7 @@
         <script src="{{ asset('assets-front/jquery/jquery.min.js') }}"></script>
         <script src="{{ asset('assets-front/bootstrap/js/bootstrap.bundle.js') }}"></script>
         <script src="{{ asset('assets-front/js/main.js') }}"></script>
+        <script src="{{ asset('assets-front/js/ion.rangeSlider.min.js') }}"></script>
         @yield('customJs')
     </body>
 </html>
