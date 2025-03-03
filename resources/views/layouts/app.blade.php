@@ -80,7 +80,7 @@
                                         @if($category->sub_categories->isNotEmpty())
                                             <ul class="dropdown-menu rounded-1">
                                                 @foreach ($category->sub_categories as $subCategory)
-                                                    <li><a class="dropdown-item" href="#">{{ $subCategory->name }}</a></li>
+                                                    <li><a class="dropdown-item" href="{{ route('shop',[$category->slug,$subCategory->slug]) }}">{{ $subCategory->name }}</a></li>
                                                 @endforeach
                                             </ul>
                                         @endif

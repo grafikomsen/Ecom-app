@@ -100,7 +100,7 @@
                                     $productImage = $latestProduct->product_images->first();
                                 @endphp
                                     <div class="col-12 col-md-3">
-                                        <a class=" nav-link" href="">
+                                        <a class=" nav-link" href="{{ route('product',$latestProduct->slug) }}">
                                             <div class="card p-2 rounded-0 shadow-sm border-0 h-100 position-relative">
                                                 <span class="badge bg-danger position-absolute m-2 rounded-5">Stock {{ $latestProduct->qty }}</span>
 
@@ -133,7 +133,7 @@
                                     $productImage = $featuredProduct->product_images->first();
                                 @endphp
                                     <div class="col-12 col-md-3">
-                                        <a class=" nav-link" href="">
+                                        <a class=" nav-link" href="{{ route('product',$featuredProduct->slug) }}">
                                             <div class="card p-2 rounded-0 shadow-sm border-0 h-100 position-relative">
                                                 <span class="badge bg-danger position-absolute m-2 rounded-5">Stock {{ $featuredProduct->qty }}</span>
 
@@ -166,7 +166,7 @@
                                     $productImage = $olderProduct->product_images->first();
                                 @endphp
                                     <div class="col-12 col-md-3">
-                                        <a class=" nav-link" href="">
+                                        <a class=" nav-link" href="{{ route('product',$olderProduct->slug) }}">
                                             <div class="card p-2 rounded-0 shadow-sm border-0 h-100 position-relative">
                                                 <span class="badge bg-danger position-absolute m-2 rounded-5">Stock {{ $olderProduct->qty }}</span>
 
@@ -300,210 +300,99 @@
             <div class="row">
                 <div class="col-12 col-md-4">
                     <h3 class="d-inline-block text-uppercase fw-normal position-relative">Produits populaires</h3>
-                    <a class="nav-link" href="">
-                        <div class="card rounded-1 shadow-sm border-0 mb-4">
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <img class="bd-placeholder-img" width="100%" height="125" src="{{ asset('assets-front/images/special_product_1.jpg') }}" alt="">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">12.000 CFA</p>
-                                        <div class="rating d-flex justify-content-star pt-0">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
+                    @if($oldProducts->isNotEmpty())
+                        @foreach ($oldProducts as $oldProduct)
+                        @php
+                            $productImage = $oldProduct->product_images->first();
+                        @endphp
+                            <a class="nav-link" href="{{ route('product',$oldProduct->slug) }}">
+                                <div class="card rounded-1 shadow-sm border-0 mb-4">
+                                    <div class="row g-0">
+                                        <div class="col-md-4">
+                                            <img class="bd-placeholder-img h-full" width="90%" src="{{ asset('assets-front/images/special_product_1.jpg') }}" alt="">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h6 class="card-title">{{ $oldProduct->title }}</h6>
+                                                <p class="card-text">{{ $oldProduct->price }} CFA</p>
+                                                <div class="rating d-flex justify-content-star pt-0">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="nav-link" href="">
-                        <div class="card rounded-1 shadow-sm border-0 mb-4">
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <img class="bd-placeholder-img" width="100%" height="125" src="{{ asset('assets-front/images/special_product_1.jpg') }}" alt="">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">12.000 CFA</p>
-                                        <div class="rating d-flex justify-content-star pt-0">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="nav-link" href="">
-                        <div class="card rounded-1 shadow-sm border-0 mb-4">
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <img class="bd-placeholder-img" width="100%" height="125" src="{{ asset('assets-front/images/special_product_1.jpg') }}" alt="">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">12.000 CFA</p>
-                                        <div class="rating d-flex justify-content-star pt-0">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+                            </a>
+                        @endforeach
+                    @endif
                 </div>
                 <div class="col-12 col-md-4">
                     <h3 class="d-inline-block text-uppercase fw-normal position-relative">Produits vendu</h3>
-                    <a class="nav-link" href="">
-                        <div class="card rounded-1 shadow-sm border-0 mb-4">
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <img class="bd-placeholder-img" width="100%" height="125" src="{{ asset('assets-front/images/special_product_1.jpg') }}" alt="">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">12.000 CFA</p>
-                                        <div class="rating d-flex justify-content-star pt-0">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
+                    @if($latProducts->isNotEmpty())
+                        @foreach ($latProducts as $latProduct)
+                        @php
+                            $productImage = $latProduct->product_images->first();
+                        @endphp
+                            <a class="nav-link" href="{{ route('product',$latProduct->slug) }}">
+                                <div class="card rounded-1 shadow-sm border-0 mb-4">
+                                    <div class="row g-0">
+                                        <div class="col-md-4">
+                                            <img class="bd-placeholder-img h-full" width="90%" src="{{ asset('assets-front/images/special_product_1.jpg') }}" alt="">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h6 class="card-title">{{ $latProduct->title }}</h6>
+                                                <p class="card-text">{{ $latProduct->price }} CFA</p>
+                                                <div class="rating d-flex justify-content-star pt-0">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="nav-link" href="">
-                        <div class="card rounded-1 shadow-sm border-0 mb-4">
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <img class="bd-placeholder-img" width="100%" height="125" src="{{ asset('assets-front/images/special_product_1.jpg') }}" alt="">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">12.000 CFA</p>
-                                        <div class="rating d-flex justify-content-star pt-0">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="nav-link" href="">
-                        <div class="card rounded-1 shadow-sm border-0 mb-4">
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <img class="bd-placeholder-img" width="100%" height="125" src="{{ asset('assets-front/images/special_product_1.jpg') }}" alt="">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">12.000 CFA</p>
-                                        <div class="rating d-flex justify-content-star pt-0">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+                            </a>
+                        @endforeach
+                    @endif
                 </div>
                 <div class="col-12 col-md-4">
                     <h3 class="d-inline-block text-uppercase fw-normal position-relative">Produits favoris</h3>
-                    <a class="nav-link" href="">
-                        <div class="card rounded-1 shadow-sm border-0 mb-4">
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <img class="bd-placeholder-img" width="100%" height="125" src="{{ asset('assets-front/images/special_product_1.jpg') }}" alt="">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">12.000 CFA</p>
-                                        <div class="rating d-flex justify-content-star pt-0">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
+                    @if($feaProducts->isNotEmpty())
+                        @foreach ($feaProducts as $feaProduct)
+                        @php
+                            $productImage = $feaProduct->product_images->first();
+                        @endphp
+                            <a class="nav-link" href="{{ route('product',$feaProduct->slug) }}">
+                                <div class="card rounded-1 shadow-sm border-0 mb-4">
+                                    <div class="row g-0">
+                                        <div class="col-md-4">
+                                            <img class="bd-placeholder-img h-full" width="90%" src="{{ asset('assets-front/images/special_product_1.jpg') }}" alt="">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h6 class="card-title">{{ $feaProduct->title }}</h6>
+                                                <p class="card-text">{{ $feaProduct->price }} CFA</p>
+                                                <div class="rating d-flex justify-content-star pt-0">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="nav-link" href="">
-                        <div class="card rounded-1 shadow-sm border-0 mb-4">
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <img class="bd-placeholder-img" width="100%" height="125" src="{{ asset('assets-front/images/special_product_1.jpg') }}" alt="">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">12.000 CFA</p>
-                                        <div class="rating d-flex justify-content-star pt-0">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="nav-link" href="">
-                        <div class="card rounded-1 shadow-sm border-0 mb-4">
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <img class="bd-placeholder-img" width="100%" height="125" src="{{ asset('assets-front/images/special_product_1.jpg') }}" alt="">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">12.000 CFA</p>
-                                        <div class="rating d-flex justify-content-star pt-0">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+                            </a>
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>

@@ -66,6 +66,12 @@ i {
   color: var(--white) !important;
 }
 
+.btn-panier {
+    background: var(--primaryColor) !important;
+    color: var(--white);
+    font-weight: 500;
+  }
+
 .active {
   color: var(--primaryColor) !important;
 }

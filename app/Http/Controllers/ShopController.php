@@ -39,7 +39,13 @@ class ShopController extends Controller
 
         if ($request->get('price_max') != '' && $request->get('price_min') != '') {
             # code...
-            $products = $products->whereBetween('price',[intval($request->get('price_min')),intval($request->get('price_max'))]);
+            if ($request->get('price_max') == 999999) {
+                # code...
+                $products = $products->whereBetween('price',[intval($request->get('price_min')),999999]);
+            } else {
+                # code...
+                $products = $products->whereBetween('price',[intval($request->get('price_min')),intval($request->get('price_max'))]);
+            }
         }
 
         if (!empty($request->get('brand'))) {
@@ -48,12 +54,39 @@ class ShopController extends Controller
             $products = $products->whereIn('brand_id',$brandsArray);
         }
 
-        $products = $products->orderBy('id','DESC');
-        $products = $products->get()->take(9);
+        if ($request->get('sort') != '') {
+            # code...
+            if ($request->get('sort') == 'latest') {
+                # code...
+                $products = $products->orderBy('price','DESC');
+            } else if ($request->get('sort') == 'price_asc') {
+                # code...
+                $products = $products->orderBy('price','ASC');
+            } else {
+                # code...
+                $products = $products->orderBy('price','DESC');
+            }
+        } else {
+            # code...
+            $products = $products->orderBy('id','DESC');
+        }
 
-        $priceMin = (intval($request->get('price_min')) == 0) ? 100000 : $request->get('price_max');
-        $priceMax = intval($request->get('price_max'));
+        $products = $products->paginate(9);
+        $priceMax = (intval($request->get('price_max')) == 0) ? 1000000 : $request->get('price_max');
+        $priceMin = intval($request->get('price_min'));
+        $sort = $request->get('sort');
 
-        return view('shop', compact('categories','products','brands','categorieSelected','subCategorieSelected','brandsArray','priceMin', 'priceMax'));
+        return view('shop', compact('categories','products','brands','categorieSelected','subCategorieSelected','brandsArray','priceMin', 'priceMax','sort'));
+    }
+
+    public function product($slug){
+        $product = Product::where('slug',$slug)->with('product_images')->first();
+        if ($product == null) {
+            # code...
+            abort('404');
+        }
+
+        $newProducts = Product::orderBy('title','ASC')->with('product_images')->where('status',1)->paginate(4);
+        return view('product',compact('product','newProducts'));
     }
 }
