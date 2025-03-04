@@ -40,8 +40,22 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="mb-3">
-                                        <label for="">Description</label>
+                                        <label for="short_description">Courte description</label>
+                                        <textarea name="short_description" id="short_description" class="summernote rounded-1"></textarea>
+                                        <p></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label for="description">Description</label>
                                         <textarea name="description" id="description" class="summernote rounded-1"></textarea>
+                                        <p></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label for="shipping_returns">Retour du commande</label>
+                                        <textarea name="shipping_returns" id="shipping_returns" class="summernote" placeholder="Description"></textarea>
                                         <p></p>
                                     </div>
                                 </div>
@@ -96,7 +110,24 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <div class="card rounded-1 mb-3">
+                                <div class="card-body">
+                                    <h2 class="h4 mb-3">Related products</h2>
+                                    <div class="mb-3">
+                                        <select multiple class="related-product w-100" name="related_products[]" id="related_products">
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+
                 <div class="col-md-4">
                     <div class="card rounded-1 mb-3">
                         <div class="card-body">
@@ -110,6 +141,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="card rounded-1 mb-3">
                         <div class="card-body">
                             <h2 class="h4  mb-3">Catégorie produit </h2>
@@ -134,6 +166,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="card rounded-1 mb-3">
                         <div class="card-body">
                             <h2 class="h4 mb-3">Marque produit</h2>
@@ -150,11 +183,25 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="card rounded-1 mb-3">
                         <div class="card-body">
                             <h2 class="h4 mb-3">Featured product</h2>
                             <div class="mb-3">
                                 <select name="is_featured" id="is_featured" class="form-control rounded-1">
+                                    <option value="No">Non</option>
+                                    <option value="Yes">Oui</option>
+                                    <p></p>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card rounded-1 mb-3">
+                        <div class="card-body">
+                            <h2 class="h4 mb-3">Related produit</h2>
+                            <div class="mb-3">
+                                <select name="related_products" id="related_products" class="form-control rounded-1">
                                     <option value="No">Non</option>
                                     <option value="Yes">Oui</option>
                                     <p></p>
@@ -200,6 +247,20 @@
 
 @section('customJs')
     <script>
+        $('.related-product').select2({
+            ajax: {
+                url: '{{ route('product.getProducts') }}',
+                dataType: 'json',
+                tags: true,
+                multiple: true,
+                minimumInputLength: 3,
+                processResults: function (data) {
+                    return {
+                        results: data.tags
+                    };
+                }
+            }
+        });
 
         $('#title').change(function() {
             element = $(this);

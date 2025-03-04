@@ -14,6 +14,8 @@
 		<link rel="stylesheet" href="{{ asset('assets-admin/dropzone/min/dropzone.min.css') }}">
         <!-- Sweetalert -->
 		<link rel="stylesheet" href="{{ asset('assets-admin/sweetalert2/sweetalert2.min.css') }}">
+        <!-- Select2 -->
+		<link rel="stylesheet" href="{{ asset('assets-admin/select2/css/select2.min.css') }}">
         <!-- Summernote -->
 		<link rel="stylesheet" href="{{ asset('assets-admin/summernote/summernote.min.css') }}">
         <!-- Main -->
@@ -177,6 +179,8 @@
         <script src="{{ asset('assets-admin/dropzone/min/dropzone.min.js') }}"></script>
         <!-- Sweetalert -->
         <script src="{{ asset('assets-admin/sweetalert2/sweetalert2.min.js') }}"></script>
+        <!-- Select2 -->
+        <script src="{{ asset('assets-admin/select2/js/select2.min.js') }}"></script>
         <!-- Summernote -->
         <script src="{{ asset('assets-admin/summernote/summernote.min.js') }}"></script>
 		<!-- Main -->

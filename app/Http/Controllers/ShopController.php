@@ -86,7 +86,14 @@ class ShopController extends Controller
             abort('404');
         }
 
-        $newProducts = Product::orderBy('title','ASC')->with('product_images')->where('status',1)->paginate(4);
-        return view('product',compact('product','newProducts'));
+        // Fetch related product
+        $relatedProducts = [];
+        if ($product->related_products) {
+            # code...
+            $productArray = explode(',',$product->related_products);
+            $relatedProducts = Product::whereIn('id',$productArray)->get();
+        }
+
+        return view('product',compact('product','relatedProducts'));
     }
 }

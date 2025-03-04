@@ -237,3 +237,7 @@ h6 {
 .navbar .form-control {
     padding: .75rem 1rem;
 }
+
+.select2-container--default .select2-selection--multiple .select2-selection__rendered li{
+    color: var(--black);
+}

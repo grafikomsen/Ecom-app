@@ -40,18 +40,19 @@
                         <h1>{{ $product->title }}</h1>
                         <div class="d-flex mb-3">
                             <div class="text-primary mr-2">
-                                <small class="fas fa-star"></small>
-                                <small class="fas fa-star"></small>
-                                <small class="fas fa-star"></small>
-                                <small class="fas fa-star-half-alt"></small>
-                                <small class="far fa-star"></small>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <i class="far fa-star"></i>
                             </div>
                             <small class="pt-1">(99 Reviews)</small>
                         </div>
+
                         @if ($product->compare_price > 0)
-                            <h2 class="price text-secondary"><del>{{ $product->compare_price }} CFA</del></h2>
+                            <h3 class="price text-secondary"><del>{{ $product->compare_price }} CFA</del></h3>
                         @endif
-                        <h2 class="price ">{{ $product->price }} CFA</h2>
+                        <h2 class="price">{{ $product->price }} CFA</h2>
 
                         <p>{!! $product->short_description !!}</p>
                         <a href="cart.php" class="btn btn-panier rounded-5 border-0 m-4 shadow-sm">
@@ -74,13 +75,13 @@
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+                            <div class="tab-pane fade show active p-4" id="description" role="tabpanel" aria-labelledby="description-tab">
                                 {!! $product->description !!}
                             </div>
-                            <div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
+                            <div class="tab-pane fade p-4" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
                                 {!! $product->shipping_returns !!}
                             </div>
-                            <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                            <div class="tab-pane fade p-4" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
 
                             </div>
                         </div>
@@ -93,30 +94,30 @@
     <section class="pt-5 section-8 py-4">
         <div class="container">
             <div class="section-title">
-                <h2>Related Products</h2>
+                <h2>Les produits similaires</h2>
             </div>
             <div class="container">
                 <div class="row">
-                    @if($newProducts->isNotEmpty())
-                        @foreach ($newProducts as $newProduct)
+                    @if(!empty($relatedProducts))
+                        @foreach ($relatedProducts as $relatedProduct)
                         @php
-                            $productImage = $newProduct->product_images->first();
+                            $productImage = $relatedProduct->product_images->first();
                         @endphp
                             <div class="col-12 col-md-3">
-                                <a class="nav-link" href="{{ route('product',$newProduct->slug) }}">
+                                <a class="nav-link" href="{{ route('product',$relatedProduct->slug) }}">
                                     <div class="card p-2 mb-4 rounded-0 shadow-sm border-0 position-relative">
-                                        @if ($newProduct->compare_price > 0)
-                                            <span class="badge bg-danger position-absolute m-2 rounded-4">PROMO: {{ $newProduct->compare_price }} CFA</span>
+                                        @if ($relatedProduct->compare_price > 0)
+                                            <span class="badge bg-danger position-absolute m-2 rounded-4">PROMO: {{ $relatedProduct->compare_price }} CFA</span>
                                         @endif
 
                                         @if (!empty($productImage->image))
-                                            <img src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $newProduct->title }}">
+                                            <img src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $relatedProduct->title }}">
                                         @else
-                                            <img src="{{ asset('assets-front/images/c_polo-shirt.png') }}" alt="{{ $newProduct->title }}">
+                                            <img src="{{ asset('assets-front/images/c_polo-shirt.png') }}" alt="{{ $relatedProduct->title }}">
                                         @endif
                                         <div class="d-flex justify-content-between">
-                                            <h6 class="py-1 text-uppercase text-start">{{ $newProduct->title }}</h6>
-                                            <h6 class="py-1 text-uppercase text-start">{{ $newProduct->category_id }}</h6>
+                                            <h6 class="py-1 text-uppercase text-start">{{ $relatedProduct->title }}</h6>
+                                            <h6 class="py-1 text-uppercase text-start">{{ $relatedProduct->category_id }}</h6>
                                         </div>
 
                                         <div class="py-1 rating d-flex justify-content-start">
@@ -127,7 +128,7 @@
                                             <i class="fa fa-star"></i>
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between">
-                                            <h6 class="fw-bold">{{ $newProduct->price }} CFA</h6>
+                                            <h6 class="fw-bold">{{ $relatedProduct->price }} CFA</h6>
                                             <i class="fa-solid fa-cart-shopping"></i>
                                         </div>
                                     </div>
