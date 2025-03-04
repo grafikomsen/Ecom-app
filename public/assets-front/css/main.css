@@ -98,6 +98,10 @@ i {
   color: var(--primaryColor);
 }
 
+.text-tap {
+   color: var(--primaryColor);
+}
+
 /********** FEATURED PRODUCT ***********/
 .title h2::before {
   position: absolute;

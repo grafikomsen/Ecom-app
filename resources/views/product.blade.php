@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<main>
+
     <section class="section-5 py-3 pb-3 mb-3 bg-white">
         <div class="container">
             <div class="light-font">
@@ -13,7 +13,7 @@
         </div>
     </section>
 
-    <section class="section-7 pt-3 mb-3">
+    <section class="section-7 bg-light pt-3 ">
         <div class="container">
             <div class="row ">
                 <div class="col-md-5">
@@ -46,7 +46,7 @@
                                 <i class="fas fa-star-half-alt"></i>
                                 <i class="far fa-star"></i>
                             </div>
-                            <small class="pt-1">(99 Reviews)</small>
+                            <small class="pt-1">(99 avis)</small>
                         </div>
 
                         @if ($product->compare_price > 0)
@@ -55,7 +55,7 @@
                         <h2 class="price">{{ $product->price }} CFA</h2>
 
                         <p>{!! $product->short_description !!}</p>
-                        <a href="cart.php" class="btn btn-panier rounded-5 border-0 m-4 shadow-sm">
+                        <a href="javascript:void(0);" onclick="addToCart({{ $product->id }})" class="btn btn-panier rounded-5 border-0 m-4 shadow-sm">
                             <i class="fas fa-shopping-cart text-white"></i> &nbsp;AJOUTER AU PANIER
                         </a>
                     </div>
@@ -64,24 +64,24 @@
                 <div class="col-md-12 mt-5">
                     <div class="">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="description-tab" data-bs-toggle="tab" data-bs-target="#description" type="button" role="tab" aria-controls="description" aria-selected="true">Description</button>
+                            <li class="nav-item bg-white mx-1" role="presentation">
+                                <button class="nav-link text-tap active" id="description-tab" data-bs-toggle="tab" data-bs-target="#description" type="button" role="tab" aria-controls="description" aria-selected="true">Description</button>
                             </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="shipping-tab" data-bs-toggle="tab" data-bs-target="#shipping" type="button" role="tab" aria-controls="shipping" aria-selected="false">Shipping & Returns</button>
+                            <li class="nav-item bg-white mx-1" role="presentation">
+                                <button class="nav-link text-tap" id="shipping-tab" data-bs-toggle="tab" data-bs-target="#shipping" type="button" role="tab" aria-controls="shipping" aria-selected="false">Expédition & Retours</button>
                             </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab" aria-controls="reviews" aria-selected="false">Reviews</button>
+                            <li class="nav-item bg-white mx-1" role="presentation">
+                                <button class="nav-link text-tap" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab" aria-controls="reviews" aria-selected="false">Avis</button>
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active p-4" id="description" role="tabpanel" aria-labelledby="description-tab">
+                            <div class="tab-pane fade show active p-4 bg-white" id="description" role="tabpanel" aria-labelledby="description-tab">
                                 {!! $product->description !!}
                             </div>
-                            <div class="tab-pane fade p-4" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
+                            <div class="tab-pane fade p-4 bg-white" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
                                 {!! $product->shipping_returns !!}
                             </div>
-                            <div class="tab-pane fade p-4" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                            <div class="tab-pane fade p-4 bg-white" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
 
                             </div>
                         </div>
@@ -91,7 +91,7 @@
         </div>
     </section>
 
-    <section class="pt-5 section-8 py-4">
+    <section class="pt-5 section-8 bg-light py-4">
         <div class="container">
             <div class="section-title">
                 <h2>Les produits similaires</h2>
@@ -140,5 +140,21 @@
             </div>
         </div>
     </section>
-</main>
+
+@endsection
+
+@section('customJs')
+    <script>
+        function addToCart(id){
+            $.ajax({
+                url: '{{ route("cart.addToCart") }}',
+                type: 'POST',
+                data: {id:id}
+                dataType: 'json',
+                success: function(response){
+
+                }
+            });
+        }
+    </script>
 @endsection

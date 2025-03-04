@@ -89,10 +89,10 @@
                             @endif
                             {{-- <li class="nav-item">
                                 <a class="nav-link fw-semibold text-uppercase text-center" aria-current="page" href="#">blogs</a>
-                            </li> --}}
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link fw-semibold text-uppercase text-center" aria-current="page" href="#">contact</a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </div>
@@ -182,6 +182,13 @@
         <script src="{{ asset('assets-front/bootstrap/js/bootstrap.bundle.js') }}"></script>
         <script src="{{ asset('assets-front/js/main.js') }}"></script>
         <script src="{{ asset('assets-front/js/ion.rangeSlider.min.js') }}"></script>
+        <script>
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+        </script>
         @yield('customJs')
     </body>
 </html>
