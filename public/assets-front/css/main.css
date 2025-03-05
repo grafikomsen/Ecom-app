@@ -70,7 +70,13 @@ i {
     background: var(--primaryColor) !important;
     color: var(--white);
     font-weight: 500;
-  }
+}
+
+.btn-panier:hover {
+    background: var(--primaryColor) !important;
+    color: var(--white);
+    font-weight: 500;
+}
 
 .active {
   color: var(--primaryColor) !important;

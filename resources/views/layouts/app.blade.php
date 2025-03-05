@@ -56,7 +56,7 @@
                         {{-- <form class="" role="search">
                             <input type="search" class="form-control rounded-5 shadow-sm" placeholder="Chercher ici...">
                         </form> --}}
-                        <a href="" class="position-relative px-2">
+                        <a href="{{ route('cart') }}" class="position-relative px-2">
                             <i class="fa-solid fa-cart-shopping"></i>
                             <span class="position-absolute shadow-sm top-0 start-50 translate-middle badge rounded-circle bg-primary">2</span>
                         </a>
@@ -183,11 +183,29 @@
         <script src="{{ asset('assets-front/js/main.js') }}"></script>
         <script src="{{ asset('assets-front/js/ion.rangeSlider.min.js') }}"></script>
         <script>
+
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+
+            function addToCart(id){
+                $.ajax({
+                    url: '{{ route("cart.addToCart") }}',
+                    type: 'POST',
+                    data: {id:id},
+                    dataType: 'json',
+                    success: function(response){
+                        if(response.status == true){
+                            window.location.href="{{ route('cart') }}";
+                        } else {
+                            alert(response.message);
+                        }
+                    }
+                });
+            }
+
         </script>
         @yield('customJs')
     </body>

@@ -31,7 +31,7 @@ Route::get('/',[HomeController::class, 'home'])->name('home');
 Route::get('/shop/{categorySlug?}/{SubCategorySlug?}', [ShopController::class, 'shop'])->name('shop');
 Route::get('/produit/{slug}',[ShopController::class, 'product'])->name('product');
 Route::get('/panier',[CartController::class, 'cart'])->name('cart');
-Route::get('/ajouter-au-panier',[CartController::class, 'addToCart'])->name('cart.addToCart');
+Route::post('/ajouter-au-panier',[CartController::class, 'addToCart'])->name('cart.addToCart');
 
 Route::group(['prefix' => 'admin'], function(){
     Route::group(['middleware' => 'admin.guest'], function(){

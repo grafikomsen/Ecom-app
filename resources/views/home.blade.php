@@ -58,13 +58,12 @@
                                     <div class="row g-0">
                                         <div class="col-md-4">
                                             @if($category->image != "")
-                                                <img class="bd-placeholder-img" width="100" height="125" src="{{ asset('uploads/categories/'.$category->image) }}" alt="{{ $category->name }}">
+                                                <img class="bd-placeholder-img" width="80" height="100" src="{{ asset('uploads/categories/'.$category->image) }}" alt="{{ $category->name }}">
                                             @endif
                                         </div>
                                         <div class="col-md-8">
                                             <div class="card-body text-center align-content-center">
-                                                <h5 class="card-title fw-bold text-uppercase">{{ $category->name }}</h5>
-                                                <h5 class="card-title">100 produits</h5>
+                                                <h6 class="card-title fw-bold text-uppercase">{{ $category->name }}</h6>
                                             </div>
                                         </div>
                                     </div>

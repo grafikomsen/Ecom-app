@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-    <section class="section-5 py-3 pb-3 mb-3 bg-white">
+    <section class="section-5 py-3 pt-4 pb-2 mb-3 bg-white">
         <div class="container">
             <div class="light-font">
                 <ol class="breadcrumb primary-color mb-0">
@@ -55,7 +55,8 @@
                         <h2 class="price">{{ $product->price }} CFA</h2>
 
                         <p>{!! $product->short_description !!}</p>
-                        <a href="javascript:void(0);" onclick="addToCart({{ $product->id }})" class="btn btn-panier rounded-5 border-0 m-4 shadow-sm">
+
+                        <a href="javascript:void(0);" onclick="addToCart({{ $product->id }});" class="btn btn-panier rounded-5 border-0 m-4 shadow-sm">
                             <i class="fas fa-shopping-cart text-white"></i> &nbsp;AJOUTER AU PANIER
                         </a>
                     </div>
@@ -104,35 +105,37 @@
                             $productImage = $relatedProduct->product_images->first();
                         @endphp
                             <div class="col-12 col-md-3">
-                                <a class="nav-link" href="{{ route('product',$relatedProduct->slug) }}">
-                                    <div class="card p-2 mb-4 rounded-0 shadow-sm border-0 position-relative">
-                                        @if ($relatedProduct->compare_price > 0)
-                                            <span class="badge bg-danger position-absolute m-2 rounded-4">PROMO: {{ $relatedProduct->compare_price }} CFA</span>
-                                        @endif
+                                <div class="card p-2 mb-4 rounded-0 shadow-sm border-0 position-relative">
+                                    @if ($relatedProduct->compare_price > 0)
+                                        <span class="badge bg-danger position-absolute m-2 rounded-4">PROMO: {{ $relatedProduct->compare_price }} CFA</span>
+                                    @endif
 
-                                        @if (!empty($productImage->image))
-                                            <img src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $relatedProduct->title }}">
-                                        @else
-                                            <img src="{{ asset('assets-front/images/c_polo-shirt.png') }}" alt="{{ $relatedProduct->title }}">
-                                        @endif
-                                        <div class="d-flex justify-content-between">
+                                    @if (!empty($productImage->image))
+                                        <img class="w-100 h-100" src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $relatedProduct->title }}">
+                                    @else
+                                        <img  class="w-100 h-100" src="{{ asset('assets-front/images/c_polo-shirt.png') }}" alt="{{ $relatedProduct->title }}">
+                                    @endif
+                                    <div class="d-flex justify-content-between">
+                                        <a class="nav-link" href="{{ route('product',$relatedProduct->slug) }}">
                                             <h6 class="py-1 text-uppercase text-start">{{ $relatedProduct->title }}</h6>
-                                            <h6 class="py-1 text-uppercase text-start">{{ $relatedProduct->category_id }}</h6>
-                                        </div>
-
-                                        <div class="py-1 rating d-flex justify-content-start">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <div class="d-flex align-items-center justify-content-between">
-                                            <h6 class="fw-bold">{{ $relatedProduct->price }} CFA</h6>
-                                            <i class="fa-solid fa-cart-shopping"></i>
-                                        </div>
+                                        </a>
+                                        <h6 class="py-1 text-uppercase text-start">{{ $relatedProduct->category_id }}</h6>
                                     </div>
-                                </a>
+
+                                    <div class="py-1 rating d-flex justify-content-start">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <h6 class="fw-bold">{{ $relatedProduct->price }} CFA</h6>
+                                        <a href="javascript:void(0);" onclick="addToCart({{ $relatedProduct->id }});">
+                                            <i class="fa-solid fa-cart-shopping"></i>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         @endforeach
                     @endif
@@ -144,17 +147,4 @@
 @endsection
 
 @section('customJs')
-    <script>
-        function addToCart(id){
-            $.ajax({
-                url: '{{ route("cart.addToCart") }}',
-                type: 'POST',
-                data: {id:id}
-                dataType: 'json',
-                success: function(response){
-
-                }
-            });
-        }
-    </script>
 @endsection
