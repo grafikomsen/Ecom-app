@@ -1,13 +1,14 @@
 @extends('layouts.app')
 @section('content')
+
     <section class="section-5 py-3 pt-4 pb-2 mb-3 bg-white">
         <div class="container">
             <div class="light-font">
-                <ol class="breadcrumb">
+                <ol class="breadcrumb primary-color mb-0">
                     <li class="breadcrumb-item">
-                        <a class="text-black" href="{{ route('home') }}">Accueil</a>
+                        <a class="breadcrumb-text" href="{{ route('home') }}">Acceuil</a>
                     </li>
-                    <li class="breadcrumb-item active">Boutique</li>
+                    <li class="breadcrumb-item">Boutique</li>
                 </ol>
             </div>
         </div>

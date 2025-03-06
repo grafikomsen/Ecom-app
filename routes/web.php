@@ -32,6 +32,8 @@ Route::get('/shop/{categorySlug?}/{SubCategorySlug?}', [ShopController::class, '
 Route::get('/produit/{slug}',[ShopController::class, 'product'])->name('product');
 Route::get('/panier',[CartController::class, 'cart'])->name('cart');
 Route::post('/ajouter-au-panier',[CartController::class, 'addToCart'])->name('cart.addToCart');
+Route::post('/mis-a-jour-panier',[CartController::class, 'updateCart'])->name('cart.updateCart');
+Route::post('/supprimer-le-panier',[CartController::class, 'deleteItem'])->name('cart.deleteItem');
 
 Route::group(['prefix' => 'admin'], function(){
     Route::group(['middleware' => 'admin.guest'], function(){

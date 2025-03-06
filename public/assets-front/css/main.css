@@ -78,6 +78,20 @@ i {
     font-weight: 500;
 }
 
+.btn-default {
+    background: var(--primaryColor) !important;
+    color: var(--white);
+}
+
+.alert-success {
+    background: var(--primaryColor) !important;
+    color: var(--white);
+}
+
+.breadcrumb-text {
+    color: var(--primaryColor);
+}
+
 .active {
   color: var(--primaryColor) !important;
 }

@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+
     <section class="Hero">
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
@@ -415,4 +416,5 @@
             </div>
         </div>
     </section>
+
 @endsection
