@@ -9,6 +9,7 @@ use App\Http\Controllers\admin\ProductImageController;
 use App\Http\Controllers\admin\ProductSubCategoryController;
 use App\Http\Controllers\admin\SubCategoryController;
 use App\Http\Controllers\admin\TempImagesController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ShopController;
@@ -35,6 +36,13 @@ Route::post('/ajouter-au-panier',[CartController::class, 'addToCart'])->name('ca
 Route::post('/mis-a-jour-panier',[CartController::class, 'updateCart'])->name('cart.updateCart');
 Route::post('/supprimer-le-panier',[CartController::class, 'deleteItem'])->name('cart.deleteItem');
 
+//
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/authenticate', [AuthController::class, 'authenticate'])->name('login.authenticate');
+Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/porcess-register', [AuthController::class, 'processRegister'])->name('processRegister');
+
+//
 Route::group(['prefix' => 'admin'], function(){
     Route::group(['middleware' => 'admin.guest'], function(){
         Route::get('/login', [loginController::class, 'index'])->name('admin.login');
