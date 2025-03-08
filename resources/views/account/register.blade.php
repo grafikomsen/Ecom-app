@@ -21,7 +21,7 @@
                     <div class="col-12 col-md-4"></div>
                     <div class="col-12 col-md-4">
                         <div class="card rounded-1 p-4">
-                            <form action="" method="POST" name="registrationForm" id="registrationForm">
+                            <form method="POST" name="registrationForm" id="registrationForm">
                                 <h4 class="modal-title">Register Now</h4>
                                 <div class="form-group pt-3">
                                     <input type="text" class="form-control" placeholder="Nom complet" id="name" name="name">
@@ -48,7 +48,9 @@
                                 </div>
                                 <button type="submit" class="btn btn-default">Inscription</button>
                             </form>
-                            <div class="text-center small pt-2">Already have an account? <a href="{{ route('login') }}">Login Now</a></div>
+                        </div>
+                        <div class="text-center small pt-4">Already have an account?
+                            <a href="{{ route('account.login') }}">Login Now</a>
                         </div>
                     </div>
                     <div class="col-12 col-md-4"></div>
@@ -66,13 +68,15 @@
         $("#registrationForm").submit(function(e){
             e.preventDefault();
 
+            $("button[type='submit']").prop('disabled',true);
+
             $.ajax({
-                url: '{{ route("processRegister") }}',
+                url: '{{ route("account.processRegister") }}',
                 type: 'POST',
                 data: $(this).serializeArray(),
                 dataType: 'json',
                 success: function(response){
-
+                    $("button[type='submit']").prop('disabled',false);
                     let errors = response.errors;
 
                     if(response.status == false){
@@ -112,7 +116,7 @@
                         $('#password').siblings('p').addClass('invalid-feedback').html('');
                         $('#password').addClass('is-invalid');
 
-                        window.location.href="{{ route('login') }}";
+                        window.location.href="{{ route('account.login') }}";
 
                     }
                 },
@@ -121,7 +125,6 @@
                 }
             });
         });
-
 
     </script>
 

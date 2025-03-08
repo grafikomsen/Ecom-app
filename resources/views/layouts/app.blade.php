@@ -41,7 +41,7 @@
                               <li><a class="dropdown-item text-uppercase" href="#">DOLLAR</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a href="#" class="nav-link text-white">Se connecter</a></li>
+                        <li class="nav-item"><a href="{{ route('account.login') }}" class="nav-link text-white">Se connecter</a></li>
                     </ul>
                 </div>
             </div>

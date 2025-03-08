@@ -28,23 +28,38 @@
                                 </div>
                             </div>
                         @endif
+                        @if(Session::has('error'))
+                            <div class="col-md-12">
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <strong>Error!</strong> {{ Session::get('error') }}.
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            </div>
+                        @endif
                         <div class="card rounded-1 p-4">
-                            <form action="" method="POST">
+                            <form action="{{ route('account.authenticate') }}" method="POST">
+                                @csrf
                                 <h4 class="modal-title">Login to Your Account</h4>
                                 <div class="form-group pt-3">
-                                    <input type="text" class="form-control" placeholder="Email" required="required">
+                                    <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" value="{{ old('email') }}">
+                                    @error('email')
+                                        <p class="invalid-feedback">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="form-group pt-3">
-                                    <input type="password" class="form-control" placeholder="Mot de passe" required="required">
+                                    <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Mot de passe">
+                                    @error('password')
+                                        <p class="invalid-feedback">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="form-group small my-2">
                                     <a href="#" class="forgot-link">Forgot Password?</a>
                                 </div>
                                 <button type="submit" class="btn btn-default">Se connecter</button>
                             </form>
-                            <div class="text-center small pt-2">
-                                Don't have an account? <a href="{{ route('register') }}">S'inscription</a>
-                            </div>
+                        </div>
+                        <div class="text-center small pt-4">
+                            Don't have an account? <a href="{{ route('account.register') }}">S'inscription</a>
                         </div>
                     </div>
                     <div class="col-md-4"></div>

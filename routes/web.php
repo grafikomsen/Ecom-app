@@ -28,6 +28,7 @@ use Illuminate\Support\Str;
 |
 */
 
+//
 Route::get('/',[HomeController::class, 'home'])->name('home');
 Route::get('/shop/{categorySlug?}/{SubCategorySlug?}', [ShopController::class, 'shop'])->name('shop');
 Route::get('/produit/{slug}',[ShopController::class, 'product'])->name('product');
@@ -36,11 +37,22 @@ Route::post('/ajouter-au-panier',[CartController::class, 'addToCart'])->name('ca
 Route::post('/mis-a-jour-panier',[CartController::class, 'updateCart'])->name('cart.updateCart');
 Route::post('/supprimer-le-panier',[CartController::class, 'deleteItem'])->name('cart.deleteItem');
 
+
 //
-Route::get('/login', [AuthController::class, 'login'])->name('login');
-Route::post('/authenticate', [AuthController::class, 'authenticate'])->name('login.authenticate');
-Route::get('/register', [AuthController::class, 'register'])->name('register');
-Route::post('/porcess-register', [AuthController::class, 'processRegister'])->name('processRegister');
+Route::group(['prefix' => 'account'], function(){
+    Route::group(['middleware' => 'guest'], function(){
+        Route::get('/login', [AuthController::class, 'login'])->name('account.login');
+        Route::post('/login', [AuthController::class, 'authenticate'])->name('account.authenticate');
+
+        Route::get('/register', [AuthController::class, 'register'])->name('account.register');
+        Route::post('/porcess-register', [AuthController::class, 'processRegister'])->name('account.processRegister');
+    });
+
+    Route::group(['middleware' => 'auth'], function(){
+        Route::get('/profile', [AuthController::class, 'profile'])->name('account.profile');
+        Route::get('/logout', [AuthController::class, 'logout'])->name('account.logout');
+    });
+});
 
 //
 Route::group(['prefix' => 'admin'], function(){
