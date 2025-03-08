@@ -38,7 +38,7 @@ class AuthController extends Controller
             $user->password = Hash::make($request->password);
             $user->save();
 
-            session()->flash('success','You have been registerd successfully');
+            session()->flash('success','Vous avez été inscrit avec succès');
             return response()->json([
                 'status' => true,
             ]);
@@ -72,7 +72,7 @@ class AuthController extends Controller
                 # code...
                 return redirect()->route('account.login')
                 ->withInput($request->only('email'))
-                ->with('error', 'Either email/password is incorrect.');
+                ->with('error', 'E-mail/mot de passe est incorrect.');
             }
         } else {
             # code...
@@ -92,6 +92,6 @@ class AuthController extends Controller
 
         Auth::logout();
         return redirect()->route('account.login')
-        ->with('success', 'You successfully logged out!');
+        ->with('success', 'Vous vous êtes déconnecté avec succès !');
     }
 }

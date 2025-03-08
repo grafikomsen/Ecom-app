@@ -39,7 +39,7 @@
                         <div class="card rounded-1 p-4">
                             <form action="{{ route('account.authenticate') }}" method="POST">
                                 @csrf
-                                <h4 class="modal-title">Login to Your Account</h4>
+                                <h4 class="modal-title text-center">Connectez à votre compte</h4>
                                 <div class="form-group pt-3">
                                     <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" value="{{ old('email') }}">
                                     @error('email')
@@ -53,13 +53,13 @@
                                     @enderror
                                 </div>
                                 <div class="form-group small my-2">
-                                    <a href="#" class="forgot-link">Forgot Password?</a>
+                                    <a href="#" class="forgot-link">Mot de passe oublié?</a>
                                 </div>
                                 <button type="submit" class="btn btn-default">Se connecter</button>
                             </form>
                         </div>
                         <div class="text-center small pt-4">
-                            Don't have an account? <a href="{{ route('account.register') }}">S'inscription</a>
+                            Je n'ai pas de compte? <a href="{{ route('account.register') }}">S'inscription</a>
                         </div>
                     </div>
                     <div class="col-md-4"></div>

@@ -22,7 +22,7 @@
                     <div class="col-12 col-md-4">
                         <div class="card rounded-1 p-4">
                             <form method="POST" name="registrationForm" id="registrationForm">
-                                <h4 class="modal-title">Register Now</h4>
+                                <h4 class="modal-title text-center">Inscrivez-vous maintenant</h4>
                                 <div class="form-group pt-3">
                                     <input type="text" class="form-control" placeholder="Nom complet" id="name" name="name">
                                     <p></p>
@@ -43,14 +43,11 @@
                                     <input type="password" class="form-control" placeholder="Confirmation du mot de passe" id="password_confirmation" name="password_confirmation">
                                     <p></p>
                                 </div>
-                                <div class="form-group small my-2">
-                                    <a href="#" class="forgot-link">Forgot Password?</a>
-                                </div>
                                 <button type="submit" class="btn btn-default">Inscription</button>
                             </form>
                         </div>
-                        <div class="text-center small pt-4">Already have an account?
-                            <a href="{{ route('account.login') }}">Login Now</a>
+                        <div class="text-center small pt-4">Vous avez déjà un compte?
+                            <a href="{{ route('account.login') }}">Connectez-vous maintenant</a>
                         </div>
                     </div>
                     <div class="col-12 col-md-4"></div>

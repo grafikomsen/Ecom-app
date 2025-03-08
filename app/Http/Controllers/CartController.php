@@ -15,7 +15,7 @@ class CartController extends Controller
             # code...
             return response()->json([
                 'status' => false,
-                'message' => 'Record not found'
+                'message' => 'Enregistrement introuvable'
             ]);
         }
 
@@ -85,7 +85,7 @@ class CartController extends Controller
                 session()->flash('success', $message);
             } else {
                 # code...
-                $message = 'Requested qty('.$qty.') not available in stock';
+                $message = 'Quantité demandée('.$qty.') non disponible en stock';
                 $status = false;
                 session()->flash('error', $message);
             }
@@ -109,7 +109,7 @@ class CartController extends Controller
 
         if ($itemInfo == null) {
             # code...
-            $errorMessage = 'Item not found in cart';
+            $errorMessage = 'Article introuvable dans le panier';
             session()->flash('error', $errorMessage);
 
             return response()->json([
@@ -120,7 +120,7 @@ class CartController extends Controller
 
         Cart::remove($request->rowId);
 
-        $message = 'Item removed from cart successfully';
+        $message = 'Article supprimé du panier avec succès';
         session()->flash('success', $message);
 
         return response()->json([
