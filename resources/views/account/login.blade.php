@@ -39,27 +39,37 @@
                         <div class="card rounded-1 p-4">
                             <form action="{{ route('account.authenticate') }}" method="POST">
                                 @csrf
-                                <h4 class="modal-title text-center">Connectez à votre compte</h4>
-                                <div class="form-group pt-3">
-                                    <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" value="{{ old('email') }}">
+                                <h4 class="modal-title text-center fw-bold text-uppercase">Connectez-vous à votre compte</h4>
+
+                                <div class="input-group rounded-1 mb-3">
+                                    <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="E-mail" aria-describedby="basic-addon2" value="{{ old('email') }}">
+                                    <span class="input-group-text" id="basic-addon2"><i class="fa fa-envelope"></i></span>
                                     @error('email')
                                         <p class="invalid-feedback">{{ $message }}</p>
                                     @enderror
                                 </div>
-                                <div class="form-group pt-3">
-                                    <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Mot de passe">
+
+                                <div class="input-group rounded-1 mb-3">
+                                    <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Mot de passe" aria-describedby="basic-addon2">
+                                    <span class="input-group-text" id="basic-addon2"><i class="fa fa-lock"></i></span>
                                     @error('password')
                                         <p class="invalid-feedback">{{ $message }}</p>
                                     @enderror
                                 </div>
+
                                 <div class="form-group small my-2">
-                                    <a href="#" class="forgot-link">Mot de passe oublié?</a>
+                                    <a href="#" class="active">Mot de passe oublié?</a>
                                 </div>
-                                <button type="submit" class="btn btn-default">Se connecter</button>
+
+                                <button type="submit" class="btn btn-default text-uppercase rounded-1 border-0">
+                                    Connexion
+                                    <i class="fa fa-sign-in text-white"></i>
+                                </button>
+
                             </form>
                         </div>
                         <div class="text-center small pt-4">
-                            Je n'ai pas de compte? <a href="{{ route('account.register') }}">S'inscription</a>
+                            Je n'ai pas de compte? <a class="active" href="{{ route('account.register') }}">S'inscription</a>
                         </div>
                     </div>
                     <div class="col-md-4"></div>
