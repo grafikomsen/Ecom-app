@@ -178,7 +178,7 @@
         }
 
         function deleteItem(rowId){
-            if(confirm('Are you sure you want to delete?')){
+            if(confirm('Êtes-vous sûr de vouloir supprimer?')){
                 $.ajax({
                     url: '{{ route("cart.deleteItem") }}',
                     type: 'POST',
