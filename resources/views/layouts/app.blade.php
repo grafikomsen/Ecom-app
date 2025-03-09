@@ -56,10 +56,14 @@
                         {{-- <form class="" role="search">
                             <input type="search" class="form-control rounded-5 shadow-sm" placeholder="Chercher ici...">
                         </form> --}}
-                        <a href="{{ route('cart') }}" class="position-relative px-2">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                            <span class="position-absolute shadow-sm top-0 start-50 translate-middle badge rounded-circle bg-primary">2</span>
+
+                        <a href="{{ route('cart') }}" class="btn btn-default btn-sm position-relative">
+                            <i class="fa fa-shopping-basket text-white p-0 m-0"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger py-1">
+                                0 CFA
+                            </span>
                         </a>
+
                     </div>
 
                     <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -168,11 +172,11 @@
                     </div>
                 </div>
                 <div class="d-flex flex-column flex-sm-row justify-content-between pt-3 border-top">
-                    <p class="text-white">&copy; 2022 Company, Inc. All rights reserved.</p>
+                    <p class="text-white">&copy; 2025 Grafikomsen, Tech. Tous droits réservés.</p>
                     <ul class="list-unstyled d-flex">
-                        <li class="ms-3"><a class="nav-link" href="#"><i class="fas fa-twitter text-white"></i></a></li>
-                        <li class="ms-3"><a class="nav-link" href="#"><i class="fas fa-instagram-square text-white"></i></a></li>
-                        <li class="ms-3"><a class="nav-link" href="#"><i class="fas fa-facebook text-white"></i></svg></a></li>
+                        <li class="ms-3"><a class="nav-link" href="#"><i class="fa-brands fa-twitter text-white"></i></a></li>
+                        <li class="ms-3"><a class="nav-link" href="#"><i class="fa-brands fa-instagram-square text-white"></i></a></li>
+                        <li class="ms-3"><a class="nav-link" href="#"><i class="fa-brands fa-facebook text-white"></i></svg></a></li>
                     </ul>
                 </div>
                 </footer>

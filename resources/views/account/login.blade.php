@@ -39,7 +39,7 @@
                         <div class="card rounded-1 p-4">
                             <form action="{{ route('account.authenticate') }}" method="POST">
                                 @csrf
-                                <h4 class="modal-title text-center fw-bold text-uppercase">Connectez-vous à votre compte</h4>
+                                <h4 class="modal-title text-center fw-bold text-uppercase py-2">Connectez-vous à votre compte</h4>
 
                                 <div class="input-group rounded-1 mb-3">
                                     <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="E-mail" aria-describedby="basic-addon2" value="{{ old('email') }}">

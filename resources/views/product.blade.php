@@ -5,8 +5,12 @@
         <div class="container">
             <div class="light-font">
                 <ol class="breadcrumb primary-color mb-0">
-                    <li class="breadcrumb-item"><a class="white-text" href="{{ route('home') }}">Acceuil</a></li>
-                    <li class="breadcrumb-item"><a class="white-text" href="{{ route('shop') }}">Boutique</a></li>
+                    <li class="breadcrumb-item">
+                        <a class="breadcrumb-text" href="{{ route('home') }}"><i class="fa fa-home" aria-hidden="true"></i> Acceuil</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a class="active" href="{{ route('shop') }}">Boutique</a>
+                    </li>
                     <li class="breadcrumb-item">{{ $product->title }}</li>
                 </ol>
             </div>

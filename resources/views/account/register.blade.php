@@ -22,7 +22,7 @@
                     <div class="col-12 col-md-4">
                         <div class="card rounded-1 p-4">
                             <form method="POST" name="registrationForm" id="registrationForm">
-                                <h4 class="modal-title text-center fw-bold text-uppercase">Créez votre compte</h4>
+                                <h4 class="modal-title text-center fw-bold text-uppercase py-2">Créez votre compte</h4>
 
                                 <div class="input-group rounded-1 mb-3">
                                     <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Nom complet" aria-describedby="basic-addon2" value="{{ old('name') }}">

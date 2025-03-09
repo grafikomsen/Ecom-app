@@ -6,7 +6,7 @@
             <div class="light-font">
                 <ol class="breadcrumb primary-color mb-0">
                     <li class="breadcrumb-item">
-                        <a class="breadcrumb-text" href="{{ route('home') }}">Acceuil</a>
+                        <a class="breadcrumb-text" href="{{ route('home') }}"><i class="fa fa-home" aria-hidden="true"></i> Acceuil</a>
                     </li>
                     <li class="breadcrumb-item">Boutique</li>
                 </ol>
