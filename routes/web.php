@@ -36,7 +36,8 @@ Route::get('/panier',[CartController::class, 'cart'])->name('cart');
 Route::post('/ajouter-au-panier',[CartController::class, 'addToCart'])->name('cart.addToCart');
 Route::post('/mis-a-jour-panier',[CartController::class, 'updateCart'])->name('cart.updateCart');
 Route::post('/supprimer-le-panier',[CartController::class, 'deleteItem'])->name('cart.deleteItem');
-
+Route::get('/commandez',[CartController::class, 'checkout'])->name('checkout');
+Route::post('/commandez', [CartController::class, 'processCheckout'])->name('processCheckout');
 
 //
 Route::group(['prefix' => 'account'], function(){

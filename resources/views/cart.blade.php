@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-
+<main>
     <section class="section-5 py-3 pt-4 pb-2 mb-3 bg-white">
         <div class="container">
             <div class="light-font">
@@ -40,7 +40,7 @@
                             </div>
                         @endif
 
-                        <div class="table-responsive rounded-1">
+                        <div class="table-responsive shadow-sm rounded-1">
                             <table class="table" id="cart">
                                 <thead>
                                     <tr>
@@ -98,7 +98,7 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="card cart-summery">
+                        <div class="card border-0 shadow-sm cart-summery">
                             <div class="sub-title p-3">
                                 <h2 class="bg-white">Panier Résumé</h3>
                             </div>
@@ -116,7 +116,7 @@
                                     <div>{{ Cart::subtotal() }} CFA</div>
                                 </div>
                                 <div class="pt-5">
-                                    <a href="login.php" class="btn-default btn btn-block w-100">Passer à la caisse</a>
+                                    <a href="{{ route('checkout') }}" class="btn-default btn btn-block w-100">Passer à la caisse</a>
                                 </div>
                             </div>
                         </div>
@@ -137,7 +137,7 @@
             </div>
         </div>
     </section>
-
+</main>
 @endsection
 @section('customJs')
 

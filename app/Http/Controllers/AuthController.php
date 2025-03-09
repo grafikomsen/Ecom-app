@@ -66,6 +66,10 @@ class AuthController extends Controller
                 'password' => $request->password],
                 $request->get('remember'))) {
 
+                    if (session()->has('url.intended')) {
+                        # code...
+                        return redirect(session()->get('url.intended'));
+                    }
                     return redirect()->route('account.profile');
 
             } else {
