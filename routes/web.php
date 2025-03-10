@@ -7,6 +7,7 @@ use App\Http\Controllers\admin\loginController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\ProductImageController;
 use App\Http\Controllers\admin\ProductSubCategoryController;
+use App\Http\Controllers\admin\ShippingController;
 use App\Http\Controllers\admin\SubCategoryController;
 use App\Http\Controllers\admin\TempImagesController;
 use App\Http\Controllers\AuthController;
@@ -38,6 +39,7 @@ Route::post('/mis-a-jour-panier',[CartController::class, 'updateCart'])->name('c
 Route::post('/supprimer-le-panier',[CartController::class, 'deleteItem'])->name('cart.deleteItem');
 Route::get('/commandez',[CartController::class, 'checkout'])->name('checkout');
 Route::post('/commandez', [CartController::class, 'processCheckout'])->name('processCheckout');
+Route::get('/merci-de-commandez/{orderId}', [CartController::class, 'thankyou'])->name('thankyou');
 
 //
 Route::group(['prefix' => 'account'], function(){
@@ -99,6 +101,14 @@ Route::group(['prefix' => 'admin'], function(){
         Route::delete('/product/{product}', [ProductController::class, 'destroy'])->name('admin.product.destroy');
         Route::get('/product-subcategories', [ProductSubCategoryController::class, 'index'])->name('admin.productSubCategorie');
         Route::get('/get-products', [ProductController::class, 'getProducts'])->name('product.getProducts');
+
+        // SHIPPING ROUTES
+        Route::get('/shipping/create', [ShippingController::class, 'create'])->name('admin.shipping.create');
+        Route::post('/shipping', [ShippingController::class, 'store'])->name('admin.shipping.store');
+        Route::get('/shipping/{id}', [ShippingController::class, 'edit'])->name('admin.shipping.edit');
+        Route::put('/shipping/{id}', [ShippingController::class, 'updated'])->name('admin.shipping.updated');
+        Route::delete('/shipping/{id}', [ShippingController::class, 'destroy'])->name('admin.shipping.delete');
+
 
         // IMAGES
         Route::post('/product-images/update', [ProductImageController::class, 'update'])->name('product-images.update');
