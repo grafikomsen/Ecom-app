@@ -40,6 +40,7 @@ Route::post('/supprimer-le-panier',[CartController::class, 'deleteItem'])->name(
 Route::get('/commandez',[CartController::class, 'checkout'])->name('checkout');
 Route::post('/commandez', [CartController::class, 'processCheckout'])->name('processCheckout');
 Route::get('/merci-de-commandez/{orderId}', [CartController::class, 'thankyou'])->name('thankyou');
+Route::post('/get-order-summery', [CartController::class, 'getOrderSummery'])->name('getOrderSummery');
 
 //
 Route::group(['prefix' => 'account'], function(){

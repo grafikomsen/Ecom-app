@@ -104,14 +104,6 @@
                             </div>
                             <div class="card-body">
                                 <div class="d-flex justify-content-between pb-2">
-                                    <div>Sous total</div>
-                                    <div>{{ Cart::subtotal() }} CFA</div>
-                                </div>
-                                <div class="d-flex justify-content-between pb-2">
-                                    <div>Expédition</div>
-                                    <div>400 CFA</div>
-                                </div>
-                                <div class="d-flex justify-content-between pb-2">
                                     <div>Total</div>
                                     <div>{{ Cart::subtotal() }} CFA</div>
                                 </div>

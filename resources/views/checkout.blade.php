@@ -52,7 +52,7 @@
                                     <div class="col-md-12">
                                         <div class="mb-3">
                                             <select name="country" id="country" class="form-control">
-                                                <option value="">-- Selectionnez votre pays --</option>
+                                                <option> -- Selectionnez votre pays -- </option>
                                                 @if($countries->isNotEmpty())
                                                     @foreach($countries as $country)
                                                         <option {{ (!empty($customerAddress) && $customerAddress->country_id == $country->id) ? 'selected' : '' }} value="{{ $country->id }}">{{ $country->name }}</option>
@@ -136,12 +136,12 @@
                                 </div>
                                 <div class="d-flex justify-content-between mt-2">
                                     <div class="h6"><strong>Shipping</strong></div>
-                                    <div class="h6"><strong>0 CFA</strong></div>
+                                    <div class="h6"><strong  id="shippingCharge">{{ number_format($totalShippingCharge,0) }} CFA</strong></div>
                                 </div>
                                 <hr>
                                 <div class="d-flex justify-content-between mt-2 summery-end">
                                     <div class="h5"><strong>Total</strong></div>
-                                    <div class="h5"><strong>{{ Cart::subtotal() }} CFA</strong></div>
+                                    <div class="h5"><strong id="grandTotal">{{ number_format($grandTotal,0) }} CFA</strong></div>
                                 </div>
                             </div>
                         </div>
@@ -291,6 +291,21 @@
 
                     } else {
                         window.location.href="{{ url('/merci-de-commandez/') }}/"+response.orderId;
+                    }
+                }
+            });
+        });
+
+        $("#country").change(function(){
+            $.ajax({
+                url: '{{ route("getOrderSummery") }}',
+                type: 'POST',
+                data: {country_id: $(this).val()},
+                dataType: 'JSON',
+                success: function(response){
+                    if (response.status == true){
+                        $("#shippingCharge").html(response.shippingCharge+' CFA');
+                        $("#grandTotal").html(response.grandTotal+' CFA');
                     }
                 }
             });

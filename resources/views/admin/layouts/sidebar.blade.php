@@ -38,42 +38,31 @@
         </ul>
 
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
-            <span>Saved reports</span>
+            <span class="fw-bold">Information de commandes</span>
         </h6>
         <ul class="nav flex-column mb-auto">
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center gap-2" href="{{ route('admin.shipping.create') }}">
+                <a class="nav-link d-flex align-items-center fs-6 fw-bold gap-2" href="{{ route('admin.shipping.create') }}">
                     <i class="fa fa-backward"></i>
-                    Shipping
+                    Livraison
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center gap-2" href="#">
-                <svg class="bi"><use xlink:href="#file-earmark-text"/></svg>
-                Last quarter
+                <a class="nav-link d-flex align-items-center fs-6 fw-bold gap-2" href="#">
+                    <i class="fa fa-backward"></i>
+                    Last quarter
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center gap-2" href="#">
-                <svg class="bi"><use xlink:href="#file-earmark-text"/></svg>
-                Social engagement
+                <a class="nav-link d-flex align-items-center fs-6 fw-bold gap-2" href="#">
+                    <i class="fa fa-backward"></i>
+                    Social engagement
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center gap-2" href="#">
-                <svg class="bi"><use xlink:href="#file-earmark-text"/></svg>
-                Year-end sale
-                </a>
-            </li>
-        </ul>
-
-        <hr class="my-3">
-
-        <ul class="nav flex-column mb-auto">
-            <li class="nav-item">
-                <a class="nav-link d-flex align-items-center gap-2" href="#">
-                <svg class="bi"><use xlink:href="#gear-wide-connected"/></svg>
-                    Paramétres
+                <a class="nav-link d-flex align-items-center fs-6 fw-bold gap-2" href="#">
+                    <i class="fa fa-backward"></i>
+                    Year-end sale
                 </a>
             </li>
         </ul>
