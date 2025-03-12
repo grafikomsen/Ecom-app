@@ -108,7 +108,7 @@
                                     <div class="col-12 col-md-4">
                                         <div class="card p-2 mb-4 rounded-0 shadow-sm border-0 position-relative">
                                             @if ($product->compare_price > 0)
-                                                <span class="badge bg-danger position-absolute m-2 rounded-4">PROMO: {{ $product->compare_price }} CFA</span>
+                                                <span class="badge bg-danger position-absolute m-2 rounded-4">PROMO: {{ number_format($product->compare_price, 0, '.', ' ') }} CFA</span>
                                             @endif
 
                                             @if (!empty($productImage->image))
@@ -121,7 +121,7 @@
                                                 <a class="nav-link" href="{{ route('product',$product->slug) }}">
                                                     <h6 class="py-1 text-uppercase text-start">{{ $product->title }}</h6>
                                                 </a>
-                                                <h6 class="py-1 text-uppercase text-start">{{ $product->category_id }}</h6>
+                                                <h6 class="py-1 text-uppercase text-start"></h6>
                                             </div>
 
                                             <div class="py-1 rating d-flex justify-content-start">
@@ -132,7 +132,7 @@
                                                 <i class="fa fa-star"></i>
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between">
-                                                <h6 class="fw-bold">{{ $product->price }} CFA</h6>
+                                                <h6 class="fw-bold">{{ number_format($product->price, 0, '.', ' ') }} CFA</h6>
                                                 <a href="javascript:void(0);" onclick="addToCart({{ $product->id }});">
                                                     <i class="fa-solid fa-cart-shopping"></i>
                                                 </a>

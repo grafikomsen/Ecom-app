@@ -110,7 +110,7 @@
                                                     <img src="" alt="{{ $latestProduct->title }}">
                                                 @endif
                                                 <h6 class="pt-2 text-center text-uppercase">{{ $latestProduct->title }}</h6>
-                                                <h6 class="text-center fw-bold">{{ $latestProduct->price }} CFA</h6>
+                                                <h6 class="text-center fw-bold">{{ number_format($latestProduct->price, 0, '.', ' ') }} CFA</h6>
                                                 <div class="rating d-flex justify-content-center">
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
@@ -143,7 +143,7 @@
                                                     <img src="" alt="{{ $featuredProduct->title }}">
                                                 @endif
                                                 <h6 class="pt-2 text-center text-uppercase">{{ $featuredProduct->title }}</h6>
-                                                <h6 class="text-center fw-bold">{{ $featuredProduct->price }} CFA</h6>
+                                                <h6 class="text-center fw-bold">{{ number_format($featuredProduct->price, 0, '.', ' ') }} CFA</h6>
                                                 <div class="rating d-flex justify-content-center">
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
@@ -176,7 +176,7 @@
                                                     <img src="" alt="{{ $olderProduct->title }}">
                                                 @endif
                                                 <h6 class="pt-2 text-center text-uppercase">{{ $olderProduct->title }}</h6>
-                                                <h6 class="text-center fw-bold">{{ $olderProduct->price }} CFA</h6>
+                                                <h6 class="text-center fw-bold">{{ number_format($olderProduct->price, 0, '.', ' ') }} CFA</h6>
                                                 <div class="rating d-flex justify-content-center">
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
@@ -314,7 +314,7 @@
                                         <div class="col-md-8">
                                             <div class="card-body">
                                                 <h6 class="card-title">{{ $oldProduct->title }}</h6>
-                                                <p class="card-text">{{ $oldProduct->price }} CFA</p>
+                                                <p class="card-text">{{ number_format($oldProduct->price, 0, '.', ' ') }} CFA</p>
                                                 <div class="rating d-flex justify-content-star pt-0">
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
@@ -346,7 +346,7 @@
                                         <div class="col-md-8">
                                             <div class="card-body">
                                                 <h6 class="card-title">{{ $latProduct->title }}</h6>
-                                                <p class="card-text">{{ $latProduct->price }} CFA</p>
+                                                <p class="card-text">{{ number_format($latProduct->price, 0, '.', ' ') }} CFA</p>
                                                 <div class="rating d-flex justify-content-star pt-0">
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
@@ -378,7 +378,7 @@
                                         <div class="col-md-8">
                                             <div class="card-body">
                                                 <h6 class="card-title">{{ $feaProduct->title }}</h6>
-                                                <p class="card-text">{{ $feaProduct->price }} CFA</p>
+                                                <p class="card-text">{{ number_format($feaProduct->price, 0, '.', ' ') }} CFA</p>
                                                 <div class="rating d-flex justify-content-star pt-0">
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>

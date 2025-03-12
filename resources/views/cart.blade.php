@@ -66,7 +66,7 @@
                                                         <h6 class="px-2">{{ $item->name }}</h6>
                                                     </div>
                                                 </td>
-                                                <td class="text-center">{{ $item->price }} CFA</td>
+                                                <td class="text-center">{{ number_format($item->price, 0, '.', ' ') }} CFA</td>
                                                 <td class="text-center">
                                                     <div class="input-group quantity mx-auto" style="width: 100px;">
                                                         <div class="input-group-btn">
@@ -83,7 +83,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="text-center">
-                                                    {{ $item->price*$item->qty }} CFA
+                                                    {{ number_format($item->price*$item->qty, 0, '.', ' ') }} CFA
                                                 </td>
                                                 <td>
                                                     <button class="btn btn-sm btn-danger float-end" onclick="deleteItem('{{ $item->rowId }}')">
@@ -104,10 +104,10 @@
                             </div>
                             <div class="card-body">
                                 <div class="d-flex justify-content-between pb-2">
-                                    <div>Total</div>
-                                    <div>{{ Cart::subtotal() }} CFA</div>
+                                    <div class="fw-bolder fs-3">Total</div>
+                                    <div class="fw-bolder fs-3">{{ Cart::subtotal(0,'.',' ') }} CFA</div>
                                 </div>
-                                <div class="pt-5">
+                                <div class="pt-2">
                                     <a href="{{ route('checkout') }}" class="btn-default btn btn-block w-100">Passer à la caisse</a>
                                 </div>
                             </div>
