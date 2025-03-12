@@ -124,7 +124,7 @@
                             <div class="card-body">
 
                                 @foreach(Cart::content() as $item)
-                                    <div class="d-flex justify-content-between pb-2">
+                                    <div class="d-flex justify-content-between pb-0">
                                         <div class="h6">{{ $item->name }} X {{ $item->qty }}</div>
                                         <div class="h6">{{ number_format($item->price*$item->qty, 0, '.', ' ') }} CFA</div>
                                     </div>
@@ -134,12 +134,12 @@
                                     <div class="h6"><strong>Subtotal</strong></div>
                                     <div class="h6"><strong>{{ Cart::subtotal(0,'.',' ') }} CFA</strong></div>
                                 </div>
-                                <div class="d-flex justify-content-between mt-2">
+                                <div class="d-flex justify-content-between mt-1">
                                     <div class="h6"><strong>Shipping</strong></div>
                                     <div class="h6"><strong  id="shippingCharge">{{ number_format($totalShippingCharge, 0, '.', ' ') }} CFA</strong></div>
                                 </div>
                                 <hr>
-                                <div class="d-flex justify-content-between mt-2 summery-end">
+                                <div class="d-flex justify-content-between mt-1 summery-end">
                                     <div class="h5"><strong>Total</strong></div>
                                     <div class="h5"><strong id="grandTotal">{{ number_format($grandTotal, 0, '.', ' ') }} CFA</strong></div>
                                 </div>

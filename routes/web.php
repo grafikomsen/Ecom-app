@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\BrandController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\DiscountCodeController;
 use App\Http\Controllers\admin\loginController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\ProductImageController;
@@ -110,6 +111,13 @@ Route::group(['prefix' => 'admin'], function(){
         Route::put('/shipping/{id}', [ShippingController::class, 'updated'])->name('admin.shipping.updated');
         Route::delete('/shipping/{id}', [ShippingController::class, 'destroy'])->name('admin.shipping.delete');
 
+        // DISCOUNT ROUTES
+        Route::get('/discount', [DiscountCodeController::class, 'discounts'])->name('admin.discount');
+        Route::get('/discount/create', [DiscountCodeController::class, 'create'])->name('admin.discount.create');
+        Route::post('/discount', [DiscountCodeController::class, 'store'])->name('admin.discount.store');
+        Route::get('/discount/{discount}/edit', [DiscountCodeController::class, 'edit'])->name('admin.discount.edit');
+        Route::put('/discount/{discount}', [DiscountCodeController::class, 'updated'])->name('admin.discount.updated');
+        Route::delete('/discount/{discount}', [DiscountCodeController::class, 'destroy'])->name('admin.discount.destroy');
 
         // IMAGES
         Route::post('/product-images/update', [ProductImageController::class, 'update'])->name('product-images.update');

@@ -43,14 +43,14 @@
         <ul class="nav flex-column mb-auto">
             <li class="nav-item">
                 <a class="nav-link d-flex align-items-center fs-6 fw-bold gap-2" href="{{ route('admin.shipping.create') }}">
-                    <i class="fa fa-backward"></i>
-                    Livraison
+                    <i class="fa fa-car"></i>
+                    Frais de livraison
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center fs-6 fw-bold gap-2" href="#">
-                    <i class="fa fa-backward"></i>
-                    Last quarter
+                <a class="nav-link d-flex align-items-center fs-6 fw-bold gap-2" href="{{ route('admin.discount') }}">
+                    <i class="fa fa-dollar"></i>
+                    Code coupon
                 </a>
             </li>
             <li class="nav-item">
