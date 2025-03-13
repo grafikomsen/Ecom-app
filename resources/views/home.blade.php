@@ -45,7 +45,7 @@
         </div>
     </section>
 
-    <section class="Categories py-5 bg-light">
+    <section class="Categories py-4">
         <div class="container">
             <div class="title text-center mb-4">
                 <h2 class="d-inline-block text-uppercase position-relative">Catégories</h2>
@@ -54,12 +54,12 @@
                 @if(getCategories()->isNotEmpty())
                     @foreach (getCategories() as $category)
                         <div class="col-12 col-md-3">
-                            <a class="nav-link" href="">
-                                <div class="card rounded-1 shadow-sm border-0 mb-4">
+                            <a class="nav-link" href="{{ route('shop',$category->slug) }}">
+                                <div class="card rounded-1 shadow-sm border-0 mb-4 bg-light">
                                     <div class="row g-0">
                                         <div class="col-md-4">
                                             @if($category->image != "")
-                                                <img class="bd-placeholder-img" width="80" height="100" src="{{ asset('uploads/categories/'.$category->image) }}" alt="{{ $category->name }}">
+                                                <img class="bd-placeholder-img" width="100" height="100" src="{{ asset('uploads/categories/'.$category->image) }}" alt="{{ $category->name }}">
                                             @endif
                                         </div>
                                         <div class="col-md-8">
@@ -77,10 +77,10 @@
         </div>
     </section>
 
-    <section class="Featured py-5 bg-light">
+    <section class="Featured py-4 bg-light">
         <div class="container-xl">
             <div class="title text-center mb-2">
-                <h2 class="d-inline-block text-uppercase position-relative">New Collections</h2>
+                <h2 class="d-inline-block text-uppercase position-relative">Nouvelles Collections</h2>
             </div>
             <div class="bd-example-snippet bd-code-snippet">
                 <div class="bd-example">
@@ -99,7 +99,7 @@
                                 @php
                                     $productImage = $latestProduct->product_images->first();
                                 @endphp
-                                    <div class="col-12 col-md-3">
+                                    <div class="col-12 col-md-3 mb-4">
                                         <a class=" nav-link" href="{{ route('product',$latestProduct->slug) }}">
                                             <div class="card p-2 rounded-0 shadow-sm border-0 h-100 position-relative">
                                                 <span class="badge bg-danger position-absolute m-2 rounded-5">Stock {{ $latestProduct->qty }}</span>
@@ -132,7 +132,7 @@
                                 @php
                                     $productImage = $featuredProduct->product_images->first();
                                 @endphp
-                                    <div class="col-12 col-md-3">
+                                    <div class="col-12 col-md-3 mb-4">
                                         <a class=" nav-link" href="{{ route('product',$featuredProduct->slug) }}">
                                             <div class="card p-2 rounded-0 shadow-sm border-0 h-100 position-relative">
                                                 <span class="badge bg-danger position-absolute m-2 rounded-5">Stock {{ $featuredProduct->qty }}</span>
@@ -165,7 +165,7 @@
                                 @php
                                     $productImage = $olderProduct->product_images->first();
                                 @endphp
-                                    <div class="col-12 col-md-3">
+                                    <div class="col-12 col-md-3 mb-4">
                                         <a class=" nav-link" href="{{ route('product',$olderProduct->slug) }}">
                                             <div class="card p-2 rounded-0 shadow-sm border-0 h-100 position-relative">
                                                 <span class="badge bg-danger position-absolute m-2 rounded-5">Stock {{ $olderProduct->qty }}</span>
@@ -197,7 +197,7 @@
         </div>
     </section>
 
-    <section class="Specials py-5 bg-light">
+    {{--<section class="Specials py-5 bg-light">
         <div class="container-xl">
             <div class="title text-center mb-2">
                 <h2 class="d-inline-block text-uppercase position-relative">Spécial collections</h2>
@@ -273,7 +273,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <section class="Banner-offer py-5 bg-light">
         <div class="carousel slide" data-bs-ride="carousel">
@@ -309,7 +309,11 @@
                                 <div class="card rounded-1 shadow-sm border-0 mb-4">
                                     <div class="row g-0">
                                         <div class="col-md-4">
-                                            <img class="bd-placeholder-img h-full" width="90%" src="{{ asset('assets-front/images/special_product_1.jpg') }}" alt="">
+                                            @if (!empty($productImage->image))
+                                                <img class="bd-placeholder-img h-full" width="90%" src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $oldProduct->title }}">
+                                            @else
+                                                <img class="bd-placeholder-img h-full" width="90%" src="{{ asset('assets-front/images/special_product_1.jpg') }}" alt="{{ $oldProduct->title }}">
+                                            @endif
                                         </div>
                                         <div class="col-md-8">
                                             <div class="card-body">
@@ -341,7 +345,11 @@
                                 <div class="card rounded-1 shadow-sm border-0 mb-4">
                                     <div class="row g-0">
                                         <div class="col-md-4">
-                                            <img class="bd-placeholder-img h-full" width="90%" src="{{ asset('assets-front/images/special_product_1.jpg') }}" alt="">
+                                            @if (!empty($productImage->image))
+                                                <img class="bd-placeholder-img h-full" width="90%" src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $latProduct->title }}">
+                                            @else
+                                                <img class="bd-placeholder-img h-full" width="90%" src="{{ asset('assets-front/images/special_product_1.jpg') }}" alt="{{ $latProduct->title }}">
+                                            @endif
                                         </div>
                                         <div class="col-md-8">
                                             <div class="card-body">
@@ -373,7 +381,11 @@
                                 <div class="card rounded-1 shadow-sm border-0 mb-4">
                                     <div class="row g-0">
                                         <div class="col-md-4">
-                                            <img class="bd-placeholder-img h-full" width="90%" src="{{ asset('assets-front/images/special_product_1.jpg') }}" alt="">
+                                            @if (!empty($productImage->image))
+                                                <img class="bd-placeholder-img h-full" width="90%" src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $feaProduct->title }}">
+                                            @else
+                                                <img class="bd-placeholder-img h-full" width="90%" src="{{ asset('assets-front/images/special_product_1.jpg') }}" alt="{{ $feaProduct->title }}">
+                                            @endif
                                         </div>
                                         <div class="col-md-8">
                                             <div class="card-body">
