@@ -13,55 +13,55 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link d-flex align-items-center fs-6 fw-bold gap-2" href="{{ route('admin.categorie') }}">
-                    <i class="fa fa-bridge-lock"></i>
+                    <i class="fa-solid fa-stapler"></i>
                     CATÉGORIES
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link d-flex align-items-center fs-6 fw-bold gap-2" href="{{ route('admin.subcategorie') }}">
-                    <i class="fa fa-backward"></i>
+                    <i class="fa-solid fa-paper-plane"></i>
                     SOUS CATÉGORIES
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link d-flex align-items-center fs-6 fw-bold gap-2" href="{{ route('admin.brand') }}">
-                    <i class="fa fa-backward"></i>
+                    <i class="fa-solid fa-ticket"></i>
                     MARQUES
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link d-flex align-items-center fs-6 fw-bold gap-2" href="{{ route('admin.product') }}">
-                    <i class="fa fa-backward"></i>
+                    <i class="fa-solid fa-layer-group"></i>
                     PRODUITS
                 </a>
             </li>
         </ul>
 
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
-            <span class="fw-bold">Information de commandes</span>
+            <span class="fw-bold">INFORMAYION DE COMMANDES</span>
         </h6>
         <ul class="nav flex-column mb-auto">
             <li class="nav-item">
                 <a class="nav-link d-flex align-items-center fs-6 fw-bold gap-2" href="{{ route('admin.shipping.create') }}">
-                    <i class="fa fa-car"></i>
-                    Frais de livraison
+                    <i class="fa-solid fa-truck-fast"></i>
+                    LIVRAISON
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link d-flex align-items-center fs-6 fw-bold gap-2" href="{{ route('admin.discount') }}">
-                    <i class="fa fa-dollar"></i>
-                    Code coupon
+                    <i class="fa-solid fa-clipboard"></i>
+                    CODE COUPON
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link d-flex align-items-center fs-6 fw-bold gap-2" href="#">
-                    <i class="fa fa-backward"></i>
+                    <i class="fa-solid fa-money-bill"></i>
                     Social engagement
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link d-flex align-items-center fs-6 fw-bold gap-2" href="#">
-                    <i class="fa fa-backward"></i>
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
                     Year-end sale
                 </a>
             </li>
