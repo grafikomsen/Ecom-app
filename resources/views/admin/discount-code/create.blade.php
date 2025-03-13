@@ -92,14 +92,14 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="starts_at">Starts At</label>
-                                    <input type="text" name="starts_at" id="starts_at" class="form-control rounded-1" placeholder="Discount amount">
+                                    <input type="text" autocomplete="off" name="starts_at" id="starts_at" class="form-control rounded-1" placeholder="Discount amount">
                                     <p></p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="expires_at">Expires At</label>
-                                    <input type="text" name="expires_at" id="expires_at" class="form-control rounded-1" placeholder="Max uses user">
+                                    <input type="text" autocomplete="off" name="expires_at" id="expires_at" class="form-control rounded-1" placeholder="Max uses user">
                                     <p></p>
                                 </div>
                             </div>

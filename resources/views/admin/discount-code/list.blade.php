@@ -46,10 +46,10 @@
                                 <th width="60">ID</th>
                                 <th>Nom</th>
                                 <th>Code</th>
-                                <th>Discount amount</th>
                                 <th>Starts at</th>
                                 <th>expires at</th>
-                                <th width="100">Status</th>
+                                <th>Type</th>
+                                <th>Status</th>
                                 <th width="100">Action</th>
                             </tr>
                         </thead>
@@ -60,9 +60,15 @@
                                         <td>{{ $discount->id }}</td>
                                         <td>{{ $discount->name }}</td>
                                         <td>{{ $discount->code }}</td>
-                                        <td>{{ $discount->discount_amount }} CFA</td>
-                                        <td>{{ $discount->starts_at }}</td>
-                                        <td>{{ $discount->expires_at }}</td>
+                                        <td>{{ (!empty($discount->starts_at)) ? \Carbon\Carbon::parse($discount->starts_at)->format('Y/m/d H:i:s') : "" }}</td>
+                                        <td>{{ (!empty($discount->expires_at)) ? \Carbon\Carbon::parse($discount->expires_at)->format('Y/m/d H:i:s') : "" }}</td>
+                                        <td>
+                                            @if ($discount->type == "percent")
+                                                {{ $discount->discount_amount }} %
+                                            @else
+                                                {{ $discount->discount_amount }} CFA
+                                            @endif
+                                        </td>
                                         <td>
                                             @if ($discount->status)
                                                 <i class="fa fa-check-circle text-primary"></i>

@@ -53,33 +53,38 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <table class="table table-striped">
-                            <tr>
-                                <th>ID</th>
-                                <th>Nom</th>
-                                <th>Prix</th>
-                                <th>Action</th>
-                            </tr>
-
-                                @if($shippingCharges->isNotEmpty())
-                                    @foreach($shippingCharges as $shipping)
+                        <div class="card-body table-responsive p-0 rounded-1">
+                            <table class="table table-striped">
+                                <thead>
                                     <tr>
-                                        <td>{{ $shipping->id }}</td>
-                                        <td>{{ ($shipping->country_id == 'rest_of_world') ? 'Rest of the World' : $shipping->name }}</td>
-                                        <td>{{ $shipping->amount }}</td>
-                                        <td>
-                                            <a class="btn btn-primary btn-sm rounded-1 border-0" href="{{ route('admin.shipping.edit',$shipping->id) }}">
-                                                <i class="fa fa-edit"></i>
-                                            </a>
-                                            <a class="btn btn-danger btn-sm rounded-1 border-0" onclick="deleteShipping({{ $shipping->id }})">
-                                                <i class="fa fa-trash"></i>
-                                            </a>
-                                        </td>
+                                        <th>ID</th>
+                                        <th>Nom</th>
+                                        <th>Prix</th>
+                                        <th width="100">Action</th>
                                     </tr>
-                                    @endforeach
-                                @endif
+                                </thead>
 
-                        </table>
+                                <tbody>
+                                    @if($shippingCharges->isNotEmpty())
+                                        @foreach($shippingCharges as $shipping)
+                                        <tr>
+                                            <td>{{ $shipping->id }}</td>
+                                            <td>{{ ($shipping->country_id == 'rest_of_world') ? 'Rest of the World' : $shipping->name }}</td>
+                                            <td>{{ $shipping->amount }}</td>
+                                            <td width="100">
+                                                <a class="btn btn-primary btn-sm rounded-1 border-0" href="{{ route('admin.shipping.edit',$shipping->id) }}">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                                <a class="btn btn-danger btn-sm rounded-1 border-0" onclick="deleteShipping({{ $shipping->id }})">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    @endif
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -35,36 +35,35 @@ class DiscountCodeController extends Controller
             'discount_amount' => 'required|numeric'
         ]);
 
-        //
-        if (!empty($request->starts_at)) {
-            # code...
-            $now = Carbon::now();
-            $startAt = Carbon::createFromFormat('Y-m-d H:i:s', $request->starts_at);
-
-            if($startAt->lte($now) == true){
-                return response()->json([
-                    'status' => false,
-                    'errors'  => ['starts_at' => 'Start date can not be less than current time'],
-                ]);
-            }
-        }
-
-        //
-        if (!empty($request->starts_at) && !empty($request->expires_at)) {
-            # code...
-            $expiresAt = Carbon::createFromFormat('Y-m-d H:i:s', $request->expires_at);
-            $startAt = Carbon::createFromFormat('Y-m-d H:i:s', $request->starts_at);
-
-            if($expiresAt->gt($startAt) == false){
-                return response()->json([
-                    'status' => false,
-                    'errors'  => ['expires_at' => 'Expiry date must be greator than start date'],
-                ]);
-            }
-        }
-
         if ($validator->passes()) {
             # code...
+            if (!empty($request->starts_at)) {
+                # code...
+                $now = Carbon::now();
+                $startAt = Carbon::createFromFormat('Y-m-d H:i:s', $request->starts_at);
+
+                if($startAt->lte($now) == true){
+                    return response()->json([
+                        'status' => false,
+                        'errors'  => ['starts_at' => 'Start date can not be less than current time'],
+                    ]);
+                }
+            }
+
+            //
+            if (!empty($request->starts_at) && !empty($request->expires_at)) {
+                # code...
+                $expiresAt = Carbon::createFromFormat('Y-m-d H:i:s', $request->expires_at);
+                $startAt = Carbon::createFromFormat('Y-m-d H:i:s', $request->starts_at);
+
+                if($expiresAt->gt($startAt) == false){
+                    return response()->json([
+                        'status' => false,
+                        'errors'  => ['expires_at' => 'Expiry date must be greator than start date'],
+                    ]);
+                }
+            }
+
             $discount = new DiscountCoupon();
             $discount->name             = $request->name;
             $discount->code             = $request->code;
@@ -106,42 +105,12 @@ class DiscountCodeController extends Controller
     public function updated($discountId, Request $request){
 
         $discount = DiscountCoupon::find($discountId);
-        if (empty($discount)) {
+        if ($discount == null) {
             # code...
             Session()->flash('error','discount not fount');
             return response()->json([
-                'status'   => false,
-                'notFound' => true,
-                'message'  => 'discount not found'
+                'status'   => true,
             ]);
-        }
-
-        //
-        if (!empty($request->starts_at)) {
-            # code...
-            $now = Carbon::now();
-            $startAt = Carbon::createFromFormat('Y-m-d H:i:s', $request->starts_at);
-
-            if($startAt->lte($now) == true){
-                return response()->json([
-                    'status' => false,
-                    'errors'  => ['starts_at' => 'Start date can not be less than current time'],
-                ]);
-            }
-        }
-
-        //
-        if (!empty($request->starts_at) && !empty($request->expires_at)) {
-            # code...
-            $expiresAt = Carbon::createFromFormat('Y-m-d H:i:s', $request->expires_at);
-            $startAt = Carbon::createFromFormat('Y-m-d H:i:s', $request->starts_at);
-
-            if($expiresAt->gt($startAt) == false){
-                return response()->json([
-                    'status' => false,
-                    'errors'  => ['expires_at' => 'Expiry date must be greator than start date'],
-                ]);
-            }
         }
 
         $validator = Validator::make($request->all(),[
@@ -152,6 +121,33 @@ class DiscountCodeController extends Controller
 
         if ($validator->passes()) {
             # code...
+            if (!empty($request->starts_at) && !empty($request->expires_at)) {
+                # code...
+                $expiresAt = Carbon::createFromFormat('Y-m-d H:i:s', $request->expires_at);
+                $startAt = Carbon::createFromFormat('Y-m-d H:i:s', $request->starts_at);
+
+                if($expiresAt->gt($startAt) == false){
+                    return response()->json([
+                        'status' => false,
+                        'errors'  => ['expires_at' => 'Expiry date must be greator than start date'],
+                    ]);
+                }
+            }
+
+            //
+            if (!empty($request->starts_at)) {
+                # code...
+                $now = Carbon::now();
+                $startAt = Carbon::createFromFormat('Y-m-d H:i:s', $request->starts_at);
+
+                if($startAt->lte($now) == true){
+                    return response()->json([
+                        'status' => false,
+                        'errors'  => ['starts_at' => 'Start date can not be less than current time'],
+                    ]);
+                }
+            }
+
             $discount->name             = $request->name;
             $discount->code             = $request->code;
             $discount->description      = $request->description;

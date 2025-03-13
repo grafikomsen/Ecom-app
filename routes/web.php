@@ -42,6 +42,8 @@ Route::get('/commandez',[CartController::class, 'checkout'])->name('checkout');
 Route::post('/commandez', [CartController::class, 'processCheckout'])->name('processCheckout');
 Route::get('/merci-de-commandez/{orderId}', [CartController::class, 'thankyou'])->name('thankyou');
 Route::post('/get-order-summery', [CartController::class, 'getOrderSummery'])->name('getOrderSummery');
+Route::post('/apply-discount', [CartController::class, 'applyDiscount'])->name('applyDiscount');
+Route::post('/remove-discount', [CartController::class, 'removeCoupon'])->name('removeCoupon');
 
 //
 Route::group(['prefix' => 'account'], function(){

@@ -134,9 +134,13 @@
                                     <div class="h6"><strong>Subtotal</strong></div>
                                     <div class="h6"><strong>{{ Cart::subtotal(0,'.',' ') }} CFA</strong></div>
                                 </div>
+                                <div class="d-flex justify-content-between summery-end">
+                                    <div class="h6"><strong>Code coupon</strong></div>
+                                    <div class="h6"><strong id="discount_value">{{ number_format($discount, 0, '.', ' ') }} CFA</strong></div>
+                                </div>
                                 <div class="d-flex justify-content-between mt-1">
                                     <div class="h6"><strong>Shipping</strong></div>
-                                    <div class="h6"><strong  id="shippingCharge">{{ number_format($totalShippingCharge, 0, '.', ' ') }} CFA</strong></div>
+                                    <div class="h6"><strong id="shippingAmount">{{ number_format($totalShippingCharge, 0, '.', ' ') }} CFA</strong></div>
                                 </div>
                                 <hr>
                                 <div class="d-flex justify-content-between mt-1 summery-end">
@@ -144,6 +148,22 @@
                                     <div class="h5"><strong id="grandTotal">{{ number_format($grandTotal, 0, '.', ' ') }} CFA</strong></div>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="input-group apply-coupan mt-4 shadow-sm">
+                            <input type="text" placeholder="Code Coupon" class="form-control"  name="discount_code" id="discount_code">
+                            <button class="btn btn-default" type="button" id="apply-discount">Apply Coupon</button>
+                        </div>
+
+                        <div id="discount-response-wrapper">
+                            @if(Session::has('code'))
+                                <div class="mt-4" id="discount-response">
+                                    <strong>{{ Session::get('code')->code }}</strong>
+                                    <a class="btn btn-sm btn-danger mx-2" id="remove-discount">
+                                        <i class="fa fa-times text-white"></i>
+                                    </a>
+                                </div>
+                            @endif
                         </div>
 
                         <div class="card payment-form border-0 shadow-sm p-4 mt-4">
@@ -175,7 +195,7 @@
                                 </div>
                             </div>
                             <div class="pt-4">
-                                <button type="submit" class="btn-dark btn btn-default border-0 w-100">Pay Now</button>
+                                <button type="submit" class="btn btn-default rounded-1 border-0 w-100">Pay Now</button>
                             </div>
                         </div>
                     </div>
@@ -310,5 +330,44 @@
                 }
             });
         });
+
+        $("#apply-discount").click(function(){
+            $.ajax({
+                url: '{{ route("applyDiscount") }}',
+                type: 'POST',
+                data: {code: $("#discount_code").val(), country_id: $("#country").val()},
+                dataType: 'JSON',
+                success: function(response){
+                    if (response.status == true){
+                        $("#shippingAmount").html(response.shippingCharge+' CFA');
+                        $("#grandTotal").html(response.grandTotal+' CFA');
+                        $("#discount_value").html(response.discount+' CFA');
+                        $("#discount-response-wrapper").html(response.discountString);
+                    }
+                }
+            });
+        });
+
+        $("body").on('click',"#remove-discount",function(){
+            $.ajax({
+                url: '{{ route("removeCoupon") }}',
+                type: 'POST',
+                data: {country_id: $("#country").val()},
+                dataType: 'JSON',
+                success: function(response){
+                    if (response.status == true){
+                        $("#shippingAmount").html(response.shippingCharge+' CFA');
+                        $("#grandTotal").html(response.grandTotal+' CFA');
+                        $("#discount_value").html(response.discount+' CFA');
+                        $("#discount-response").html('');
+                        $("#discount_code").val('');
+                    }
+                }
+            });
+        });
+
+        //$("#remove-discount").click(function(){
+
+        //});
     </script>
 @endsection
