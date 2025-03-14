@@ -343,6 +343,8 @@
                         $("#grandTotal").html(response.grandTotal+' CFA');
                         $("#discount_value").html(response.discount+' CFA');
                         $("#discount-response-wrapper").html(response.discountString);
+                    } else {
+                        $("#discount-response-wrapper").html("<span class='text-danger'>"+response.message+"</span>");
                     }
                 }
             });
@@ -366,8 +368,5 @@
             });
         });
 
-        //$("#remove-discount").click(function(){
-
-        //});
     </script>
 @endsection

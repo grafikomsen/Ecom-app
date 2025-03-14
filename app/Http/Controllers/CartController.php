@@ -236,7 +236,7 @@ class CartController extends Controller
         // Step 3 store data in orders table
         if ($request->payment_method == 'cod') {
 
-            $discountCodeId = '';
+            $discountCodeId = NULL;
             $promoCode      = '';
             $shipping       = 0;
             $discount       = 0;
@@ -283,6 +283,8 @@ class CartController extends Controller
             $order->discount            = $discount;
             $order->coupon_code_id      = $discountCodeId;
             $order->coupon_code         = $promoCode;
+            $order->payment_status      = 'not paid';
+            $order->status              = 'pending';
             $order->grand_total         = $grandTotal;
             $order->user_id             = $user->id;
 
@@ -444,6 +446,43 @@ class CartController extends Controller
             }
         }
 
+        //
+        if ($code->max_uses > 0) {
+            # code...
+            $couponUsed = Order::where('coupon_code_id', $code->id)->count();
+            if ($couponUsed >= $code->max_uses) {
+                # code...
+                return response()->json([
+                    'status'  => false,
+                    'message' => 'Invalid discount coupon',
+                ]);
+            }
+        }
+
+        //
+        if ($code->max_uses_user > 0) {
+            # code...
+            $couponUsedByUser = Order::where(['coupon_code_id' => $code->id, 'user_id' => Auth::user()->id])->count();
+            if ($couponUsedByUser >= $code->max_uses_user) {
+                # code...
+                return response()->json([
+                    'status'  => false,
+                    'message' => 'You already used this coupon.',
+                ]);
+            }
+        }
+
+        $subTotal = Cart::subtotal(2,'.','');
+        if ($code->min_amount > 0) {
+            # code...
+            if ($subTotal < $code->min_amount) {
+                # code...
+                return response()->json([
+                    'status'  => false,
+                    'message' => 'You min amount must be'.$code->min_amount.' CFA',
+                ]);
+            }
+        }
         session()->put('code',$code);
         return $this->getOrderSummery($request);
     }

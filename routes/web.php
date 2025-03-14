@@ -56,7 +56,9 @@ Route::group(['prefix' => 'account'], function(){
     });
 
     Route::group(['middleware' => 'auth'], function(){
-        Route::get('/profile', [AuthController::class, 'profile'])->name('account.profile');
+        Route::get('/mon-profile', [AuthController::class, 'profile'])->name('account.profile');
+        Route::get('/mes-commandes', [AuthController::class, 'orders'])->name('account.orders');
+        Route::get('/mes-commandes/{orderId}', [AuthController::class, 'ordersId'])->name('account.ordersId');
         Route::get('/logout', [AuthController::class, 'logout'])->name('account.logout');
     });
 });
