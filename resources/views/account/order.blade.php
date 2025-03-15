@@ -33,8 +33,8 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>Orders #</th>
-                                            <th>Date Purchased</th>
+                                            <th>Commandes #</th>
+                                            <th>Date d'achat</th>
                                             <th>Status</th>
                                             <th>Total</th>
                                         </tr>
@@ -44,16 +44,18 @@
                                             @foreach($orders as $order)
                                                <tr>
                                                     <td>
-                                                        <a href="{{ route('account.ordersId',$order->id) }}">COM{{ $order->id }}</a>
+                                                        <a href="{{ route('account.ordersId',$order->id) }}">COM#{{ $order->id }}</a>
                                                     </td>
                                                     <td>{{ $order->created_at }}</td>
                                                     <td>
                                                         @if ($order->status == 'pending')
-                                                            <span class="badge bg-warning rounded-1">Pending</span>
+                                                            <span class="badge bg-warning rounded-1">En attente</span>
                                                         @elseif($order->status == 'shipped')
-                                                            <span class="badge bg-info rounded-1">Shipped</span>
+                                                            <span class="badge bg-info rounded-1">Expédié</span>
+                                                        @elseif($order->status == 'cancelled')
+                                                            <span class="badge bg-danger rounded-1">Annulé</span>
                                                         @else
-                                                            <span class="badge bg-success rounded-1">Delivered</span>
+                                                            <span class="badge bg-success rounded-1">Livré</span>
                                                         @endif
                                                     </td>
                                                     <td>{{ number_format($order->grand_total,0,',',' ') }} CFA</td>

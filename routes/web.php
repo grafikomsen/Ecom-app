@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\DiscountCodeController;
 use App\Http\Controllers\admin\loginController;
+use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\ProductImageController;
 use App\Http\Controllers\admin\ProductSubCategoryController;
@@ -122,6 +123,11 @@ Route::group(['prefix' => 'admin'], function(){
         Route::get('/discount/{discount}/edit', [DiscountCodeController::class, 'edit'])->name('admin.discount.edit');
         Route::put('/discount/{discount}', [DiscountCodeController::class, 'updated'])->name('admin.discount.updated');
         Route::delete('/discount/{discount}', [DiscountCodeController::class, 'destroy'])->name('admin.discount.destroy');
+
+        // ORDERS ROUTES
+        Route::get('/orders', [OrderController::class, 'orders'])->name('admin.order');
+        Route::get('/orders/{id}', [OrderController::class, 'detail'])->name('admin.order.detail');
+        Route::post('/orders/change-status/{id}', [OrderController::class, 'changeOrderStatus'])->name('admin.order.changeOrderStatus');
 
         // IMAGES
         Route::post('/product-images/update', [ProductImageController::class, 'update'])->name('product-images.update');

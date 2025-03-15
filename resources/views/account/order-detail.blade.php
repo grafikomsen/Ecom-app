@@ -44,11 +44,15 @@
                                         </div>
                                         <div class="col-6 col-lg-3">
                                             <!-- Heading -->
-                                            <h6 class="heading-xxxs text-muted">Shipped date:</h6>
+                                            <h6 class="heading-xxxs text-muted">Date d'expédition:</h6>
                                             <!-- Text -->
                                             <p class="mb-lg-0 fs-sm fw-bold">
-                                                <time datetime="2019-10-01">
-                                                    {{ $order->created_at }}
+                                                <time>
+                                                    @if (!empty($order->shipped_date))
+                                                        {{ $order->shipped_date }}
+                                                    @else
+                                                        n/a
+                                                    @endif
                                                 </time>
                                             </p>
                                         </div>
@@ -58,17 +62,19 @@
                                             <!-- Text -->
                                             <p class="mb-0 fs-sm fw-bold">
                                                 @if ($order->status == 'pending')
-                                                    <span class="badge bg-warning rounded-1">Pending</span>
+                                                    <span class="badge bg-warning rounded-1">En attente</span>
                                                 @elseif($order->status == 'shipped')
-                                                    <span class="badge bg-info rounded-1">Shipped</span>
+                                                    <span class="badge bg-info rounded-1">Expédié</span>
+                                                @elseif($order->status == 'cancelled')
+                                                    <span class="badge bg-danger rounded-1">Annulé</span>
                                                 @else
-                                                    <span class="badge bg-success rounded-1">Delivered</span>
+                                                    <span class="badge bg-success rounded-1">Livré</span>
                                                 @endif
                                             </p>
                                         </div>
                                         <div class="col-6 col-lg-3">
                                             <!-- Heading -->
-                                            <h6 class="heading-xxxs text-muted">Order Amount:</h6>
+                                            <h6 class="heading-xxxs text-muted">Montant de la commande:</h6>
                                             <!-- Text -->
                                             <p class="mb-0 fs-sm fw-bold">
                                                 {{ number_format($order->grand_total,0,',',' ') }} CFA
@@ -82,7 +88,7 @@
                         <div class="card-footer shadow-sm rounded-1 p-3">
 
                             <!-- Heading -->
-                            <h6 class="mb-7 h5 mt-4">Order Items (3)</h6>
+                            <h6 class="mb-7 h5 mt-4">Articles de commande ({{ $orderItemsCount }})</h6>
 
                             <!-- Divider -->
                             <hr class="my-3">
@@ -121,20 +127,20 @@
                     <div class="card card-lg rounded-1 shadow-sm mb-5 mt-3">
                         <div class="card-body p-3">
                             <!-- Heading -->
-                            <h6 class="mt-0 mb-3 h5">Order Total</h6>
+                            <h6 class="mt-0 mb-3 h5">Total de la commande</h6>
 
                             <!-- List group -->
                             <ul>
                                 <li class="list-group-item border-bottom mt-3 d-flex">
-                                    <span>Subtotal</span>
+                                    <span>Sous total</span>
                                     <span class="ms-auto">{{ number_format($order->subtotal,0,',',' ') }} CFA</span>
                                 </li>
                                 <li class="list-group-item border-bottom mt-3 d-flex">
-                                    <span>Discount {{ (!empty($order->coupon_code)) ? '('.$order->coupon_code.')' : '' }}</span>
+                                    <span>Code coupon {{ (!empty($order->coupon_code)) ? '('.$order->coupon_code.')' : '' }}</span>
                                     <span class="ms-auto">{{ number_format($order->discount,0,',',' ') }} CFA</span>
                                 </li>
                                 <li class="list-group-item border-bottom mt-3 d-flex">
-                                    <span>Shipping</span>
+                                    <span>Expédition</span>
                                     <span class="ms-auto">{{ number_format($order->shipping,0,',',' ') }} CFA</span>
                                 </li>
                                 <li class="list-group-item border-bottom mt-3 d-flex fs-lg fw-bold pt-2">

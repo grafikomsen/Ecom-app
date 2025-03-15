@@ -54,9 +54,9 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center fs-6 fw-bold gap-2" href="#">
+                <a class="nav-link d-flex align-items-center fs-6 fw-bold gap-2" href="{{ route('admin.order') }}">
                     <i class="fa-solid fa-money-bill"></i>
-                    Social engagement
+                    COMMANDES
                 </a>
             </li>
             <li class="nav-item">
