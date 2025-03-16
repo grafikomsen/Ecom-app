@@ -11,8 +11,13 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h3>Merci pour votre commande!</h3>
-                <h4>Votre numéro de commande est: COM#{{ $mailData['order']->id }}</h4>
+                @if($mailData['userType'] == 'Client')
+                    <h3>Merci pour votre commande!</h3>
+                    <h4>Votre numéro de commande est: COM#{{ $mailData['order']->id }}</h4>
+                @else
+                    <h3>Vous avez reçu une commande!</h3>
+                    <h4>Commande ID: COM#{{ $mailData['order']->id }}</h4>
+                @endif
 
                 <h5 class="fw-bold">Adresse de livraison</h5>
                 <address class="mb-4">

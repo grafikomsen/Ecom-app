@@ -21,14 +21,25 @@ function getProductImage($productId){
     return ProductImage::where('product_id',$productId)->first();
 }
 
-function orderEmail($orderId){
+function orderEmail($orderId, $userType = "Client"){
     $order = Order::where('id', $orderId)->with('items')->first();
 
+    if ($userType == "Client") {
+        # code...
+        $subject = 'Merci pour votre commande';
+        $email = $order->email;
+    } else {
+        # code...
+        $subject = 'Vous avez reçu une commande';
+        $email = env('ADMIN_EMAIL');
+    }
+
     $mailData = [
-        'subject' => 'Merci pour votre commande.',
-        'order'   => $order
+        'subject'  => $subject,
+        'order'    => $order,
+        'userType' => $userType
     ];
-    Mail::to($order->email)->send(new OrderEmail($mailData));
+    Mail::to($email)->send(new OrderEmail($mailData));
 }
 
 function getCountryInfo($id){

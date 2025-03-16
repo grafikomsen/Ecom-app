@@ -108,7 +108,7 @@
                     <div class="card rounded-1 mb-4">
                         <form method="POST" name="changeOrderStatusForm" id="changeOrderStatusForm">
                             <div class="card-body">
-                                <h5 class="h4 mb-3">Statut de la commande</h5>
+                                <h5 class="h4 mb-3">Statut</h5>
                                 <div class="mb-3">
                                     <select name="status" id="status" class="form-control rounded-1">
                                         <option {{ ($order->status == 'pending') ? 'selected' : '' }} value="pending">En attente</option>
@@ -130,16 +130,18 @@
                     </div>
                     <div class="card rounded-1">
                         <div class="card-body">
-                            <h5 class="h4 mb-3">Envoyer un e-mail de notification</h5>
-                            <div class="mb-3">
-                                <select name="status" id="status" class="form-control rounded-1">
-                                    <option value="">Client</option>
-                                    <option value="">Administrateur</option>
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <button class="btn btn-primary border-0 rounded-1">Envoyer</button>
-                            </div>
+                            <form method="POST" id="sendInvoiceEmail" name="sendInvoiceEmail">
+                                <h5 class="h4 mb-3">Envoyer un mail</h5>
+                                <div class="mb-3">
+                                    <select name="userType" id="userType" class="form-control rounded-1">
+                                        <option value="client">Client</option>
+                                        <option value="admin">Administrateur</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <button class="btn btn-primary border-0 rounded-1">Envoyez</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -163,15 +165,34 @@
         $('#changeOrderStatusForm').submit(function(e){
             e.preventDefault();
 
-            $.ajax({
-                url: '{{ route("admin.order.changeOrderStatus",$order->id) }}',
-                type: 'POST',
-                data: $(this).serializeArray(),
-                dataType: 'JSON',
-                success: function(){
-                    window.location.href="{{ route('admin.order.detail',$order->id) }}";
-                }
-            });
+            if(confirm("Êtes-vous sûr de vouloir changer le status?")){
+               $.ajax({
+                    url: '{{ route("admin.order.changeOrderStatus",$order->id) }}',
+                    type: 'POST',
+                    data: $(this).serializeArray(),
+                    dataType: 'JSON',
+                    success: function(){
+                        window.location.href="{{ route('admin.order.detail',$order->id) }}";
+                    }
+                });
+            }
+
+        });
+
+        $('#sendInvoiceEmail').submit(function(e){
+            e.preventDefault();
+
+            if(confirm("Êtes-vous sûr de vouloir envoyer un e-mail?")){
+                $.ajax({
+                    url: '{{ route("admin.order.sendInvoiceEmail",$order->id) }}',
+                    type: 'POST',
+                    data: $(this).serializeArray(),
+                    dataType: 'JSON',
+                    success: function(){
+                        window.location.href="{{ route('admin.order.detail',$order->id) }}";
+                    }
+                });
+            }
         });
 
     </script>

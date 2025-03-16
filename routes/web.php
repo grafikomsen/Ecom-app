@@ -128,6 +128,7 @@ Route::group(['prefix' => 'admin'], function(){
         Route::get('/orders', [OrderController::class, 'orders'])->name('admin.order');
         Route::get('/orders/{id}', [OrderController::class, 'detail'])->name('admin.order.detail');
         Route::post('/orders/change-status/{id}', [OrderController::class, 'changeOrderStatus'])->name('admin.order.changeOrderStatus');
+        Route::post('/orders/send-email/{id}', [OrderController::class, 'sendInvoiceEmail'])->name('admin.order.sendInvoiceEmail');
 
         // IMAGES
         Route::post('/product-images/update', [ProductImageController::class, 'update'])->name('product-images.update');
