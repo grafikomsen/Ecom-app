@@ -43,11 +43,17 @@
                         </li>
                         @if(Auth::check())
                             <li class="nav-item">
-                                <a href="{{ route('account.profile') }}" class="nav-link text-white">Mon compte</a>
+                                <a href="{{ route('account.profile') }}" class="nav-link text-white">
+                                    Mon compte
+                                    <i class="fa-solid fa-user text-white"></i>
+                                </a>
                             </li>
                         @else
                             <li class="nav-item">
-                                <a href="{{ route('account.login') }}" class="nav-link text-white">Se connecter</a>
+                                <a href="{{ route('account.login') }}" class="nav-link text-white">
+                                    Se connecter
+                                    <i class="fa-solid fa-user text-white"></i>
+                                </a>
                             </li>
                         @endif
 
@@ -66,13 +72,13 @@
                             <input type="search" class="form-control rounded-5 shadow-sm" placeholder="Chercher ici...">
                         </form> --}}
 
-                        <a href="{{ route('cart') }}" class="btn btn-default btn-sm position-relative">
-                            <i class="fa fa-shopping-basket text-white p-0 m-0"></i>
-                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger py-1">
+                        <a  href="{{ route('cart') }}" class="btn btn-default border-0 shadow-sm position-relative">
+                            Panier
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                 0 CFA
+                                <span class="visually-hidden"></span>
                             </span>
                         </a>
-
                     </div>
 
                     <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

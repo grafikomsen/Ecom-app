@@ -67,7 +67,7 @@
                             <h2 class="h4 mb-3">Media</h2>
                             <div id="image" class="dropzone dz-clickable">
                                 <div class="dz-message needsclick">
-                                    <br>Drop files here or click to upload.<br><br>
+                                    <br>Déposez les fichiers ici ou cliquez pour télécharger.<br><br>
                                 </div>
                             </div>
                         </div>
@@ -78,7 +78,7 @@
 
                     <div class="card rounded-1 mb-3">
                         <div class="card-body">
-                            <h2 class="h4 mb-3">Inventory</h2>
+                            <h2 class="h4 mb-3">Inventaire</h2>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
@@ -115,7 +115,7 @@
                         <div class="mb-3">
                             <div class="card rounded-1 mb-3">
                                 <div class="card-body">
-                                    <h2 class="h4 mb-3">Related products</h2>
+                                    <h2 class="h4 mb-3">Produits associés</h2>
                                     <div class="mb-3">
                                         <select multiple class="related-product w-100" name="related_products[]" id="related_products">
 
@@ -186,22 +186,9 @@
 
                     <div class="card rounded-1 mb-3">
                         <div class="card-body">
-                            <h2 class="h4 mb-3">Featured product</h2>
+                            <h2 class="h4 mb-3">Produit vedette</h2>
                             <div class="mb-3">
                                 <select name="is_featured" id="is_featured" class="form-control rounded-1">
-                                    <option value="No">Non</option>
-                                    <option value="Yes">Oui</option>
-                                    <p></p>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card rounded-1 mb-3">
-                        <div class="card-body">
-                            <h2 class="h4 mb-3">Related produit</h2>
-                            <div class="mb-3">
-                                <select name="related_products" id="related_products" class="form-control rounded-1">
                                     <option value="No">Non</option>
                                     <option value="Yes">Oui</option>
                                     <p></p>

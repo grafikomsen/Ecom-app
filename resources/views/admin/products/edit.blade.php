@@ -67,7 +67,7 @@
                             <h2 class="h4 mb-3">Media</h2>
                             <div id="image" class="dropzone dz-clickable">
                                 <div class="dz-message needsclick">
-                                    <br>Drop files here or click to upload.<br><br>
+                                    <br>Déposez les fichiers ici ou cliquez pour télécharger.<br><br>
                                 </div>
                             </div>
                         </div>
@@ -90,7 +90,7 @@
 
                     <div class="card mb-3">
                         <div class="card-body">
-                            <h2 class="h4 mb-3">Inventory</h2>
+                            <h2 class="h4 mb-3">Inventaire</h2>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
@@ -127,7 +127,7 @@
                         <div class="mb-3">
                             <div class="card rounded-1 mb-3">
                                 <div class="card-body">
-                                    <h2 class="h4 mb-3">Related products</h2>
+                                    <h2 class="h4 mb-3">Produits associés</h2>
                                     <div class="mb-3">
                                         <select multiple class="related-product w-100" name="related_products[]" id="related_products">
                                             @if (!empty($relatedProducts))
@@ -376,7 +376,7 @@
         });
 
         function deleteImage(id){
-            if (confirm('Are you sure you want to delete image?')) {
+            if (confirm("Êtes-vous sûr de vouloir supprimer l'image?")) {
                 $.ajax({
                     url: '{{ route("product-images.destroy") }}',
                     type: 'DELETE',
