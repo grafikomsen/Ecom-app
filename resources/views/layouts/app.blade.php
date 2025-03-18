@@ -197,6 +197,20 @@
                 </footer>
             </div>
         </footer>
+
+        <div class="modal fade" id="wishlistModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body m-0 p-0">
+
+                    </div>
+                    <div class="modal-footer py-2">
+                        <button type="button" class="btn btn-sm btn-danger rounded-1" data-bs-dismiss="modal">Fermez</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <script src="{{ asset('assets-front/jquery/jquery.min.js') }}"></script>
         <script src="{{ asset('assets-front/bootstrap/js/bootstrap.bundle.js') }}"></script>
         <script src="{{ asset('assets-front/js/main.js') }}"></script>
@@ -220,6 +234,24 @@
                             window.location.href="{{ route('cart') }}";
                         } else {
                             alert(response.message);
+                        }
+                    }
+                });
+            }
+
+            function addToWishList(id){
+                $.ajax({
+                    url: '{{ route("addToWishList") }}',
+                    type: 'POST',
+                    data: {id:id},
+                    dataType: 'json',
+                    success: function(response){
+                        if(response.status == true){
+                            $('#wishlistModal .modal-body').html(response.message);
+                            $('#wishlistModal').modal('show');
+                        } else {
+                            window.location.href="{{ route('account.login') }}";
+                            //alert(response.message);
                         }
                     }
                 });

@@ -55,18 +55,12 @@
                     @foreach (getCategories() as $category)
                         <div class="col-12 col-md-3">
                             <a class="nav-link" href="{{ route('shop',$category->slug) }}">
-                                <div class="card rounded-1 shadow-sm border-0 mb-4 bg-light">
-                                    <div class="row g-0">
-                                        <div class="col-md-4">
-                                            @if($category->image != "")
-                                                <img class="bd-placeholder-img" width="100" height="100" src="{{ asset('uploads/categories/'.$category->image) }}" alt="{{ $category->name }}">
-                                            @endif
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="card-body text-center align-content-center">
-                                                <h6 class="card-title fw-bold text-uppercase">{{ $category->name }}</h6>
-                                            </div>
-                                        </div>
+                                <div class="card text-bg-white">
+                                    @if($category->image != "")
+                                        <img src="{{ asset('uploads/categories/'.$category->image) }}" class="card-img opacity-100" alt="{{ $category->name }}">
+                                    @endif
+                                    <div class="card-img-overlay justify-content-center align-content-center">
+                                        <h5 class="card-title">{{ $category->name }}</h5>
                                     </div>
                                 </div>
                             </a>
@@ -104,6 +98,10 @@
                                             <div class="card p-2 rounded-0 shadow-sm border-0 h-100 position-relative">
                                                 <span class="badge bg-danger position-absolute m-2 rounded-5">Stock {{ $latestProduct->qty }}</span>
 
+                                                <a href="javascript:void(0);" onclick="addToWishList({{ $latestProduct->id }})" class="position-absolute end-0 m-2">
+                                                    <i class="far fa-heart"></i>
+                                                </a>
+
                                                 @if (!empty($productImage->image))
                                                     <img src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $latestProduct->title }}">
                                                 @else
@@ -137,6 +135,10 @@
                                             <div class="card p-2 rounded-0 shadow-sm border-0 h-100 position-relative">
                                                 <span class="badge bg-danger position-absolute m-2 rounded-5">Stock {{ $featuredProduct->qty }}</span>
 
+                                                <a href="javascript:void(0);" onclick="addToWishList({{ $featuredProduct->id }})" class="position-absolute end-0 m-2">
+                                                    <i class="far fa-heart"></i>
+                                                </a>
+
                                                 @if (!empty($productImage->image))
                                                     <img src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $featuredProduct->title }}">
                                                 @else
@@ -169,6 +171,10 @@
                                         <a class=" nav-link" href="{{ route('product',$olderProduct->slug) }}">
                                             <div class="card p-2 rounded-0 shadow-sm border-0 h-100 position-relative">
                                                 <span class="badge bg-danger position-absolute m-2 rounded-5">Stock {{ $olderProduct->qty }}</span>
+
+                                                <a href="javascript:void(0);" onclick="addToWishList({{ $olderProduct->id }})" class="position-absolute end-0 m-2">
+                                                    <i class="far fa-heart"></i>
+                                                </a>
 
                                                 @if (!empty($productImage->image))
                                                     <img src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $olderProduct->title }}">

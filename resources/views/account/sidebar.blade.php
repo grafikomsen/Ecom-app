@@ -10,7 +10,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a href="wishlist.php"  class="btn btn-default w-100 text-start rounded-1 mb-2 font-weight-bold" role="tab" aria-controls="tab-register" aria-expanded="false">
+        <a href="{{ route('account.wishlist') }}"  class="btn btn-default w-100 text-start rounded-1 mb-2 font-weight-bold" role="tab" aria-controls="tab-register" aria-expanded="false">
             <i class="fas fa-heart text-white"></i> Liste de souhaits
         </a>
     </li>

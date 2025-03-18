@@ -45,6 +45,7 @@ Route::get('/merci-de-commandez/{orderId}', [CartController::class, 'thankyou'])
 Route::post('/get-order-summery', [CartController::class, 'getOrderSummery'])->name('getOrderSummery');
 Route::post('/apply-discount', [CartController::class, 'applyDiscount'])->name('applyDiscount');
 Route::post('/remove-discount', [CartController::class, 'removeCoupon'])->name('removeCoupon');
+Route::post('/add-to-wishlist', [HomeController::class, 'addToWishList'])->name('addToWishList');
 
 //
 Route::group(['prefix' => 'account'], function(){
@@ -60,6 +61,8 @@ Route::group(['prefix' => 'account'], function(){
         Route::get('/mon-profile', [AuthController::class, 'profile'])->name('account.profile');
         Route::get('/mes-commandes', [AuthController::class, 'orders'])->name('account.orders');
         Route::get('/mes-commandes/{orderId}', [AuthController::class, 'ordersId'])->name('account.ordersId');
+        Route::get('/mes-souhaits', [AuthController::class, 'wishlist'])->name('account.wishlist');
+        Route::post('/remove-product-from-wishlist', [AuthController::class, 'removeProductFromWishlist'])->name('account.removeProductFromWishlist');
         Route::get('/logout', [AuthController::class, 'logout'])->name('account.logout');
     });
 });
