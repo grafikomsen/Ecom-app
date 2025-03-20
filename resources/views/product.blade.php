@@ -26,7 +26,7 @@
                             @if($product->product_images)
                                 @foreach($product->product_images as $key => $productImage)
                                 <div class="carousel-item {{ ($key == 0) ? 'active' : '' }}">
-                                    <img class="w-100 h-100" src="{{ asset('uploads/product/'.$productImage->image) }}" alt="Image">
+                                    <img class="w-100 h-100 rounded-1" src="{{ asset('uploads/product/'.$productImage->image) }}" alt="Image">
                                 </div>
                                 @endforeach
                             @endif
@@ -60,33 +60,52 @@
 
                         <p>{!! $product->short_description !!}</p>
 
-                        <a href="javascript:void(0);" onclick="addToCart({{ $product->id }});" class="btn btn-panier rounded-5 border-0 m-4 shadow-sm">
-                            <i class="fas fa-shopping-cart text-white"></i> &nbsp;AJOUTER AU PANIER
-                        </a>
+                        <div class="row align-items-center justify-content-center">
+                            <div class="col-12 col-md-6">
+                                <input type="number" class="form-control w-100" value="{{ $product->qty }}">
+                            </div>
+                            <div class="col-12 col-md-6">
+                                @if ($product->track_qty == 'Yes')
+                                    @if ($product->qty > 0)
+                                        <a href="javascript:void(0);" onclick="addToCart({{ $product->id }});" class="btn btn-panier rounded-1 border-0 m-4 shadow-sm">
+                                            <i class="fas fa-shopping-cart text-white"></i> &nbsp;AJOUTER AU PANIER
+                                        </a>
+                                    @else
+                                        <a href="javascript:void(0);" class="btn btn-panier rounded-1 border-0 m-4 shadow-sm">
+                                            INDISPONIBLE
+                                        </a>
+                                    @endif
+                                @else
+                                    <a href="javascript:void(0);" onclick="addToCart({{ $product->id }});" class="btn btn-panier rounded-5 border-0 m-4 shadow-sm">
+                                        <i class="fas fa-shopping-cart text-white"></i> &nbsp;AJOUTER AU PANIER
+                                    </a>
+                                @endif
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="col-md-12 mt-5">
                     <div class="">
-                        <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            <li class="nav-item bg-white mx-1" role="presentation">
-                                <button class="nav-link text-tap active" id="description-tab" data-bs-toggle="tab" data-bs-target="#description" type="button" role="tab" aria-controls="description" aria-selected="true">Description</button>
+                        <ul class="nav nav-tabs rounded-1 mb-0" id="myTab" role="tablist">
+                            <li class="nav-item bg-white" role="presentation">
+                                <button class="nav-link rounded-1 text-tap active" id="description-tab" data-bs-toggle="tab" data-bs-target="#description" type="button" role="tab" aria-controls="description" aria-selected="true">Description</button>
                             </li>
                             <li class="nav-item bg-white mx-1" role="presentation">
-                                <button class="nav-link text-tap" id="shipping-tab" data-bs-toggle="tab" data-bs-target="#shipping" type="button" role="tab" aria-controls="shipping" aria-selected="false">Expédition & Retours</button>
+                                <button class="nav-link rounded-1 text-tap" id="shipping-tab" data-bs-toggle="tab" data-bs-target="#shipping" type="button" role="tab" aria-controls="shipping" aria-selected="false">Expédition & Retours</button>
                             </li>
                             <li class="nav-item bg-white mx-1" role="presentation">
-                                <button class="nav-link text-tap" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab" aria-controls="reviews" aria-selected="false">Avis</button>
+                                <button class="nav-link rounded-1 text-tap" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab" aria-controls="reviews" aria-selected="false">Avis</button>
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active p-4 bg-white" id="description" role="tabpanel" aria-labelledby="description-tab">
+                            <div class="tab-pane rounded-1 fade mt-0 show active p-4 bg-white" id="description" role="tabpanel" aria-labelledby="description-tab">
                                 {!! $product->description !!}
                             </div>
-                            <div class="tab-pane fade p-4 bg-white" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
+                            <div class="tab-pane fade mt-0 p-4 bg-white" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
                                 {!! $product->shipping_returns !!}
                             </div>
-                            <div class="tab-pane fade p-4 bg-white" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                            <div class="tab-pane rounded-1 fade mt-0 p-4 bg-white" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
 
                             </div>
                         </div>
@@ -111,14 +130,19 @@
                             <div class="col-12 col-md-3">
                                 <div class="card p-2 mb-4 rounded-0 shadow-sm border-0 position-relative">
                                     @if ($relatedProduct->compare_price > 0)
-                                        <span class="badge bg-danger position-absolute m-2 rounded-4">PROMO: {{ number_format($relatedProduct->compare_price, 0, '.', ' ') }} CFA</span>
+                                        <span class="badge bg-danger position-absolute m-2 rounded-1">PROMO: {{ number_format($relatedProduct->compare_price, 0, '.', ' ') }} CFA</span>
                                     @endif
 
+                                    <a href="javascript:void(0);" onclick="addToWishList({{ $relatedProduct->id }})" class="position-absolute end-0 m-1">
+                                        <i class="far fa-heart"></i>
+                                    </a>
+
                                     @if (!empty($productImage->image))
-                                        <img class="w-100 h-100" src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $relatedProduct->title }}">
+                                        <img  class="w-100 h-100" src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $relatedProduct->title }}">
                                     @else
                                         <img  class="w-100 h-100" src="{{ asset('assets-front/images/c_polo-shirt.png') }}" alt="{{ $relatedProduct->title }}">
                                     @endif
+
                                     <div class="d-flex justify-content-between">
                                         <a class="nav-link" href="{{ route('product',$relatedProduct->slug) }}">
                                             <h6 class="py-1 text-uppercase text-start">{{ $relatedProduct->title }}</h6>
@@ -135,9 +159,21 @@
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between">
                                         <h6 class="fw-bold">{{ number_format($relatedProduct->price, 0, '.', ' ') }} CFA</h6>
-                                        <a href="javascript:void(0);" onclick="addToCart({{ $relatedProduct->id }});">
-                                            <i class="fa-solid fa-cart-shopping"></i>
-                                        </a>
+                                        @if ($relatedProduct->track_qty == 'Yes')
+                                            @if ($relatedProduct->qty > 0)
+                                                <a href="javascript:void(0);" class="btn btn-default btn-sm rounded-1 p-2" onclick="addToCart({{ $relatedProduct->id }});">
+                                                    <i class="fa-solid text-white fa-cart-shopping"></i>
+                                                </a>
+                                            @else
+                                                <a href="javascript:void(0);" class="btn btn-default btn-sm rounded-1 p-2">
+                                                    Indisponible
+                                                </a>
+                                            @endif
+                                        @else
+                                            <a href="javascript:void(0);" class="btn btn-default btn-sm rounded-1 p-2" onclick="addToCart({{ $relatedProduct->id }});">
+                                                <i class="fa-solid text-white fa-cart-shopping"></i>
+                                            </a>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

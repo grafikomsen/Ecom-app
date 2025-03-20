@@ -95,26 +95,52 @@
                                 @endphp
                                     <div class="col-12 col-md-3 mb-4">
                                         <a class=" nav-link" href="{{ route('product',$latestProduct->slug) }}">
-                                            <div class="card p-2 rounded-0 shadow-sm border-0 h-100 position-relative">
-                                                <span class="badge bg-danger position-absolute m-2 rounded-5">Stock {{ $latestProduct->qty }}</span>
+                                            <div class="card p-2 mb-4 rounded-0 shadow-sm border-0 position-relative">
+                                                @if ($latestProduct->compare_price > 0)
+                                                    <span class="badge bg-danger position-absolute m-1 rounded-1">PROMO: {{ number_format($latestProduct->compare_price, 0, '.', ' ') }} CFA</span>
+                                                @endif
 
-                                                <a href="javascript:void(0);" onclick="addToWishList({{ $latestProduct->id }})" class="position-absolute end-0 m-2">
+                                                <a href="javascript:void(0);" onclick="addToWishList({{ $latestProduct->id }})" class="position-absolute end-0 m-1">
                                                     <i class="far fa-heart"></i>
                                                 </a>
 
                                                 @if (!empty($productImage->image))
-                                                    <img src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $latestProduct->title }}">
+                                                    <img  class="w-100 h-100" src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $latestProduct->title }}">
                                                 @else
-                                                    <img src="" alt="{{ $latestProduct->title }}">
+                                                    <img  class="w-100 h-100" src="{{ asset('assets-front/images/c_polo-shirt.png') }}" alt="{{ $latestProduct->title }}">
                                                 @endif
-                                                <h6 class="pt-2 text-center text-uppercase">{{ $latestProduct->title }}</h6>
-                                                <h6 class="text-center fw-bold">{{ number_format($latestProduct->price, 0, '.', ' ') }} CFA</h6>
-                                                <div class="rating d-flex justify-content-center">
+
+                                                <div class="d-flex justify-content-between">
+                                                    <a class="nav-link" href="{{ route('product',$latestProduct->slug) }}">
+                                                        <h6 class="py-1 text-uppercase text-start">{{ $latestProduct->title }}</h6>
+                                                    </a>
+                                                    <h6 class="py-1 text-uppercase text-start"></h6>
+                                                </div>
+
+                                                <div class="py-1 rating d-flex justify-content-start">
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
+                                                </div>
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <h6 class="fw-bold">{{ number_format($latestProduct->price, 0, '.', ' ') }} CFA</h6>
+                                                    @if ($latestProduct->track_qty == 'Yes')
+                                                        @if ($latestProduct->qty > 0)
+                                                            <a href="javascript:void(0);" class="btn btn-default btn-sm rounded-1 p-2" onclick="addToCart({{ $latestProduct->id }});">
+                                                                <i class="fa-solid text-white fa-cart-shopping"></i>
+                                                            </a>
+                                                        @else
+                                                            <a href="javascript:void(0);" class="btn btn-default btn-sm rounded-1 p-2">
+                                                                Indisponible
+                                                            </a>
+                                                        @endif
+                                                    @else
+                                                        <a href="javascript:void(0);" class="btn btn-default btn-sm rounded-1 p-2" onclick="addToCart({{ $latestProduct->id }});">
+                                                            <i class="fa-solid text-white fa-cart-shopping"></i>
+                                                        </a>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </a>
@@ -130,32 +156,58 @@
                                 @php
                                     $productImage = $featuredProduct->product_images->first();
                                 @endphp
-                                    <div class="col-12 col-md-3 mb-4">
-                                        <a class=" nav-link" href="{{ route('product',$featuredProduct->slug) }}">
-                                            <div class="card p-2 rounded-0 shadow-sm border-0 h-100 position-relative">
-                                                <span class="badge bg-danger position-absolute m-2 rounded-5">Stock {{ $featuredProduct->qty }}</span>
+                                <div class="col-12 col-md-3 mb-4">
+                                    <a class=" nav-link" href="{{ route('product',$featuredProduct->slug) }}">
+                                        <div class="card p-2 mb-4 rounded-0 shadow-sm border-0 position-relative">
+                                            @if ($featuredProduct->compare_price > 0)
+                                                <span class="badge bg-danger position-absolute m-1 rounded-1">PROMO: {{ number_format($featuredProduct->compare_price, 0, '.', ' ') }} CFA</span>
+                                            @endif
 
-                                                <a href="javascript:void(0);" onclick="addToWishList({{ $featuredProduct->id }})" class="position-absolute end-0 m-2">
-                                                    <i class="far fa-heart"></i>
+                                            <a href="javascript:void(0);" onclick="addToWishList({{ $featuredProduct->id }})" class="position-absolute end-0 m-1">
+                                                <i class="far fa-heart"></i>
+                                            </a>
+
+                                            @if (!empty($productImage->image))
+                                                <img  class="w-100 h-100" src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $featuredProduct->title }}">
+                                            @else
+                                                <img  class="w-100 h-100" src="{{ asset('assets-front/images/c_polo-shirt.png') }}" alt="{{ $featuredProduct->title }}">
+                                            @endif
+
+                                            <div class="d-flex justify-content-between">
+                                                <a class="nav-link" href="{{ route('product',$featuredProduct->slug) }}">
+                                                    <h6 class="py-1 text-uppercase text-start">{{ $featuredProduct->title }}</h6>
                                                 </a>
-
-                                                @if (!empty($productImage->image))
-                                                    <img src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $featuredProduct->title }}">
-                                                @else
-                                                    <img src="" alt="{{ $featuredProduct->title }}">
-                                                @endif
-                                                <h6 class="pt-2 text-center text-uppercase">{{ $featuredProduct->title }}</h6>
-                                                <h6 class="text-center fw-bold">{{ number_format($featuredProduct->price, 0, '.', ' ') }} CFA</h6>
-                                                <div class="rating d-flex justify-content-center">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                </div>
+                                                <h6 class="py-1 text-uppercase text-start"></h6>
                                             </div>
-                                        </a>
-                                    </div>
+
+                                            <div class="py-1 rating d-flex justify-content-start">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <h6 class="fw-bold">{{ number_format($featuredProduct->price, 0, '.', ' ') }} CFA</h6>
+                                                @if ($featuredProduct->track_qty == 'Yes')
+                                                    @if ($featuredProduct->qty > 0)
+                                                        <a href="javascript:void(0);" class="btn btn-default btn-sm rounded-1 p-2" onclick="addToCart({{ $featuredProduct->id }});">
+                                                            <i class="fa-solid text-white fa-cart-shopping"></i>
+                                                        </a>
+                                                    @else
+                                                        <a href="javascript:void(0);" class="btn btn-default btn-sm rounded-1 p-2">
+                                                            Indisponible
+                                                        </a>
+                                                    @endif
+                                                @else
+                                                    <a href="javascript:void(0);" class="btn btn-default btn-sm rounded-1 p-2" onclick="addToCart({{ $featuredProduct->id }});">
+                                                        <i class="fa-solid text-white fa-cart-shopping"></i>
+                                                    </a>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
                                 @endforeach
                             @endif
                         </div>
@@ -167,32 +219,58 @@
                                 @php
                                     $productImage = $olderProduct->product_images->first();
                                 @endphp
-                                    <div class="col-12 col-md-3 mb-4">
-                                        <a class=" nav-link" href="{{ route('product',$olderProduct->slug) }}">
-                                            <div class="card p-2 rounded-0 shadow-sm border-0 h-100 position-relative">
-                                                <span class="badge bg-danger position-absolute m-2 rounded-5">Stock {{ $olderProduct->qty }}</span>
+                                <div class="col-12 col-md-3 mb-4">
+                                    <a class=" nav-link" href="{{ route('product',$olderProduct->slug) }}">
+                                        <div class="card p-2 mb-4 rounded-0 shadow-sm border-0 position-relative">
+                                            @if ($olderProduct->compare_price > 0)
+                                                <span class="badge bg-danger position-absolute m-1 rounded-1">PROMO: {{ number_format($olderProduct->compare_price, 0, '.', ' ') }} CFA</span>
+                                            @endif
 
-                                                <a href="javascript:void(0);" onclick="addToWishList({{ $olderProduct->id }})" class="position-absolute end-0 m-2">
-                                                    <i class="far fa-heart"></i>
+                                            <a href="javascript:void(0);" onclick="addToWishList({{ $olderProduct->id }})" class="position-absolute end-0 m-1">
+                                                <i class="far fa-heart"></i>
+                                            </a>
+
+                                            @if (!empty($productImage->image))
+                                                <img  class="w-100 h-100" src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $olderProduct->title }}">
+                                            @else
+                                                <img  class="w-100 h-100" src="{{ asset('assets-front/images/c_polo-shirt.png') }}" alt="{{ $olderProduct->title }}">
+                                            @endif
+
+                                            <div class="d-flex justify-content-between">
+                                                <a class="nav-link" href="{{ route('product',$olderProduct->slug) }}">
+                                                    <h6 class="py-1 text-uppercase text-start">{{ $olderProduct->title }}</h6>
                                                 </a>
-
-                                                @if (!empty($productImage->image))
-                                                    <img src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $olderProduct->title }}">
-                                                @else
-                                                    <img src="" alt="{{ $olderProduct->title }}">
-                                                @endif
-                                                <h6 class="pt-2 text-center text-uppercase">{{ $olderProduct->title }}</h6>
-                                                <h6 class="text-center fw-bold">{{ number_format($olderProduct->price, 0, '.', ' ') }} CFA</h6>
-                                                <div class="rating d-flex justify-content-center">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                </div>
+                                                <h6 class="py-1 text-uppercase text-start"></h6>
                                             </div>
-                                        </a>
-                                    </div>
+
+                                            <div class="py-1 rating d-flex justify-content-start">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <h6 class="fw-bold">{{ number_format($olderProduct->price, 0, '.', ' ') }} CFA</h6>
+                                                @if ($olderProduct->track_qty == 'Yes')
+                                                    @if ($olderProduct->qty > 0)
+                                                        <a href="javascript:void(0);" class="btn btn-default btn-sm rounded-1 p-2" onclick="addToCart({{ $olderProduct->id }});">
+                                                            <i class="fa-solid text-white fa-cart-shopping"></i>
+                                                        </a>
+                                                    @else
+                                                        <a href="javascript:void(0);" class="btn btn-default btn-sm rounded-1 p-2">
+                                                            Indisponible
+                                                        </a>
+                                                    @endif
+                                                @else
+                                                    <a href="javascript:void(0);" class="btn btn-default btn-sm rounded-1 p-2" onclick="addToCart({{ $olderProduct->id }});">
+                                                        <i class="fa-solid text-white fa-cart-shopping"></i>
+                                                    </a>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
                                 @endforeach
                             @endif
                         </div>

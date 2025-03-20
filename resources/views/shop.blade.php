@@ -19,6 +19,22 @@
             <div class="row">
                 <div class="col-md-3 sidebar">
                     <div class="sub-title">
+                        <h2>Recherche</h3>
+                    </div>
+                    <div class="card shadow-sm pt-3 border-0 rounded-0">
+                        <div class="accordion accordion-flush" id="accordionExample">
+                            <form class="mx-1 p-1" action="{{ route('shop') }}" method="GET">
+                                <div class="input-group rounded-1 mb-3">
+                                    <input value="{{ Request::get('search') }}" type="text" class="form-control rounded-1" name="search" id="search" placeholder="Chercher ici...">
+                                    <button type="submit" class="input-group-text">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="sub-title">
                         <h2>Catégories</h3>
                     </div>
 
@@ -90,7 +106,7 @@
                         <div class="col-12 pb-1">
                             <div class="d-flex align-items-center justify-content-end mb-4">
                                 <div class="ml-2">
-                                    <select name="sort" id="sort" class="form-control">
+                                    <select name="sort" id="sort" class="form-control rounded-1">
                                         <option value="latest" {{ ($sort == 'latest') ? 'selected' : '' }}>Latest</option>
                                         <option value="price_desc" {{ ($sort == 'price_desc') ? 'selected' : '' }}>Prix High</option>
                                         <option value="price_asc" {{ ($sort == 'price_asc') ? 'selected' : '' }}>Prix Low</option>
@@ -108,7 +124,7 @@
                                     <div class="col-12 col-md-4">
                                         <div class="card p-2 mb-4 rounded-0 shadow-sm border-0 position-relative">
                                             @if ($product->compare_price > 0)
-                                                <span class="badge bg-danger position-absolute m-2 rounded-4">PROMO: {{ number_format($product->compare_price, 0, '.', ' ') }} CFA</span>
+                                                <span class="badge bg-danger position-absolute m-2 rounded-1">PROMO: {{ number_format($product->compare_price, 0, '.', ' ') }} CFA</span>
                                             @endif
 
                                             @if (!empty($productImage->image))
@@ -133,9 +149,21 @@
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <h6 class="fw-bold">{{ number_format($product->price, 0, '.', ' ') }} CFA</h6>
-                                                <a href="javascript:void(0);" onclick="addToCart({{ $product->id }});">
-                                                    <i class="fa-solid fa-cart-shopping"></i>
-                                                </a>
+                                                @if ($product->track_qty == 'Yes')
+                                                    @if ($product->qty > 0)
+                                                        <a href="javascript:void(0);" class="btn btn-default btn-sm rounded-1 p-2" onclick="addToCart({{ $product->id }});">
+                                                            <i class="fa-solid text-white fa-cart-shopping"></i>
+                                                        </a>
+                                                    @else
+                                                        <a href="javascript:void(0);" class="btn btn-default btn-sm rounded-1 p-2">
+                                                            Indisponible
+                                                        </a>
+                                                    @endif
+                                                @else
+                                                    <a href="javascript:void(0);" class="btn btn-default btn-sm rounded-1 p-2" onclick="addToCart({{ $product->id }});">
+                                                        <i class="fa-solid text-white fa-cart-shopping"></i>
+                                                    </a>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -193,6 +221,13 @@
             // Filter les marques
             if(brands.length > 0){
                 url += '&brand='+brands.toString()
+            }
+
+            // Cherchers les produits
+            let keyword = $("#search").val();
+
+            if(keyword.length > 0){
+                url += '&search'+keyword;
             }
 
             // Filter les prices

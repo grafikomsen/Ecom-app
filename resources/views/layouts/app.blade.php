@@ -68,15 +68,10 @@
                     </a>
 
                     <div class="order-lg-2 d-flex align-items-center">
-                        {{-- <form class="" role="search">
-                            <input type="search" class="form-control rounded-5 shadow-sm" placeholder="Chercher ici...">
-                        </form> --}}
-
-                        <a  href="{{ route('cart') }}" class="btn btn-default border-0 shadow-sm position-relative">
-                            Panier
-                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        <a  href="{{ route('cart') }}" class="btn btn-default border-0 rounded-1 btn-sm p-1 position-relative">
+                            <i class="fa-solid text-white fa-cart-shopping"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle pt-1 badge rounded-1 bg-danger">
                                 0 CFA
-                                <span class="visually-hidden"></span>
                             </span>
                         </a>
                     </div>

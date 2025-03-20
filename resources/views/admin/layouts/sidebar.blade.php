@@ -59,12 +59,6 @@
                     COMMANDES
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link d-flex align-items-center fs-6 fw-bold gap-2" href="#">
-                    <i class="fa-solid fa-screwdriver-wrench"></i>
-                    Year-end sale
-                </a>
-            </li>
         </ul>
     </div>
 </div>
