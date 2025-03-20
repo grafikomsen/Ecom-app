@@ -45,7 +45,7 @@
                             <li class="nav-item">
                                 <a href="{{ route('account.profile') }}" class="nav-link text-white">
                                     Mon compte
-                                    <i class="fa-solid fa-user text-white"></i>
+                                    <i class="fa-solid fa-user-check text-white"></i>
                                 </a>
                             </li>
                         @else
