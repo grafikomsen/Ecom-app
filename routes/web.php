@@ -59,6 +59,8 @@ Route::group(['prefix' => 'account'], function(){
 
     Route::group(['middleware' => 'auth'], function(){
         Route::get('/mon-profile', [AuthController::class, 'profile'])->name('account.profile');
+        Route::put('/update-profile', [AuthController::class, 'updateProfile'])->name('account.UpdateProfile');
+        Route::put('/update-address', [AuthController::class, 'updateAddress'])->name('account.updateAddress');
         Route::get('/mes-commandes', [AuthController::class, 'orders'])->name('account.orders');
         Route::get('/mes-commandes/{orderId}', [AuthController::class, 'ordersId'])->name('account.ordersId');
         Route::get('/mes-souhaits', [AuthController::class, 'wishlist'])->name('account.wishlist');

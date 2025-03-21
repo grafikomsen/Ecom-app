@@ -1,6 +1,6 @@
 <ul id="account-panel" class="nav nav-pills flex-column" >
     <li class="nav-item">
-        <a href="account.php"  class="btn btn-default w-100 text-start rounded-1 mb-2 font-weight-bold" role="tab" aria-controls="tab-login" aria-expanded="false">
+        <a href="{{ route('account.profile') }}"  class="btn btn-default w-100 text-start rounded-1 mb-2 font-weight-bold" role="tab" aria-controls="tab-login" aria-expanded="false">
             <i class="fas fa-user-alt text-white"></i> Mon profil
         </a>
     </li>

@@ -21,7 +21,7 @@
                     <div class="col-12 col-md-4"></div>
                     <div class="col-12 col-md-4">
                         <div class="card rounded-1 p-4">
-                            <form method="POST" name="registrationForm" id="registrationForm">
+                            <form name="registrationForm" id="registrationForm">
                                 <h4 class="modal-title text-center fw-bold text-uppercase py-2">Créez votre compte</h4>
 
                                 <div class="input-group rounded-1 mb-3">
@@ -88,7 +88,6 @@
 
         $("#registrationForm").submit(function(e){
             e.preventDefault();
-
             $("button[type='submit']").prop('disabled',true);
 
             $.ajax({

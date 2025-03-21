@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Country;
+use App\Models\CustomerAddress;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\User;
@@ -87,10 +89,94 @@ class AuthController extends Controller
                 ->withErrors($validator)
                 ->withInput($request->only('email'));
         }
-
     }
 
     public function profile(){
+        $userId = Auth::user()->id;
+        $user = User::where('id',Auth::user()->id)->first();
+        $countries = Country::orderBy('name','ASC')->get();
+        $customerAddress = CustomerAddress::where('user_id',$userId)->first();
+        return view('account.profile', compact('user','customerAddress','countries'));
+    }
+
+    public function updateProfile(Request $request){
+
+        $userId = Auth::user()->id;
+        $validator = Validator::make($request->all(),[
+            'name'  => 'required',
+            'email' => 'required|email|unique:users,email,'.$userId.',id',
+            'phone' => 'required'
+        ]);
+
+        if ($validator->passes()) {
+            # code...
+            $user = User::find($userId);
+            $user->name     = $request->name;
+            $user->email    = $request->email;
+            $user->phone    = $request->phone;
+            $user->save();
+
+            session()->flash('success','Votre profile a été modifié avec succès');
+            return response()->json([
+                'status' => true,
+            ]);
+        } else {
+            # code...
+            return response()->json([
+                'status' => false,
+                'errors'  => $validator->errors()
+            ]);
+        }
+
+        return view('account.profile');
+    }
+
+    public function updateAddress(Request $request){
+
+        $customerId = Auth::user()->id;
+        $validator = Validator::make($request->all(),[
+            'first_name' => 'required|min:4',
+            'last_name'  => 'required|min:2',
+            'email'      => 'required',
+            'country'    => 'required',
+            'address'    => 'required|min:15',
+            'city'       => 'required',
+            'state'      => 'required',
+            'zip'        => 'required',
+            'mobile'     => 'required',
+        ]);
+
+        if ($validator->passes()) {
+            # code...
+            CustomerAddress::updateOrCreate(
+                ['user_id' => $customerId],
+                [
+                    'user_id'       => $customerId,
+                    'first_name'    => $request->first_name,
+                    'last_name'     => $request->last_name,
+                    'email'         => $request->email,
+                    'country_id'    => $request->country,
+                    'address'       => $request->address,
+                    'apartment'     => $request->apartment,
+                    'city'          => $request->city,
+                    'state'         => $request->state,
+                    'zip'           => $request->zip,
+                    'mobile'        => $request->mobile,
+                    'notes'         => $request->notes,
+                ]
+            );
+
+            session()->flash('success','Votre adresse a été modifiée avec succès');
+            return response()->json([
+                'status' => true,
+            ]);
+        } else {
+            # code...
+            return response()->json([
+                'status' => false,
+                'errors'  => $validator->errors()
+            ]);
+        }
 
         return view('account.profile');
     }
