@@ -54,7 +54,7 @@
                             @if ($orders->isNotEmpty())
                                 @foreach ($orders as $order)
                                     <tr>
-                                        <td><a href="{{ route('admin.order.detail',[$order->id]) }}">Commande n°s{{ $order->id }}</a></td>
+                                        <td><a href="{{ route('admin.order.detail',[$order->id]) }}">Commande n°{{ $order->id }}</a></td>
                                         <td>{{ $order->name }}</td>
                                         <td>{{ $order->email }}</td>
                                         <td>{{ $order->mobile }}</td>

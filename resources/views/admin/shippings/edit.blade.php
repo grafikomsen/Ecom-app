@@ -37,7 +37,7 @@
                     <div class="col-md-4">
                         <div class="mb-3">
                             <label for="title">Prix</label>
-                            <input type="text" name="amount" id="amount" class="form-control rounded-1" placeholder="amount" value="{{ $shipping->amount }}">
+                            <input type="text" name="amount" id="amount" class="form-control rounded-1" placeholder="Montant" value="{{ $shipping->amount }}">
                             <p></p>
                         </div>
                     </div>
