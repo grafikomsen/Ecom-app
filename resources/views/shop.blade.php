@@ -127,7 +127,7 @@
                                                 <span class="badge bg-danger position-absolute m-2 rounded-1">PROMO: {{ number_format($product->compare_price, 0, '.', ' ') }} CFA</span>
                                             @endif
 
-                                            <a href="javascript:void(0);" onclick="addToWishList({{ $olderProduct->id }})" class="position-absolute end-0 m-1">
+                                            <a href="javascript:void(0);" onclick="addToWishList({{ $product->id }})" class="position-absolute end-0 m-1">
                                                 <i class="far fa-heart"></i>
                                             </a>
 
