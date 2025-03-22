@@ -127,6 +127,10 @@
                                                 <span class="badge bg-danger position-absolute m-2 rounded-1">PROMO: {{ number_format($product->compare_price, 0, '.', ' ') }} CFA</span>
                                             @endif
 
+                                            <a href="javascript:void(0);" onclick="addToWishList({{ $olderProduct->id }})" class="position-absolute end-0 m-1">
+                                                <i class="far fa-heart"></i>
+                                            </a>
+
                                             @if (!empty($productImage->image))
                                                 <img  class="w-100 h-100" src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $product->title }}">
                                             @else
