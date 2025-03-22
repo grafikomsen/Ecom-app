@@ -55,12 +55,12 @@
                     @foreach (getCategories() as $category)
                         <div class="col-12 col-md-3">
                             <a class="nav-link" href="{{ route('shop',$category->slug) }}">
-                                <div class="card text-bg-white">
+                                <div class="card cat rounded-1 border-0 bg-light p-2 mb-4 text-center text-bg-white">
                                     @if($category->image != "")
-                                        <img src="{{ asset('uploads/categories/'.$category->image) }}" class="card-img opacity-100" alt="{{ $category->name }}">
+                                        <img src="{{ asset('uploads/categories/'.$category->image) }}" class="card-img object-fit-cover" alt="{{ $category->name }}">
                                     @endif
-                                    <div class="card-img-overlay justify-content-center align-content-center">
-                                        <h5 class="card-title">{{ $category->name }}</h5>
+                                    <div class="cat-title pt-2 rounded-1">
+                                        <h5 class="card-title text-white">{{ $category->name }}</h5>
                                     </div>
                                 </div>
                             </a>
@@ -80,9 +80,9 @@
                 <div class="bd-example">
                 <nav class="product-carroussel">
                     <div class="nav nav-tabs mb-3 justify-content-center border-bottom-0" id="nav-tab" role="tablist">
-                        <button class="nav-link btn btn-primary rounded-5 border-0 shadow-sm mx-2 my-2 py-2 px-5 text-uppercase active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Tous</button>
-                        <button class="nav-link btn btn-primary rounded-5 border-0 shadow-sm mx-2 my-2 py-2 px-5 text-uppercase" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Vendus</button>
-                        <button class="nav-link btn btn-primary rounded-5 border-0 shadow-sm mx-2 my-2 py-2 px-5 text-uppercase" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Nouveaux</button>
+                        <button class="nav-link btn btn-primary rounded-1 border-0 shadow-sm mx-2 my-2 py-2 px-5 text-uppercase active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Tous</button>
+                        <button class="nav-link btn btn-primary rounded-1 border-0 shadow-sm mx-2 my-2 py-2 px-5 text-uppercase" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Vendus</button>
+                        <button class="nav-link btn btn-primary rounded-1 border-0 shadow-sm mx-2 my-2 py-2 px-5 text-uppercase" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Nouveaux</button>
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
@@ -364,13 +364,13 @@
             <div class="container carousel-inner pt-5">
                 <div class="text-center carousel-item active">
                     <h2 class="text-capitalize text-white">best collection</h2>
-                    <h1 class="text-capitalize text-white mt-2">New arrivals</h1>
-                    <a class="btn btn-primary rounded-5 border-0 shadow-sm py-2 px-5 text-uppercase" href="">shop now <i class="fas fa-shopping-cart"></i></a>
+                    <h1 class="text-capitalize text-white">New arrivals</h1>
+                    <a class="btn btn-primary rounded-1 border-0 shadow-sm py-2 px-5 text-uppercase" href="">shop now <i class="fas fa-shopping-cart"></i></a>
                 </div>
                 <div class="text-center carousel-item">
                     <h2 class="text-capitalize text-white">collection</h2>
-                    <h1 class="text-capitalize text-white mt-2">New arrivals</h1>
-                    <a class="btn btn-primary rounded-5 border-0 shadow-sm py-2 px-5 text-uppercase" href="">buy now <i class="fas fa-shopping-cart"></i></a>
+                    <h1 class="text-capitalize text-white">New arrivals</h1>
+                    <a class="btn btn-primary rounded-1 border-0 shadow-sm py-2 px-5 text-uppercase" href="">buy now <i class="fas fa-shopping-cart"></i></a>
                 </div>
             </div>
         </div>
@@ -393,17 +393,37 @@
                                 <div class="card rounded-1 shadow-sm border-0 mb-4">
                                     <div class="row g-0">
                                         <div class="col-md-4">
-                                            @if (!empty($productImage->image))
-                                                <img class="bd-placeholder-img h-full" width="90%" src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $oldProduct->title }}">
+                                            <a href="javascript:void(0);" onclick="addToWishList({{ $oldProduct->id }})" class="position-absolute end-0 m-2">
+                                                <i class="far fa-heart"></i>
+                                            </a>
+
+                                            @if ($oldProduct->track_qty == 'Yes')
+                                                @if ($oldProduct->qty > 0)
+                                                    <a href="javascript:void(0);" class="btn btn-default btn-sm rounded-1 p-2 position-absolute bottom-0 end-0 m-2 shadow-sm" onclick="addToCart({{ $oldProduct->id }});">
+                                                        <i class="fa-solid text-white fa-cart-shopping"></i>
+                                                    </a>
+                                                @else
+                                                    <a href="javascript:void(0);" class="btn btn-default btn-sm rounded-1 p-2 position-absolute bottom-0 end-0 m-2 shadow-sm">
+                                                        Indisponible
+                                                    </a>
+                                                @endif
                                             @else
-                                                <img class="bd-placeholder-img h-full" width="90%" src="{{ asset('assets-front/images/special_product_1.jpg') }}" alt="{{ $oldProduct->title }}">
+                                                <a href="javascript:void(0);" class="btn btn-default btn-sm rounded-1 p-2 position-absolute bottom-0 end-0 m-2 shadow-sm" onclick="addToCart({{ $oldProduct->id }});">
+                                                    <i class="fa-solid text-white fa-cart-shopping"></i>
+                                                </a>
+                                            @endif
+
+                                            @if (!empty($productImage->image))
+                                                <img class="product-img" src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $oldProduct->title }}">
+                                            @else
+                                                <img class="product-img" src="{{ asset('assets-front/images/special_product_1.jpg') }}" alt="{{ $oldProduct->title }}">
                                             @endif
                                         </div>
                                         <div class="col-md-8">
                                             <div class="card-body">
                                                 <h6 class="card-title">{{ $oldProduct->title }}</h6>
                                                 <p class="card-text">{{ number_format($oldProduct->price, 0, '.', ' ') }} CFA</p>
-                                                <div class="rating d-flex justify-content-star pt-0">
+                                                <div class="rating d-flex justify-content-star">
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
@@ -429,10 +449,30 @@
                                 <div class="card rounded-1 shadow-sm border-0 mb-4">
                                     <div class="row g-0">
                                         <div class="col-md-4">
-                                            @if (!empty($productImage->image))
-                                                <img class="bd-placeholder-img h-full" width="90%" src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $latProduct->title }}">
+                                            <a href="javascript:void(0);" onclick="addToWishList({{ $latProduct->id }})" class="position-absolute end-0 m-2">
+                                                <i class="far fa-heart"></i>
+                                            </a>
+
+                                            @if ($latProduct->track_qty == 'Yes')
+                                                @if ($latProduct->qty > 0)
+                                                    <a href="javascript:void(0);" class="btn btn-default btn-sm rounded-1 p-2 position-absolute bottom-0 end-0 m-2 shadow-sm" onclick="addToCart({{ $latProduct->id }});">
+                                                        <i class="fa-solid text-white fa-cart-shopping"></i>
+                                                    </a>
+                                                @else
+                                                    <a href="javascript:void(0);" class="btn btn-default btn-sm rounded-1 p-2 position-absolute bottom-0 end-0 m-2 shadow-sm">
+                                                        Indisponible
+                                                    </a>
+                                                @endif
                                             @else
-                                                <img class="bd-placeholder-img h-full" width="90%" src="{{ asset('assets-front/images/special_product_1.jpg') }}" alt="{{ $latProduct->title }}">
+                                                <a href="javascript:void(0);" class="btn btn-default btn-sm rounded-1 p-2 position-absolute bottom-0 end-0 m-2 shadow-sm" onclick="addToCart({{ $latProduct->id }});">
+                                                    <i class="fa-solid text-white fa-cart-shopping"></i>
+                                                </a>
+                                            @endif
+
+                                            @if (!empty($productImage->image))
+                                                <img class="product-img m-auto" src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $latProduct->title }}">
+                                            @else
+                                                <img class="product-img m-auto" src="{{ asset('assets-front/images/special_product_1.jpg') }}" alt="{{ $latProduct->title }}">
                                             @endif
                                         </div>
                                         <div class="col-md-8">
@@ -465,10 +505,30 @@
                                 <div class="card rounded-1 shadow-sm border-0 mb-4">
                                     <div class="row g-0">
                                         <div class="col-md-4">
-                                            @if (!empty($productImage->image))
-                                                <img class="bd-placeholder-img h-full" width="90%" src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $feaProduct->title }}">
+                                            <a href="javascript:void(0);" onclick="addToWishList({{ $feaProduct->id }})" class="position-absolute end-0 m-2">
+                                                <i class="far fa-heart"></i>
+                                            </a>
+
+                                            @if ($feaProduct->track_qty == 'Yes')
+                                                @if ($feaProduct->qty > 0)
+                                                    <a href="javascript:void(0);" class="btn btn-default btn-sm rounded-1 p-2 position-absolute bottom-0 end-0 m-2 shadow-sm" onclick="addToCart({{ $feaProduct->id }});">
+                                                        <i class="fa-solid text-white fa-cart-shopping"></i>
+                                                    </a>
+                                                @else
+                                                    <a href="javascript:void(0);" class="btn btn-default btn-sm rounded-1 p-2 position-absolute bottom-0 end-0 m-2 shadow-sm">
+                                                        Indisponible
+                                                    </a>
+                                                @endif
                                             @else
-                                                <img class="bd-placeholder-img h-full" width="90%" src="{{ asset('assets-front/images/special_product_1.jpg') }}" alt="{{ $feaProduct->title }}">
+                                                <a href="javascript:void(0);" class="btn btn-default btn-sm rounded-1 p-2 position-absolute bottom-0 end-0 m-2 shadow-sm" onclick="addToCart({{ $feaProduct->id }});">
+                                                    <i class="fa-solid text-white fa-cart-shopping"></i>
+                                                </a>
+                                            @endif
+
+                                            @if (!empty($productImage->image))
+                                                <img class="product-img m-auto" src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $feaProduct->title }}">
+                                            @else
+                                                <img class="product-img m-auto" src="{{ asset('assets-front/images/special_product_1.jpg') }}" alt="{{ $feaProduct->title }}">
                                             @endif
                                         </div>
                                         <div class="col-md-8">

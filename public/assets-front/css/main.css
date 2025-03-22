@@ -122,6 +122,31 @@ i {
    color: var(--primaryColor);
 }
 
+/********** CATEGORIE PRODUIT **********/
+.cat img {
+    width: 5rem;
+    margin: auto;
+    object-fit: cover;
+    transition: all 2 ease-in-out;
+}
+
+.cat:hover img {
+    transform: scale(1.1);
+}
+
+.cat-title {
+    position: absolute;
+    bottom: 18%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primaryColor);
+    line-height: 10rem;
+    width: 12rem;
+    height: 2.5rem;
+    text-align: center;
+    opacity: 90%;
+}
+
 /********** FEATURED PRODUCT ***********/
 .title h2::before {
   position: absolute;
@@ -153,6 +178,13 @@ i {
 .Banner-offer .btn-primary:hover {
   background-color: var(--primaryColor) !important;
   color: var(--white) !important;
+}
+
+/********** PRODUCT IMG **************/
+.product-img {
+    width: 9rem;
+    height: 9rem;
+    padding-right: 1rem;
 }
 
 /********** NEWSLETTERS ***********/

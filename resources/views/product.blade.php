@@ -62,7 +62,7 @@
 
                         <div class="row align-items-center justify-content-center">
                             <div class="col-12 col-md-6">
-                                <input type="number" class="form-control w-100" value="{{ $product->qty }}">
+                                <input type="number" class="form-control" value="{{  $product->qty }}">
                             </div>
                             <div class="col-12 col-md-6">
                                 @if ($product->track_qty == 'Yes')
