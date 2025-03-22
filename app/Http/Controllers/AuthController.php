@@ -185,13 +185,13 @@ class AuthController extends Controller
 
         Auth::logout();
         return redirect()->route('account.login')
-        ->with('success', 'Vous vous êtes déconnecté avec succès !');
+        ->with('success', 'Vous vous êtes déconnecté avec succès!');
     }
 
     public function orders(){
 
         $user = Auth::user();
-        $orders = Order::where('user_id', $user->id)->orderBy('created_at','DESC')->get();
+        $orders = Order::where('user_id', $user->id)->orderBy('created_at','DESC')->paginate(9)->get();
         return view('account.order', compact('orders'));
     }
 
