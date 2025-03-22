@@ -82,7 +82,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="sku">SKU (Stock Keeping Unit)</label>
+                                        <label for="sku">SKU (Unité de gestion des stocks)</label>
                                         <input type="text" name="sku" id="sku" class="form-control rounded-1" placeholder="sku">
                                         <p></p>
                                     </div>

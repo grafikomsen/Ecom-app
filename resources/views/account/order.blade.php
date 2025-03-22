@@ -44,7 +44,7 @@
                                             @foreach($orders as $order)
                                                <tr>
                                                     <td>
-                                                        <a href="{{ route('account.ordersId',$order->id) }}">COM#{{ $order->id }}</a>
+                                                        <a href="{{ route('account.ordersId',$order->id) }}">Commande n°{{ $order->id }}</a>
                                                     </td>
                                                     <td>{{ $order->created_at }}</td>
                                                     <td>

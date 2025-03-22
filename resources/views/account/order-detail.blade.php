@@ -29,9 +29,9 @@
                             <h2 class="h5 mb-0 pt-2 text-white pb-2">Détails de la commande</h2>
                         </div>
 
-                        <div class="card-body shadow-sm rounded-1 pb-4">
+                        <div class="card-body rounded-1 shadow-sm rounded-1 pb-4">
                             <!-- Info -->
-                            <div class="card card-sm">
+                            <div class="card rounded-0 card-sm">
                                 <div class="card-body p-3 bg-light mb-3">
                                     <div class="row">
                                         <div class="col-6 col-lg-3">
