@@ -191,7 +191,7 @@ class AuthController extends Controller
     public function orders(){
 
         $user = Auth::user();
-        $orders = Order::where('user_id', $user->id)->orderBy('created_at','DESC')->paginate(10);
+        $orders = Order::where('user_id', $user->id)->orderBy('created_at','DESC')->paginate(5);
         return view('account.order', compact('orders'));
     }
 

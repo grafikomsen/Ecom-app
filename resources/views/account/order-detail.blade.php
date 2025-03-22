@@ -39,7 +39,7 @@
                                             <h6 class="heading-xxxs text-muted">Commande No:</h6>
                                             <!-- Text -->
                                             <p class="mb-lg-0 fs-sm fw-bold">
-                                                COM#{{ $order->id }}
+                                                Commande n°{{ $order->id }}
                                             </p>
                                         </div>
                                         <div class="col-6 col-lg-3">
