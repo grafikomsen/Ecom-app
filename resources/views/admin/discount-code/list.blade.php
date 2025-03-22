@@ -9,7 +9,7 @@
                     <h1>Code coupon</h1>
                 </div>
                 <div class="col-sm-6 text-end">
-                    <a href="{{ route('admin.discount.create') }}" class="btn btn-primary rounded-1 border-0">Nouvelle catégorie</a>
+                    <a href="{{ route('admin.discount.create') }}" class="btn btn-primary rounded-1 border-0">Nouveau code coupon</a>
                 </div>
             </div>
         </div>
@@ -46,8 +46,8 @@
                                 <th width="60">ID</th>
                                 <th>Nom</th>
                                 <th>Code</th>
-                                <th>Starts at</th>
-                                <th>expires at</th>
+                                <th>Commence à</th>
+                                <th>expire à</th>
                                 <th>Type</th>
                                 <th>Status</th>
                                 <th width="100">Action</th>
@@ -88,7 +88,7 @@
                                 @endforeach
                             @else
                                 <tr>
-                                    <td class="5">Records not found</td>
+                                    <td class="5">Enregistrements introuvables</td>
                                 </tr>
                             @endif
                         </tbody>
@@ -113,7 +113,7 @@
             let url = '{{ route("admin.discount.destroy","ID") }}';
             let newUrl = url.replace('ID',id);
 
-            if (confirm('Are you sure you want to delete')) {
+            if (confirm('Etes-vous sûr de vouloir supprimer')) {
                 $.ajax({
                     url: newUrl,
                     type: 'DELETE',

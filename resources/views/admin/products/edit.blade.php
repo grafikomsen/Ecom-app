@@ -204,7 +204,7 @@
 
                     <div class="card rounded-1 mb-3">
                         <div class="card-body">
-                            <h2 class="h4 mb-3">Featured product</h2>
+                            <h2 class="h4 mb-3">Produit vedette</h2>
                             <div class="mb-3">
                                 <select name="is_featured" id="is_featured" class="form-control rounded-1">
                                     <option {{ ($product->is_featured == 'No') ? 'selected' : '' }} value="No">Non</option>
@@ -228,8 +228,8 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="mb-3">
-                                        <label for="compare_price">Compare at Price</label>
-                                        <input type="text" name="compare_price" id="compare_price" class="form-control rounded-1" value="{{ $product->compare_price }}" placeholder="Compare Price">
+                                        <label for="compare_price">Prix promo</label>
+                                        <input type="text" name="compare_price" id="compare_price" class="form-control rounded-1" value="{{ $product->compare_price }}" placeholder="Prix promo">
                                         <p></p>
                                     </div>
                                 </div>

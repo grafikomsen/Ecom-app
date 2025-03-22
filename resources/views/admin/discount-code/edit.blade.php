@@ -24,7 +24,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="name">Name</label>
+                                    <label for="name">Nom</label>
                                     <input type="text" name="name" id="name" class="form-control rounded-1" placeholder="Nom" value="{{ $discount->name }}">
                                     <p></p>
                                 </div>
@@ -45,14 +45,14 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="max_uses">Max uses</label>
+                                    <label for="max_uses">Utilisations maximales</label>
                                     <input type="number" name="max_uses" id="max_uses" class="form-control rounded-1" placeholder="Max uses" value="{{ $discount->max_uses }}">
                                     <p></p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="max_uses_user">Max uses user</label>
+                                    <label for="max_uses_user">Max utilise l'utilisateur</label>
                                     <input type="text" name="max_uses_user" id="max_uses_user" class="form-control rounded-1" placeholder="Max uses user" value="{{ $discount->max_uses_user }}">
                                     <p></p>
                                 </div>
@@ -61,8 +61,8 @@
                                 <div class="mb-3">
                                     <label for="type">Type</label>
                                     <select name="type" id="type" class="form-control rounded-1">
-                                        <option {{ ($discount->type == 'percent') ? 'selected' : '' }} value="percent">Percent</option>
-                                        <option {{ ($discount->type == 'fixed') ? 'selected' : '' }} value="fixed">Fixed</option>
+                                        <option {{ ($discount->type == 'percent') ? 'selected' : '' }} value="percent">Pourcentage</option>
+                                        <option {{ ($discount->type == 'fixed') ? 'selected' : '' }} value="fixed">Fixé</option>
                                     </select>
                                 </div>
                             </div>
@@ -77,28 +77,28 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="discount_amount">Discount amount</label>
+                                    <label for="discount_amount">Montant de la remise</label>
                                     <input type="text" name="discount_amount" id="discount_amount" class="form-control rounded-1" placeholder="Discount amount" value="{{ $discount->discount_amount }}">
                                     <p></p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="min_amount">Min amount</label>
+                                    <label for="min_amount">Montant minimum</label>
                                     <input type="text" name="min_amount" id="min_amount" class="form-control rounded-1" placeholder="Max uses user" value="{{ $discount->min_amount }}">
                                     <p></p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="starts_at">Starts At</label>
+                                    <label for="starts_at">Commence à</label>
                                     <input type="text" autocomplete="off" name="starts_at" id="starts_at" class="form-control rounded-1" placeholder="Discount amount" value="{{ $discount->starts_at }}">
                                     <p></p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="expires_at">Expires At</label>
+                                    <label for="expires_at">Expire à</label>
                                     <input type="text" autocomplete="off" name="expires_at" id="expires_at" class="form-control rounded-1" placeholder="Max uses user" value="{{ $discount->expires_at }}">
                                     <p></p>
                                 </div>

@@ -5,7 +5,7 @@
     <div class="container-fluid my-2">
         <div class="row mb-2">
             <div class="col-12">
-                <h1>Shipping management</h1>
+                <h1>Gestion des expéditions</h1>
             </div>
         </div>
     </div>

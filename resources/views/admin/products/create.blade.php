@@ -210,8 +210,8 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="mb-3">
-                                        <label for="compare_price">Compare at Price</label>
-                                        <input type="text" name="compare_price" id="compare_price" class="form-control rounded-1" placeholder="Compare Price">
+                                        <label for="compare_price">Prix promo</label>
+                                        <input type="text" name="compare_price" id="compare_price" class="form-control rounded-1" placeholder="Prix promo">
                                         <p></p>
                                     </div>
                                 </div>

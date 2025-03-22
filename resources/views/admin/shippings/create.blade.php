@@ -5,7 +5,7 @@
     <div class="container-fluid my-2">
         <div class="row mb-2">
             <div class="col-12">
-                <h1>Shipping management</h1>
+                <h1>Gestion des expéditions</h1>
             </div>
         </div>
     </div>
@@ -23,12 +23,12 @@
                         <div class="mb-3">
                             <label for="title">Nom</label>
                             <select type="text" name="country" id="country" class="form-control rounded-1">
-                                <option value=""> -- Select a country -- </option>
+                                <option value=""> -- Sélectionnez un pays -- </option>
                                 @if ($countries->isNotEmpty())
                                     @foreach($countries as $country)
                                         <option value="{{ $country->id }}">{{ $country->name }}</option>
                                     @endforeach
-                                    <option value="rest_of_world">Rest of the world</option>
+                                    <option value="rest_of_world">Reste du monde</option>
                                 @endif
                             </select>
                             <p></p>
@@ -151,7 +151,7 @@
 
             let url = '{{ route("admin.shipping.delete","ID") }}';
             let newUrl = url.replace("ID",id);
-            if(confirm("Are you sure you want to delete?")){
+            if(confirm("Êtes-vous sûr de vouloir supprimer?")){
                 $.ajax({
                     url: newUrl,
                     type: 'DELETE',

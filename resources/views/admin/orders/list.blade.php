@@ -41,32 +41,32 @@
                     <table class="table table-hover text-nowrap">
                         <thead>
                             <tr>
-                                <th>Orders #</th>
-                                <th>Customer</th>
-                                <th>Email</th>
-                                <th>Phone</th>
+                                <th>Commandes #</th>
+                                <th>Client</th>
+                                <th>E-mail</th>
+                                <th>Téléphone</th>
                                 <th>Status</th>
                                 <th>Total</th>
-                                <th>Date Purchased</th>
+                                <th>Date d'achat</th>
                             </tr>
                         </thead>
                         <tbody>
                             @if ($orders->isNotEmpty())
                                 @foreach ($orders as $order)
                                     <tr>
-                                        <td><a href="{{ route('admin.order.detail',[$order->id]) }}">COM#{{ $order->id }}</a></td>
+                                        <td><a href="{{ route('admin.order.detail',[$order->id]) }}">Commande n°s{{ $order->id }}</a></td>
                                         <td>{{ $order->name }}</td>
                                         <td>{{ $order->email }}</td>
                                         <td>{{ $order->mobile }}</td>
                                         <td>
                                             @if ($order->status == 'pending')
-                                                <span class="badge bg-warning">En attente</span>
+                                                <span class="badge rounded-1 bg-warning">En attente</span>
                                             @elseif(($order->status == 'shipped'))
-                                                <span class="badge bg-info">Expédié</span>
+                                                <span class="badge rounded-1 bg-info">Expédié</span>
                                             @elseif($order->status == 'cancelled')
                                                 <span class="badge bg-danger rounded-1">Annulé</span>
                                             @else
-                                                <span class="badge bg-success">Livré</span>
+                                                <span class="badge rounded-1 bg-success">Livré</span>
                                             @endif
                                         </td>
                                         <td>{{ number_format($order->grand_total, 0, '.', ' ') }} CFA</td>
@@ -75,7 +75,7 @@
                             @endforeach
                             @else
                                 <tr>
-                                    <td class="5">Records not found</td>
+                                    <td class="5">Enregistrements introuvables</td>
                                 </tr>
                             @endif
                         </tbody>

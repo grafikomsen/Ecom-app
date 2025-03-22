@@ -22,7 +22,7 @@
                 <div class="col-md-9">
                     @include('admin.messages')
                     <div class="card rounded-1 mb-4">
-                        <div class="card-header">
+                        <div class="card-header rounded-0">
                             <div class="row invoice-info">
                                 <div class="col-sm-6 invoice-col">
                                     <h5 class="fw-bold">Adresse de livraison</h5>
@@ -88,7 +88,7 @@
                                         <td>{{ number_format($order->subtotal, 0, '.', ' ') }} CFA</td>
                                     </tr>
                                     <tr>
-                                        <th colspan="3" class="text-end">Shipping:</th>
+                                        <th colspan="3" class="text-end">Expédition:</th>
                                         <td>{{ number_format($order->shipping, 0, '.', ' ') }} CFA</td>
                                     </tr>
                                     <tr>
