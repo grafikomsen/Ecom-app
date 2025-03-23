@@ -107,9 +107,9 @@
                             <div class="d-flex align-items-center justify-content-end mb-4">
                                 <div class="ml-2">
                                     <select name="sort" id="sort" class="form-control rounded-1">
-                                        <option value="latest" {{ ($sort == 'latest') ? 'selected' : '' }}>Latest</option>
-                                        <option value="price_desc" {{ ($sort == 'price_desc') ? 'selected' : '' }}>Prix High</option>
-                                        <option value="price_asc" {{ ($sort == 'price_asc') ? 'selected' : '' }}>Prix Low</option>
+                                        <option value="latest" {{ ($sort == 'latest') ? 'selected' : '' }}>Dernier</option>
+                                        <option value="price_desc" {{ ($sort == 'price_desc') ? 'selected' : '' }}>Prix ​​Haut</option>
+                                        <option value="price_asc" {{ ($sort == 'price_asc') ? 'selected' : '' }}>Prix ​​bas</option>
                                     </select>
                                 </div>
                             </div>
