@@ -414,9 +414,9 @@
                                             @endif
 
                                             @if (!empty($productImage->image))
-                                                <img class="product-img" src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $oldProduct->title }}">
+                                                <img width="100%" height="100%" src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $oldProduct->title }}">
                                             @else
-                                                <img class="product-img" src="{{ asset('assets-front/images/special_product_1.jpg') }}" alt="{{ $oldProduct->title }}">
+                                                <img width="100%" height="100%" src="{{ asset('assets-front/images/special_product_1.jpg') }}" alt="{{ $oldProduct->title }}">
                                             @endif
                                         </div>
                                         <div class="col-md-8">
@@ -470,9 +470,9 @@
                                             @endif
 
                                             @if (!empty($productImage->image))
-                                                <img class="product-img m-auto" src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $latProduct->title }}">
+                                                <img width="100%" height="100%" src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $latProduct->title }}">
                                             @else
-                                                <img class="product-img m-auto" src="{{ asset('assets-front/images/special_product_1.jpg') }}" alt="{{ $latProduct->title }}">
+                                                <img width="100%" height="100%" src="{{ asset('assets-front/images/special_product_1.jpg') }}" alt="{{ $latProduct->title }}">
                                             @endif
                                         </div>
                                         <div class="col-md-8">
@@ -526,9 +526,9 @@
                                             @endif
 
                                             @if (!empty($productImage->image))
-                                                <img class="product-img m-auto" src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $feaProduct->title }}">
+                                                <img width="100%" height="100%" src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $feaProduct->title }}">
                                             @else
-                                                <img class="product-img m-auto" src="{{ asset('assets-front/images/special_product_1.jpg') }}" alt="{{ $feaProduct->title }}">
+                                                <img width="100%" height="100%" src="{{ asset('assets-front/images/special_product_1.jpg') }}" alt="{{ $feaProduct->title }}">
                                             @endif
                                         </div>
                                         <div class="col-md-8">
