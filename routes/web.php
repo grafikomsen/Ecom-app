@@ -6,12 +6,14 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\DiscountCodeController;
 use App\Http\Controllers\admin\loginController;
 use App\Http\Controllers\admin\OrderController;
+use App\Http\Controllers\admin\PageController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\ProductImageController;
 use App\Http\Controllers\admin\ProductSubCategoryController;
 use App\Http\Controllers\admin\ShippingController;
 use App\Http\Controllers\admin\SubCategoryController;
 use App\Http\Controllers\admin\TempImagesController;
+use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
@@ -134,6 +136,22 @@ Route::group(['prefix' => 'admin'], function(){
         Route::get('/orders/{id}', [OrderController::class, 'detail'])->name('admin.order.detail');
         Route::post('/orders/change-status/{id}', [OrderController::class, 'changeOrderStatus'])->name('admin.order.changeOrderStatus');
         Route::post('/orders/send-email/{id}', [OrderController::class, 'sendInvoiceEmail'])->name('admin.order.sendInvoiceEmail');
+
+        // USER ROUTES
+        Route::get('/users', [UserController::class, 'users'])->name('admin.users');
+        Route::get('/users/create', [UserController::class, 'create'])->name('admin.users.create');
+        Route::post('/users', [UserController::class, 'store'])->name('admin.users.store');
+        Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('admin.users.edit');
+        Route::put('/users/{user}', [UserController::class, 'updated'])->name('admin.users.updated');
+        Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('admin.users.destroy');
+
+        // PAGES ROUTES
+        Route::get('/pages', [PageController::class, 'pages'])->name('admin.pages');
+        Route::get('/pages/create', [PageController::class, 'create'])->name('admin.pages.create');
+        Route::post('/pages', [PageController::class, 'store'])->name('admin.pages.store');
+        Route::get('/pages/{page}/edit', [PageController::class, 'edit'])->name('admin.pages.edit');
+        Route::put('/pages/{page}', [PageController::class, 'updated'])->name('admin.pages.updated');
+        Route::delete('/pages/{page}', [PageController::class, 'destroy'])->name('admin.pages.destroy');
 
         // IMAGES
         Route::post('/product-images/update', [ProductImageController::class, 'update'])->name('product-images.update');

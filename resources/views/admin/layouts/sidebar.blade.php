@@ -59,6 +59,18 @@
                     COMMANDES
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link d-flex align-items-center fs-6 fw-bold gap-2" href="{{ route('admin.users') }}">
+                    <i class="fa-solid fa-users"></i>
+                    CLIENTS
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link d-flex align-items-center fs-6 fw-bold gap-2" href="{{ route('admin.pages') }}">
+                    <i class="fa-solid fa-blog"></i>
+                    PAGES
+                </a>
+            </li>
         </ul>
     </div>
 </div>
