@@ -10,6 +10,7 @@ use App\Http\Controllers\admin\PageController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\ProductImageController;
 use App\Http\Controllers\admin\ProductSubCategoryController;
+use App\Http\Controllers\admin\SettingController;
 use App\Http\Controllers\admin\ShippingController;
 use App\Http\Controllers\admin\SubCategoryController;
 use App\Http\Controllers\admin\TempImagesController;
@@ -48,6 +49,7 @@ Route::post('/get-order-summery', [CartController::class, 'getOrderSummery'])->n
 Route::post('/apply-discount', [CartController::class, 'applyDiscount'])->name('applyDiscount');
 Route::post('/remove-discount', [CartController::class, 'removeCoupon'])->name('removeCoupon');
 Route::post('/add-to-wishlist', [HomeController::class, 'addToWishList'])->name('addToWishList');
+Route::get('/page/{slug}', [HomeController::class, 'page'])->name('page');
 
 //
 Route::group(['prefix' => 'account'], function(){
@@ -67,6 +69,8 @@ Route::group(['prefix' => 'account'], function(){
         Route::get('/mes-commandes/{orderId}', [AuthController::class, 'ordersId'])->name('account.ordersId');
         Route::get('/mes-souhaits', [AuthController::class, 'wishlist'])->name('account.wishlist');
         Route::post('/remove-product-from-wishlist', [AuthController::class, 'removeProductFromWishlist'])->name('account.removeProductFromWishlist');
+        Route::get('/show-change-password', [AuthController::class, 'showChangePassword'])->name('account.showChangePassword');
+        Route::post('/process-change-password', [AuthController::class, 'changePassword'])->name('account.changePassword');
         Route::get('/logout', [AuthController::class, 'logout'])->name('account.logout');
     });
 });
@@ -152,6 +156,14 @@ Route::group(['prefix' => 'admin'], function(){
         Route::get('/pages/{page}/edit', [PageController::class, 'edit'])->name('admin.pages.edit');
         Route::put('/pages/{page}', [PageController::class, 'updated'])->name('admin.pages.updated');
         Route::delete('/pages/{page}', [PageController::class, 'destroy'])->name('admin.pages.destroy');
+
+        // PARAMÉTRES ROUTES
+        Route::get('/settings', [SettingController::class, 'settings'])->name('admin.settings');
+        Route::get('/settings/create', [SettingController::class, 'create'])->name('admin.settings.create');
+        Route::post('/settings/store', [SettingController::class, 'store'])->name('admin.settings.store');
+        Route::get('/settings/edit/{id}', [SettingController::class, 'edit'])->name('admin.settings.edit');
+        Route::put('/settings/updated/{id}', [SettingController::class, 'updated'])->name('admin.settings.updated');
+        Route::delete('/settings/delete/{id}', [SettingController::class, 'destroy'])->name('admin.settings.delete');
 
         // IMAGES
         Route::post('/product-images/update', [ProductImageController::class, 'update'])->name('product-images.update');

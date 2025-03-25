@@ -226,4 +226,46 @@ class AuthController extends Controller
             ]);
         }
     }
+
+    public function showChangePassword(){
+
+        return view('account.changePassword');
+    }
+
+    public function changePassword(Request $request){
+
+        $validator = Validator::make($request->all(),[
+            'old_password'      => 'required',
+            'new_password'      => 'required|min:5|same:confirm_password',
+            'confirm_password'  => 'required',
+        ]);
+
+        if ($validator->passes()) {
+            # code...
+            $user = User::select('id','password')->where('id',Auth::user()->id)->first();
+            if (!Hash::check($request->old_password,$user->password)) {
+                # code...
+                session()->flash('error','Your old password is incorrect, please try again.');
+                return response()->json([
+                    'status' => true,
+                ]);
+            }
+
+            User::where('id',$user->id)->update([
+                'password' => Hash::make($request->new_password)
+            ]);
+
+            session()->flash('success','You have successfully changed your password');
+            return response()->json([
+                'status' => true,
+            ]);
+
+        } else {
+            # code...
+            return response()->json([
+                'status' => false,
+                'errors' => $validator->errors()
+            ]);
+        }
+    }
 }

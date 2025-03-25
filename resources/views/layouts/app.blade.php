@@ -16,10 +16,11 @@
             <div class="top-nav">
                 <div class="container d-flex flex-wrap">
                     <ul class="nav me-auto">
-                        <li class="nav-item"><a href="#" class="nav-link text-white px-2">Features</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link text-white px-2">Pricing</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link text-white px-2">FAQs</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link text-white px-2">About</a></li>
+                        @if(staticPages()->isNotEmpty())
+                            @foreach(staticPages() as $page)
+                                <li class="nav-item"><a href="{{ route('page',$page->slug) }}" class="nav-link text-white px-2">{{ $page->name }}</a></li>
+                            @endforeach
+                        @endif
                     </ul>
                     <ul class="nav">
                         <li class="nav-item dropdown p-0">

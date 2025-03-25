@@ -71,6 +71,12 @@
                     PAGES
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link d-flex align-items-center fs-6 fw-bold gap-2" href="{{ route('admin.settings') }}">
+                    <i class="fa-solid fa-blog"></i>
+                    PARAMETRES
+                </a>
+            </li>
         </ul>
     </div>
 </div>

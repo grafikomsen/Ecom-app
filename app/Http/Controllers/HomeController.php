@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Page;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Wishlist;
@@ -61,5 +62,14 @@ class HomeController extends Controller
             'status' => true,
             'message' => '<div class="py-4 text-center">"'.$product->title.'" added in your wishlist</div>'
         ]);
+    }
+
+    public function page($slug){
+        $page = Page::where('slug',$slug)->first();
+        if ($page == null) {
+            # code...
+            abort(404);
+        }
+        return view('pages.about', compact('page'));
     }
 }

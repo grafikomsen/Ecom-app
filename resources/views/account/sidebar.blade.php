@@ -15,7 +15,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a href="change-password.php"  class="btn btn-default w-100 text-start rounded-1 mb-2 font-weight-bold" role="tab" aria-controls="tab-register" aria-expanded="false">
+        <a href="{{ route('account.showChangePassword') }}"  class="btn btn-default w-100 text-start rounded-1 mb-2 font-weight-bold" role="tab" aria-controls="tab-register" aria-expanded="false">
             <i class="fas fa-lock text-white"></i> Changer le mot de passe
         </a>
     </li>
