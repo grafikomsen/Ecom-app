@@ -73,7 +73,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link d-flex align-items-center fs-6 fw-bold gap-2" href="{{ route('admin.settings') }}">
-                    <i class="fa-solid fa-blog"></i>
+                    <i class="fa-solid fa-gears"></i>
                     PARAMETRES
                 </a>
             </li>
