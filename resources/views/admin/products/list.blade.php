@@ -68,7 +68,7 @@
                                             @endif
                                         </td>
                                         <td>{{ $product->title }}</td>
-                                        <td>{{ $product->price }} CFA</td>
+                                        <td>{{ number_format($product->price,0,',',' ') }} CFA</td>
                                         <td>{{ $product->qty }}</td>
                                         <td>{{ $product->sku }}</td>
                                         <td>

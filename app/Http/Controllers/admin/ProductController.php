@@ -24,7 +24,7 @@ class ProductController extends Controller
             $products = $products->where('title','like','%'.$request->keyword.'%');
         }
 
-        $products = $products->paginate();
+        $products = $products->paginate(10);
         return view('admin.products.list', compact('products'));
     }
 

@@ -15,7 +15,7 @@
             <!-- Small boxes (Stat box) -->
             <div class="row">
                 <div class="col-md-12">
-                    <form method="POST" name="editSettingForm" id="editSettingForm">
+                    <form name="editSettingForm" id="editSettingForm">
                         <div class="card card-secondary rounded-1">
                             <div class="card-header text-start">
                                 <h3 class="text-uppercase fw-bold mt-2">Informations du SEO</h3>
@@ -41,7 +41,7 @@
                                             <input type="hidden" name="image_id" id="image_id" value="">
                                             <div id="image" class="dropzone dz-clickable rounded-1">
                                                 <div class="dz-message needsclick">
-                                                    <br>Drop files here or click to upload.<br><br>
+                                                    <br>Déposez les fichiers ici ou cliquez pour télécharger.<br><br>
                                                 </div>
                                             </div>
                                             <img class="img-thumbnail my-2" src="{{ asset('uploads/settings/'.$setting->image) }}" width="50" alt="{{ $setting->name }}">
@@ -166,37 +166,13 @@
                                         <p class="error name-error text-danger"></p>
                                     </div>
                                     <div class="col-12 col-md-4">
-                                        <label for="phone_1">N° de téléphone 01</label>
-                                        <input type="text" name="phone_1" id="phone_1" value="{{ $setting->phone_1 }}" class="form-control rounded-1" placeholder="Enter le N° de téléphone">
+                                        <label for="phone_1">N° de téléphone</label>
+                                        <input type="text" name="phone" id="phone" value="{{ $setting->phone }}" class="form-control rounded-1" placeholder="Enter le N° de téléphone">
                                         <p class="error name-error text-danger"></p>
                                     </div>
                                     <div class="col-12 col-md-4">
                                         <label for="email_1">Adresse mail</label>
-                                        <input type="email" name="email_1" id="email_1" value="{{ $setting->email_1 }}" class="form-control rounded-1" placeholder="Enter le mail">
-                                        <p class="error name-error text-danger"></p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12 col-md-6">
-                                        <label for="phone_2">N° de téléphone 02</label>
-                                        <input type="text" name="phone_2" id="phone_2" value="{{ $setting->phone_2 }}" class="form-control rounded-1" placeholder="Enter le N° de téléphone">
-                                        <p class="error name-error text-danger"></p>
-                                    </div>
-                                    <div class="col-12 col-md-6">
-                                        <label for="email_2">Adresse mail 02</label>
-                                        <input type="email_2" name="email_2" id="email_2" value="{{ $setting->email_2 }}" class="form-control rounded-1" placeholder="Enter le mail">
-                                        <p class="error name-error text-danger"></p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12 col-md-6">
-                                        <label for="phone_3">N° de téléphone 03</label>
-                                        <input type="text" name="phone_3" id="phone_3" value="{{ $setting->phone_3 }}" class="form-control rounded-1" placeholder="Enter le N° de téléphone">
-                                        <p class="error name-error text-danger"></p>
-                                    </div>
-                                    <div class="col-12 col-md-6">
-                                        <label for="email_3">Adresse mail 03</label>
-                                        <input type="email_3" name="email_3" id="email_3" value="{{ $setting->email_3 }}" class="form-control rounded-1" placeholder="Enter le mail">
+                                        <input type="email" name="email" id="email" value="{{ $setting->email }}" class="form-control rounded-1" placeholder="Enter le mail">
                                         <p class="error name-error text-danger"></p>
                                     </div>
                                 </div>
@@ -240,18 +216,18 @@
     <!-- /.content -->
 @endsection
 
-@section('extraJs')
+@section('customJs')
 
     <script>
 
-        $('#editSettingForm').submit(function(event){
-            event.preventDefault();
+        $("#editSettingForm").submit(function(e){
+            e.preventDefault();
             $("button[type='submit']").prop('disabled',true);
             $.ajax({
                 url: '{{ route("admin.settings.updated",$setting->id) }}',
                 type: 'PUT',
-                dataType: 'json',
-                data: $('#editSettingForm').serializeArray(),
+                dataType: 'JSON',
+                data: $("#editSettingForm").serializeArray(),
                 success: function (response) {
                     $("button[type='submit']").prop('disabled',false);
                     if (response.status == 200) {
@@ -263,7 +239,7 @@
             });
         });
 
-        /*Dropzone.autoDiscover = false;
+        Dropzone.autoDiscover = false;
         const dropzone = $("#image").dropzone({
             init: function() {
                 this.on('addedfile', function(file) {
@@ -272,17 +248,18 @@
                     }
                 });
             },
-            url:  "{{ route('tempUpload') }}",
+            url:  "{{ route('temp-images.create') }}",
             maxFiles: 1,
+            paramName: 'image',
             addRemoveLinks: true,
             acceptedFiles: "image/jpeg,image/png,image/gif,image/webp",
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }, success: function(file, response){
-                $("#image_id").val(response.id);
+                $("#image_id").val(response.image_id);
                 //console.log(response)
             }
-        });*/
+        });
 
     </script>
 

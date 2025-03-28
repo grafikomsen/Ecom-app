@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\BannerController;
 use App\Http\Controllers\admin\BrandController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\DashboardController;
@@ -157,6 +158,14 @@ Route::group(['prefix' => 'admin'], function(){
         Route::put('/pages/{page}', [PageController::class, 'updated'])->name('admin.pages.updated');
         Route::delete('/pages/{page}', [PageController::class, 'destroy'])->name('admin.pages.destroy');
 
+        //BANNERS
+        Route::get('/banners', [BannerController::class, 'banners'])->name('admin.banners');
+        Route::get('/banners/create', [BannerController::class, 'create'])->name('admin.banners.create');
+        Route::post('/banners/store', [BannerController::class, 'store'])->name('admin.banners.store');
+        Route::get('/banners/edit/{id}', [BannerController::class, 'edit'])->name('admin.banners.edit');
+        Route::put('/banners/updated/{id}', [BannerController::class, 'updated'])->name('admin.banners.updated');
+        Route::delete('/banners/delete/{id}', [BannerController::class, 'destroy'])->name('admin.banners.delete');
+
         // PARAMÉTRES ROUTES
         Route::get('/settings', [SettingController::class, 'settings'])->name('admin.settings');
         Route::get('/settings/create', [SettingController::class, 'create'])->name('admin.settings.create');
@@ -170,6 +179,7 @@ Route::group(['prefix' => 'admin'], function(){
         Route::delete('/product-images/delete', [ProductImageController::class, 'destroy'])->name('product-images.destroy');
         Route::post('/upload-temp-image', [TempImagesController::class, 'create'])->name('temp-images.create');
 
+        // SLUG
         Route::get('/getSlug', function(Request $request){
             $slug = '';
             if (!empty($request->title)) {

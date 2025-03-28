@@ -72,6 +72,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link d-flex align-items-center fs-6 fw-bold gap-2" href="{{ route('admin.banners') }}">
+                    <i class="fa-solid fa-image"></i>
+                    BANNIÉRES
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link d-flex align-items-center fs-6 fw-bold gap-2" href="{{ route('admin.settings') }}">
                     <i class="fa-solid fa-gears"></i>
                     PARAMETRES

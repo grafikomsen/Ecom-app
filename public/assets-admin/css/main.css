@@ -111,7 +111,6 @@ h6 {
 }
 
 /*************************************/
-/*************************************/
 .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;
@@ -240,4 +239,15 @@ h6 {
 
 .select2-container--default .select2-selection--multiple .select2-selection__rendered li{
     color: var(--black);
+}
+
+/**************** DROPZONE ******************/
+.dropzone {
+    background: var(--whiteColor);
+    border-radius: 5px;
+    border: 1px dashed var(--primaryColor);
+    border-image: none;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
 }
