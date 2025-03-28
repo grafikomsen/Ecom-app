@@ -69,7 +69,7 @@
                                         @foreach($shippingCharges as $shipping)
                                         <tr>
                                             <td>{{ $shipping->id }}</td>
-                                            <td>{{ ($shipping->country_id == 'rest_of_world') ? 'Rest of the World' : $shipping->name }}</td>
+                                            <td>{{ ($shipping->country_id == 'rest_of_world') ? 'Le reste du monde' : $shipping->name }}</td>
                                             <td>{{ $shipping->amount }}</td>
                                             <td width="100">
                                                 <a class="btn btn-primary btn-sm rounded-1 border-0" href="{{ route('admin.shipping.edit',$shipping->id) }}">
