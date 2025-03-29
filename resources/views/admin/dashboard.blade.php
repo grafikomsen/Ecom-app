@@ -23,7 +23,7 @@
                 <div class="col-lg-4 col-12 mb-4">
                     <div class="small-box card rounded-1 p-4">
                         <div class="inner">
-                            <h3 class="fs-5 fw-bold">Total Sale</h3>
+                            <h3 class="fs-5 fw-bold">C.A TOTALE</h3>
                             <h3 class="fw-bold">{{ number_format($totalRevenue,0,',',' ') }} CFA</h3>
                         </div>
                         <div class="icon">
@@ -36,7 +36,7 @@
                 <div class="col-lg-4 col-12 mb-4">
                     <div class="small-box card rounded-1 p-4">
                         <div class="inner">
-                            <h4 class="fs-5 fw-bold">This mounth Sale</h4>
+                            <h4 class="fs-5 fw-bold">C.A ACTUELLE</h4>
                             <h3 class="fw-bold">{{ number_format($revenueThisMounth,0,',',' ') }} CFA</h3>
                         </div>
                         <div class="icon">
@@ -49,7 +49,7 @@
                 <div class="col-lg-4 col-12 mb-4">
                     <div class="small-box card rounded-1 p-4">
                         <div class="inner">
-                            <h4 class="fs-5 fw-bold">Revenue last mounth ({{ $lastMounthName }})</h4>
+                            <h4 class="fs-5 fw-bold">C.V DU MOIS DERNIER ({{ $lastMounthName }})</h4>
                             <h3 class="fw-bold">{{ number_format($revenueLastMounth,0,',',' ') }} CFA</h3>
                         </div>
                         <div class="icon">
@@ -62,7 +62,7 @@
                 <div class="col-lg-4 col-12 mb-4">
                     <div class="small-box card rounded-1 p-4">
                         <div class="inner">
-                            <h4 class="fs-5 fw-bold">Total Orders</h4>
+                            <h4 class="fs-5 fw-bold">TOTAL DES COMMANDES</h4>
                             <h3 class="fw-bold">{{ $totalOrders }}</h3>
                         </div>
                         <div class="icon">
@@ -75,7 +75,7 @@
                 <div class="col-lg-4 col-12 mb-4">
                     <div class="small-box card rounded-1 p-4">
                         <div class="inner">
-                            <h3 class="fs-5 fw-bold">Total Products</h3>
+                            <h3 class="fs-5 fw-bold">PRODUITS TOTALES</h3>
                             <h3 class="fw-bold">{{ $totalProducts }}</h3>
                         </div>
                         <div class="icon">
@@ -88,7 +88,7 @@
                 <div class="col-lg-4 col-12 mb-4">
                     <div class="small-box card rounded-1 p-4">
                         <div class="inner">
-                            <h3 class="fs-5 fw-bold">Total Customers</h3>
+                            <h3 class="fs-5 fw-bold">NOMBRE TOTAL DE CLIENTS</h3>
                             <h3 class="fw-bold">{{ $userOrders }}</h3>
                         </div>
                         <div class="icon">
