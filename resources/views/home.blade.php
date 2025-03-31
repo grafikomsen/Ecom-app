@@ -6,33 +6,21 @@
             <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
-            <div class="carousel-inner h-100">
-                <div class="carousel-item active">
-                    <img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="520" src="{{ asset('assets-front/images/banner-img-1.jpg') }}" alt="">
+            <div class="carousel-inner">
 
-                    <div class="carousel-caption d-none d-md-block">
-                    <h5>First slide label</h5>
-                    <p>Some representative placeholder content for the first slide.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="520" src="{{ asset('assets-front/images/banner-img-1.jpg') }}" alt="">
-
-                    <div class="carousel-caption d-none d-md-block">
-                    <h5>Second slide label</h5>
-                    <p>Some representative placeholder content for the second slide.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="520" src="{{ asset('assets-front/images/banner-img-1.jpg') }}" alt="">
+                @if($slides->isNotEmpty())
+                    @foreach($slides as $slide)
+                    <div class="carousel-item active">
+                        <img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="520" src="{{ asset('uploads/banners/'.$slide->image) }}" alt="{{ $slide->name }}">
 
                         <div class="carousel-caption d-none d-md-block">
-                        <h5>Third slide label</h5>
-                        <p>Some representative placeholder content for the third slide.</p>
+                        <h5>{{ $slide->name }}</h5>
+                        <p>{{ $slide->content }}</p>
                         </div>
-                </div>
+                    </div>
+                    @endforeach
+                @endif
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"  data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -392,7 +380,7 @@
                             <a class="nav-link" href="{{ route('product',$oldProduct->slug) }}">
                                 <div class="card rounded-1 shadow-sm border-0 mb-4">
                                     <div class="row g-0">
-                                        <div class="col-md-4">
+                                        <div class="col-12 col-md-4">
                                             <a href="javascript:void(0);" onclick="addToWishList({{ $oldProduct->id }})" class="position-absolute end-0 m-2">
                                                 <i class="far fa-heart"></i>
                                             </a>
@@ -414,12 +402,12 @@
                                             @endif
 
                                             @if (!empty($productImage->image))
-                                                <img width="100%" height="100%" src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $oldProduct->title }}">
+                                                <img width="130" height="140" src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $oldProduct->title }}">
                                             @else
-                                                <img width="100%" height="100%" src="{{ asset('assets-front/images/special_product_1.jpg') }}" alt="{{ $oldProduct->title }}">
+                                                <img width="130" height="140" src="{{ asset('assets-front/images/special_product_1.jpg') }}" alt="{{ $oldProduct->title }}">
                                             @endif
                                         </div>
-                                        <div class="col-md-8">
+                                        <div class="col-12 col-md-8 ps-2">
                                             <div class="card-body">
                                                 <h6 class="card-title">{{ $oldProduct->title }}</h6>
                                                 <p class="card-text">{{ number_format($oldProduct->price, 0, '.', ' ') }} CFA</p>
@@ -448,7 +436,7 @@
                             <a class="nav-link" href="{{ route('product',$latProduct->slug) }}">
                                 <div class="card rounded-1 shadow-sm border-0 mb-4">
                                     <div class="row g-0">
-                                        <div class="col-md-4">
+                                        <div class="col-12 col-md-4">
                                             <a href="javascript:void(0);" onclick="addToWishList({{ $latProduct->id }})" class="position-absolute end-0 m-2">
                                                 <i class="far fa-heart"></i>
                                             </a>
@@ -470,12 +458,12 @@
                                             @endif
 
                                             @if (!empty($productImage->image))
-                                                <img width="100%" height="100%" src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $latProduct->title }}">
+                                                <img width="130" height="140" src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $latProduct->title }}">
                                             @else
-                                                <img width="100%" height="100%" src="{{ asset('assets-front/images/special_product_1.jpg') }}" alt="{{ $latProduct->title }}">
+                                                <img width="130" height="140" src="{{ asset('assets-front/images/special_product_1.jpg') }}" alt="{{ $latProduct->title }}">
                                             @endif
                                         </div>
-                                        <div class="col-md-8">
+                                        <div class="col-12 col-md-8 ps-2">
                                             <div class="card-body">
                                                 <h6 class="card-title">{{ $latProduct->title }}</h6>
                                                 <p class="card-text">{{ number_format($latProduct->price, 0, '.', ' ') }} CFA</p>
@@ -504,7 +492,7 @@
                             <a class="nav-link" href="{{ route('product',$feaProduct->slug) }}">
                                 <div class="card rounded-1 shadow-sm border-0 mb-4">
                                     <div class="row g-0">
-                                        <div class="col-md-4">
+                                        <div class="col-12 col-md-4">
                                             <a href="javascript:void(0);" onclick="addToWishList({{ $feaProduct->id }})" class="position-absolute end-0 m-2">
                                                 <i class="far fa-heart"></i>
                                             </a>
@@ -526,12 +514,12 @@
                                             @endif
 
                                             @if (!empty($productImage->image))
-                                                <img width="100%" height="100%" src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $feaProduct->title }}">
+                                                <img width="130" height="140" src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $feaProduct->title }}">
                                             @else
-                                                <img width="100%" height="100%" src="{{ asset('assets-front/images/special_product_1.jpg') }}" alt="{{ $feaProduct->title }}">
+                                                <img width="130" height="140" src="{{ asset('assets-front/images/special_product_1.jpg') }}" alt="{{ $feaProduct->title }}">
                                             @endif
                                         </div>
-                                        <div class="col-md-8">
+                                        <div class="col-12 col-md-8 ps-2">
                                             <div class="card-body">
                                                 <h6 class="card-title">{{ $feaProduct->title }}</h6>
                                                 <p class="card-text">{{ number_format($feaProduct->price, 0, '.', ' ') }} CFA</p>
