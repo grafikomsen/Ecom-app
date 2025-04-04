@@ -381,9 +381,6 @@
                                 <div class="card rounded-1 shadow-sm border-0 mb-4">
                                     <div class="row g-0">
                                         <div class="col-12 col-md-4">
-                                            <a href="javascript:void(0);" onclick="addToWishList({{ $oldProduct->id }})" class="position-absolute end-0 m-2">
-                                                <i class="far fa-heart"></i>
-                                            </a>
 
                                             @if ($oldProduct->track_qty == 'Yes')
                                                 @if ($oldProduct->qty > 0)
@@ -408,6 +405,9 @@
                                             @endif
                                         </div>
                                         <div class="col-12 col-md-8 ps-2">
+                                            <a href="javascript:void(0);" onclick="addToWishList({{ $oldProduct->id }})" class="position-absolute end-0 m-2">
+                                                <i class="far fa-heart"></i>
+                                            </a>
                                             <div class="card-body">
                                                 <h6 class="card-title">{{ $oldProduct->title }}</h6>
                                                 <p class="card-text">{{ number_format($oldProduct->price, 0, '.', ' ') }} CFA</p>
@@ -437,9 +437,6 @@
                                 <div class="card rounded-1 shadow-sm border-0 mb-4">
                                     <div class="row g-0">
                                         <div class="col-12 col-md-4">
-                                            <a href="javascript:void(0);" onclick="addToWishList({{ $latProduct->id }})" class="position-absolute end-0 m-2">
-                                                <i class="far fa-heart"></i>
-                                            </a>
 
                                             @if ($latProduct->track_qty == 'Yes')
                                                 @if ($latProduct->qty > 0)
@@ -464,6 +461,9 @@
                                             @endif
                                         </div>
                                         <div class="col-12 col-md-8 ps-2">
+                                            <a href="javascript:void(0);" onclick="addToWishList({{ $latProduct->id }})" class="position-absolute end-0 m-2">
+                                                <i class="far fa-heart"></i>
+                                            </a>
                                             <div class="card-body">
                                                 <h6 class="card-title">{{ $latProduct->title }}</h6>
                                                 <p class="card-text">{{ number_format($latProduct->price, 0, '.', ' ') }} CFA</p>
@@ -493,9 +493,6 @@
                                 <div class="card rounded-1 shadow-sm border-0 mb-4">
                                     <div class="row g-0">
                                         <div class="col-12 col-md-4">
-                                            <a href="javascript:void(0);" onclick="addToWishList({{ $feaProduct->id }})" class="position-absolute end-0 m-2">
-                                                <i class="far fa-heart"></i>
-                                            </a>
 
                                             @if ($feaProduct->track_qty == 'Yes')
                                                 @if ($feaProduct->qty > 0)
@@ -520,6 +517,9 @@
                                             @endif
                                         </div>
                                         <div class="col-12 col-md-8 ps-2">
+                                            <a href="javascript:void(0);" onclick="addToWishList({{ $feaProduct->id }})" class="position-absolute end-0 m-2">
+                                                <i class="far fa-heart"></i>
+                                            </a>
                                             <div class="card-body">
                                                 <h6 class="card-title">{{ $feaProduct->title }}</h6>
                                                 <p class="card-text">{{ number_format($feaProduct->price, 0, '.', ' ') }} CFA</p>
