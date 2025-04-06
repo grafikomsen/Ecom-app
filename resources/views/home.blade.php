@@ -545,15 +545,15 @@
     <section class="Newsletter py-5">
         <div class="container-xl">
             <div class="title text-center">
-                <h2 class="d-inline-block text-uppercase position-relative">Newsletter Subscription</h2>
+                <h2 class="d-inline-block text-uppercase position-relative">Abonnement à la newsletter</h2>
             </div>
             <div class="row justify-content-center">
                 <div class="col-6">
                     <p class=" text-center">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis eligendi quae laudantium quasi amet omnis!</p>
-                    <form action="" method="post">
+                    <form method="post">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                            <button class="input-group-text border-0" id="basic-addon2">Subscribe</button>
+                            <input type="text" class="form-control" placeholder="Nom d'utilisateur du destinataire" aria-label="Nom d'utilisateur du destinataire" aria-describedby="basic-addon2">
+                            <button class="input-group-text border-0" id="basic-addon2">S'abonner</button>
                         </div>
                     </form>
                 </div>
