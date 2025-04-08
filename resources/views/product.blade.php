@@ -60,28 +60,26 @@
 
                         <p>{!! $product->short_description !!}</p>
 
-                        <div class="row align-items-center justify-content-center">
-                            <div class="col-12 col-md-6">
-                                <input type="number" class="form-control" value="{{  $product->qty }}">
-                            </div>
-                            <div class="col-12 col-md-6">
-                                @if ($product->track_qty == 'Yes')
-                                    @if ($product->qty > 0)
-                                        <a href="javascript:void(0);" onclick="addToCart({{ $product->id }});" class="btn btn-panier rounded-1 border-0 m-4 shadow-sm">
-                                            <i class="fas fa-shopping-cart text-white"></i> &nbsp;AJOUTER AU PANIER
-                                        </a>
-                                    @else
-                                        <a href="javascript:void(0);" class="btn btn-panier rounded-1 border-0 m-4 shadow-sm">
-                                            INDISPONIBLE
-                                        </a>
-                                    @endif
-                                @else
-                                    <a href="javascript:void(0);" onclick="addToCart({{ $product->id }});" class="btn btn-panier rounded-5 border-0 m-4 shadow-sm">
-                                        <i class="fas fa-shopping-cart text-white"></i> &nbsp;AJOUTER AU PANIER
-                                    </a>
-                                @endif
-                            </div>
+                        <div class="d-flex align-items-center">
+                            Quantité:
+                            <input readonly class="form-control form-control-sm product-qty my-2 mx-2 px-2" value="{{ $product->qty }}"/>
                         </div>
+
+                        @if ($product->track_qty == 'Yes')
+                            @if ($product->qty > 0)
+                                <a href="javascript:void(0);" onclick="addToCart({{ $product->id }});" class="btn btn-panier rounded-1 border-0 shadow-sm">
+                                    <i class="fas fa-shopping-cart text-white"></i> &nbsp;AJOUTER AU PANIER
+                                </a>
+                            @else
+                                <a href="javascript:void(0);" class="btn btn-danger text-white btn-sm rounded-1 w-100">
+                                    Épuisé
+                                </a>
+                            @endif
+                        @else
+                            <a href="javascript:void(0);" onclick="addToCart({{ $product->id }});" class="btn btn-panier rounded-5 border-0 shadow-sm">
+                                <i class="fas fa-shopping-cart text-white"></i> &nbsp;AJOUTER AU PANIER
+                            </a>
+                        @endif
                     </div>
                 </div>
 

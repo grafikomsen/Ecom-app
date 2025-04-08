@@ -193,6 +193,11 @@ i {
   color: var(--white);
 }
 
+/********** PAGE PRODUIT ***********/
+.product-qty {
+    width: 3rem;
+}
+
 /********** FOOTER ***********/
 .footer{
   background-color: var(--primaryColor);

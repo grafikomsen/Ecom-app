@@ -19,22 +19,6 @@
             <div class="row">
                 <div class="col-md-3 sidebar">
                     <div class="sub-title">
-                        <h2>Recherche</h3>
-                    </div>
-                    <div class="card shadow-sm pt-3 border-0 rounded-0">
-                        <div class="accordion accordion-flush" id="accordionExample">
-                            <form class="mx-1 p-1" action="{{ route('shop') }}" method="GET">
-                                <div class="input-group rounded-1 mb-3">
-                                    <input value="{{ Request::get('search') }}" type="text" class="form-control rounded-1" name="search" id="search" placeholder="Chercher ici...">
-                                    <button type="submit" class="input-group-text">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
-                    <div class="sub-title">
                         <h2>Catégories</h3>
                     </div>
 
