@@ -41,7 +41,7 @@
                 </div>
                 <div class="col-md-7">
                     <div class="right me-4">
-                        <h1>{{ $product->title }}</h1>
+                        <h3 class="fs-2">{{ $product->title }}</h3>
                         <div class="d-flex mb-3">
                             <div class="text-primary mr-2">
                                 <i class="fas fa-star"></i>
