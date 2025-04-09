@@ -105,8 +105,8 @@
                                 @php
                                     $productImage = $product->product_images->first();
                                 @endphp
-                                    <div class="col-12 col-md-4">
-                                        <div class="card p-2 mb-4 rounded-0 shadow-sm border-0 position-relative">
+                                    <div class="col-12 col-md-4 mb-4">
+                                        <div class="card h-100 p-2 rounded-0 shadow-sm border-0 position-relative">
                                             @if ($product->compare_price > 0)
                                                 <span class="badge bg-danger position-absolute m-2 rounded-1">PROMO: {{ number_format($product->compare_price, 0, '.', ' ') }} CFA</span>
                                             @endif
@@ -135,7 +135,7 @@
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                             </div>
-                                            <div class="d-flex align-items-center justify-content-between">
+                                            <div class="d-flex align-items-end justify-content-between">
                                                 <h6 class="fw-bold">{{ number_format($product->price, 0, '.', ' ') }} CFA</h6>
                                                 @if ($product->track_qty == 'Yes')
                                                     @if ($product->qty > 0)
@@ -143,8 +143,8 @@
                                                             <i class="fa-solid text-white fa-cart-shopping"></i>
                                                         </a>
                                                     @else
-                                                        <a href="javascript:void(0);" class="btn btn-default btn-sm rounded-1 p-2">
-                                                            Indisponible
+                                                        <a href="javascript:void(0);" class="btn btn-danger btn-sm rounded-1 p-2">
+                                                            Épuisé
                                                         </a>
                                                     @endif
                                                 @else

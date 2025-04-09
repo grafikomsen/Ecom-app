@@ -69,7 +69,7 @@
                 <nav class="product-carroussel">
                     <div class="nav nav-tabs mb-3 justify-content-center border-bottom-0" id="nav-tab" role="tablist">
                         <button class="nav-link btn btn-primary rounded-1 border-0 shadow-sm mx-2 my-2 py-2 px-5 text-uppercase active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Tous</button>
-                        <button class="nav-link btn btn-primary rounded-1 border-0 shadow-sm mx-2 my-2 py-2 px-5 text-uppercase" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Vendus</button>
+                        <button class="nav-link btn btn-primary rounded-1 border-0 shadow-sm mx-2 my-2 py-2 px-5 text-uppercase" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Vendu</button>
                         <button class="nav-link btn btn-primary rounded-1 border-0 shadow-sm mx-2 my-2 py-2 px-5 text-uppercase" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Nouveaux</button>
                     </div>
                 </nav>
@@ -82,8 +82,8 @@
                                     $productImage = $latestProduct->product_images->first();
                                 @endphp
                                     <div class="col-12 col-md-3 mb-4">
-                                        <a class=" nav-link" href="{{ route('product',$latestProduct->slug) }}">
-                                            <div class="card p-2 mb-4 rounded-0 shadow-sm border-0 position-relative">
+                                        <a class="nav-link" href="{{ route('product',$latestProduct->slug) }}">
+                                            <div class="card h-100 p-2 rounded-0 shadow-sm border-0 position-relative">
                                                 @if ($latestProduct->compare_price > 0)
                                                     <span class="badge bg-danger position-absolute m-1 rounded-1">PROMO: {{ number_format($latestProduct->compare_price, 0, '.', ' ') }} CFA</span>
                                                 @endif
@@ -92,11 +92,13 @@
                                                     <i class="far fa-heart"></i>
                                                 </a>
 
-                                                @if (!empty($productImage->image))
-                                                    <img  class="w-100 h-100" src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $latestProduct->title }}">
-                                                @else
-                                                    <img  class="w-100 h-100" src="{{ asset('assets-front/images/c_polo-shirt.png') }}" alt="{{ $latestProduct->title }}">
-                                                @endif
+                                                <a class="nav-link" href="{{ route('product',$latestProduct->slug) }}">
+                                                    @if (!empty($productImage->image))
+                                                        <img  class="w-100 h-100" src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $latestProduct->title }}">
+                                                    @else
+                                                        <img  class="w-100 h-100" src="{{ asset('assets-front/images/c_polo-shirt.png') }}" alt="{{ $latestProduct->title }}">
+                                                    @endif
+                                                </a>
 
                                                 <div class="d-flex justify-content-between">
                                                     <a class="nav-link" href="{{ route('product',$latestProduct->slug) }}">
@@ -112,7 +114,7 @@
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                 </div>
-                                                <div class="d-flex align-items-center justify-content-between">
+                                                <div class="d-flex align-items-end justify-content-between">
                                                     <h6 class="fw-bold">{{ number_format($latestProduct->price, 0, '.', ' ') }} CFA</h6>
                                                     @if ($latestProduct->track_qty == 'Yes')
                                                         @if ($latestProduct->qty > 0)
@@ -120,8 +122,8 @@
                                                                 <i class="fa-solid text-white fa-cart-shopping"></i>
                                                             </a>
                                                         @else
-                                                            <a href="javascript:void(0);" class="btn btn-default btn-sm rounded-1 p-2">
-                                                                Indisponible
+                                                            <a href="javascript:void(0);" class="btn btn-danger btn-sm rounded-1 p-2">
+                                                                Épuisé
                                                             </a>
                                                         @endif
                                                     @else
@@ -145,8 +147,8 @@
                                     $productImage = $featuredProduct->product_images->first();
                                 @endphp
                                 <div class="col-12 col-md-3 mb-4">
-                                    <a class=" nav-link" href="{{ route('product',$featuredProduct->slug) }}">
-                                        <div class="card p-2 mb-4 rounded-0 shadow-sm border-0 position-relative">
+                                    <a class="nav-link" href="{{ route('product',$featuredProduct->slug) }}">
+                                        <div class="card h-100 p-2 rounded-0 shadow-sm border-0 position-relative">
                                             @if ($featuredProduct->compare_price > 0)
                                                 <span class="badge bg-danger position-absolute m-1 rounded-1">PROMO: {{ number_format($featuredProduct->compare_price, 0, '.', ' ') }} CFA</span>
                                             @endif
@@ -154,12 +156,13 @@
                                             <a href="javascript:void(0);" onclick="addToWishList({{ $featuredProduct->id }})" class="position-absolute end-0 m-1">
                                                 <i class="far fa-heart"></i>
                                             </a>
-
-                                            @if (!empty($productImage->image))
-                                                <img  class="w-100 h-100" src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $featuredProduct->title }}">
-                                            @else
-                                                <img  class="w-100 h-100" src="{{ asset('assets-front/images/c_polo-shirt.png') }}" alt="{{ $featuredProduct->title }}">
-                                            @endif
+                                            <a class="nav-link" href="{{ route('product',$featuredProduct->slug) }}">
+                                                @if (!empty($productImage->image))
+                                                    <img  class="w-100 h-100" src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $featuredProduct->title }}">
+                                                @else
+                                                    <img  class="w-100 h-100" src="{{ asset('assets-front/images/c_polo-shirt.png') }}" alt="{{ $featuredProduct->title }}">
+                                                @endif
+                                            </a>
 
                                             <div class="d-flex justify-content-between">
                                                 <a class="nav-link" href="{{ route('product',$featuredProduct->slug) }}">
@@ -175,7 +178,7 @@
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                             </div>
-                                            <div class="d-flex align-items-center justify-content-between">
+                                            <div class="d-flex align-items-end justify-content-between">
                                                 <h6 class="fw-bold">{{ number_format($featuredProduct->price, 0, '.', ' ') }} CFA</h6>
                                                 @if ($featuredProduct->track_qty == 'Yes')
                                                     @if ($featuredProduct->qty > 0)
@@ -183,8 +186,8 @@
                                                             <i class="fa-solid text-white fa-cart-shopping"></i>
                                                         </a>
                                                     @else
-                                                        <a href="javascript:void(0);" class="btn btn-default btn-sm rounded-1 p-2">
-                                                            Indisponible
+                                                        <a href="javascript:void(0);" class="btn btn-danger btn-sm rounded-1 p-2">
+                                                            Épuisé
                                                         </a>
                                                     @endif
                                                 @else
@@ -208,8 +211,8 @@
                                     $productImage = $olderProduct->product_images->first();
                                 @endphp
                                 <div class="col-12 col-md-3 mb-4">
-                                    <a class=" nav-link" href="{{ route('product',$olderProduct->slug) }}">
-                                        <div class="card p-2 mb-4 rounded-0 shadow-sm border-0 position-relative">
+                                    <a class="nav-link" href="{{ route('product',$olderProduct->slug) }}">
+                                        <div class="card h-100 p-2 rounded-0 shadow-sm border-0 position-relative">
                                             @if ($olderProduct->compare_price > 0)
                                                 <span class="badge bg-danger position-absolute m-1 rounded-1">PROMO: {{ number_format($olderProduct->compare_price, 0, '.', ' ') }} CFA</span>
                                             @endif
@@ -217,12 +220,13 @@
                                             <a href="javascript:void(0);" onclick="addToWishList({{ $olderProduct->id }})" class="position-absolute end-0 m-1">
                                                 <i class="far fa-heart"></i>
                                             </a>
-
-                                            @if (!empty($productImage->image))
-                                                <img  class="w-100 h-100" src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $olderProduct->title }}">
-                                            @else
-                                                <img  class="w-100 h-100" src="{{ asset('assets-front/images/c_polo-shirt.png') }}" alt="{{ $olderProduct->title }}">
-                                            @endif
+                                            <a class="nav-link" href="{{ route('product',$olderProduct->slug) }}">
+                                                @if (!empty($productImage->image))
+                                                    <img  class="w-100 h-100" src="{{ asset('uploads/product/'.$productImage->image) }}" alt="{{ $olderProduct->title }}">
+                                                @else
+                                                    <img  class="w-100 h-100" src="{{ asset('assets-front/images/c_polo-shirt.png') }}" alt="{{ $olderProduct->title }}">
+                                                @endif
+                                            </a>
 
                                             <div class="d-flex justify-content-between">
                                                 <a class="nav-link" href="{{ route('product',$olderProduct->slug) }}">
@@ -238,7 +242,7 @@
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                             </div>
-                                            <div class="d-flex align-items-center justify-content-between">
+                                            <div class="d-flex align-items-end justify-content-between">
                                                 <h6 class="fw-bold">{{ number_format($olderProduct->price, 0, '.', ' ') }} CFA</h6>
                                                 @if ($olderProduct->track_qty == 'Yes')
                                                     @if ($olderProduct->qty > 0)
@@ -246,8 +250,8 @@
                                                             <i class="fa-solid text-white fa-cart-shopping"></i>
                                                         </a>
                                                     @else
-                                                        <a href="javascript:void(0);" class="btn btn-default btn-sm rounded-1 p-2">
-                                                            Indisponible
+                                                        <a href="javascript:void(0);" class="btn btn-danger btn-sm rounded-1 p-2">
+                                                            Épuisé
                                                         </a>
                                                     @endif
                                                 @else
@@ -388,8 +392,8 @@
                                                         <i class="fa-solid text-white fa-cart-shopping"></i>
                                                     </a>
                                                 @else
-                                                    <a href="javascript:void(0);" class="btn btn-default btn-sm rounded-1 p-2 position-absolute bottom-0 end-0 m-2 shadow-sm">
-                                                        Indisponible
+                                                    <a href="javascript:void(0);" class="btn btn-danger btn-sm rounded-1 p-2 position-absolute bottom-0 end-0 m-2 shadow-sm">
+                                                        Épuisé
                                                     </a>
                                                 @endif
                                             @else
@@ -444,8 +448,8 @@
                                                         <i class="fa-solid text-white fa-cart-shopping"></i>
                                                     </a>
                                                 @else
-                                                    <a href="javascript:void(0);" class="btn btn-default btn-sm rounded-1 p-2 position-absolute bottom-0 end-0 m-2 shadow-sm">
-                                                        Indisponible
+                                                    <a href="javascript:void(0);" class="btn btn-danger btn-sm rounded-1 p-2 position-absolute bottom-0 end-0 m-2 shadow-sm">
+                                                        Épuisé
                                                     </a>
                                                 @endif
                                             @else
@@ -500,8 +504,8 @@
                                                         <i class="fa-solid text-white fa-cart-shopping"></i>
                                                     </a>
                                                 @else
-                                                    <a href="javascript:void(0);" class="btn btn-default btn-sm rounded-1 p-2 position-absolute bottom-0 end-0 m-2 shadow-sm">
-                                                        Indisponible
+                                                    <a href="javascript:void(0);" class="btn btn-danger btn-sm rounded-1 p-2 position-absolute bottom-0 end-0 m-2 shadow-sm">
+                                                        Épuisé
                                                     </a>
                                                 @endif
                                             @else
