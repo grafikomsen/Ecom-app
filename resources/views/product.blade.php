@@ -62,7 +62,7 @@
 
                         <div class="d-flex align-items-center">
                             Quantité:
-                            <input readonly class="form-control form-control-sm product-qty my-2 mx-2 px-2" value="{{ $product->qty }}"/>
+                            <input readonly class="form-control product-qty my-2 mx-2 px-2" value="{{ $product->qty }}"/>
                         </div>
 
                         @if ($product->track_qty == 'Yes')
