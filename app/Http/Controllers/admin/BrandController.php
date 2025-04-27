@@ -7,6 +7,7 @@ use App\Models\Brand;
 use App\Models\TempImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class BrandController extends Controller
@@ -20,6 +21,7 @@ class BrandController extends Controller
         }
 
         $brands = $brands->paginate(8);
+        Session::put('page', 'brand');
         return view('admin.brands.list', compact('brands'));
     }
 

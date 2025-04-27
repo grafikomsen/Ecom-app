@@ -8,6 +8,7 @@ use App\Models\SubCategory;
 use App\Models\TempImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class SubCategoryController extends Controller
@@ -24,6 +25,8 @@ class SubCategoryController extends Controller
         }
 
         $subCategories = $subCategories->paginate(8);
+
+        Session::put('page', 'subcategorie');
         return view('admin.sub_categories.list', compact('subCategories'));
     }
 

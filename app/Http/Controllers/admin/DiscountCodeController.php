@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\DiscountCoupon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class DiscountCodeController extends Controller
@@ -19,6 +20,7 @@ class DiscountCodeController extends Controller
         }
 
         $discounts = $discounts->paginate(8);
+        Session::put('page', 'discount');
         return view('admin.discount-code.list', compact('discounts'));
     }
 

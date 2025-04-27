@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Country;
 use App\Models\ShippingCharge;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class ShippingController extends Controller
@@ -16,6 +17,7 @@ class ShippingController extends Controller
         $shippingCharges = ShippingCharge::select('shipping_charges.*','countries.name',)
         ->leftJoin('countries','countries.id','shipping_charges.country_id',)->get();
 
+        Session::put('page', 'create');
         return view('admin.shippings.create', compact('countries','shippingCharges'));
     }
 

@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\TempImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
 
@@ -21,6 +22,7 @@ class CategoryController extends Controller
         }
 
         $categories = $categories->paginate(8);
+        Session::put('page', 'categorie');
         return view('admin.categories.list', compact('categories'));
     }
 

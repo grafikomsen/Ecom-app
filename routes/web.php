@@ -164,7 +164,7 @@ Route::group(['prefix' => 'admin'], function(){
         Route::post('/banners/store', [BannerController::class, 'store'])->name('admin.banners.store');
         Route::get('/banners/edit/{id}', [BannerController::class, 'edit'])->name('admin.banners.edit');
         Route::put('/banners/updated/{id}', [BannerController::class, 'updated'])->name('admin.banners.updated');
-        Route::delete('/banners/delete/{id}', [BannerController::class, 'destroy'])->name('admin.banners.delete');
+        Route::delete('/banners/delete/{id}', [BannerController::class, 'destroy'])->name('admin.banners.destroy');
 
         // PARAMÉTRES ROUTES
         Route::get('/settings', [SettingController::class, 'settings'])->name('admin.settings');
@@ -172,7 +172,7 @@ Route::group(['prefix' => 'admin'], function(){
         Route::post('/settings/store', [SettingController::class, 'store'])->name('admin.settings.store');
         Route::get('/settings/edit/{id}', [SettingController::class, 'edit'])->name('admin.settings.edit');
         Route::put('/settings/updated/{id}', [SettingController::class, 'updated'])->name('admin.settings.updated');
-        Route::delete('/settings/delete/{id}', [SettingController::class, 'destroy'])->name('admin.settings.delete');
+        Route::delete('/settings/delete/{id}', [SettingController::class, 'destroy'])->name('admin.settings.destroy');
 
         // IMAGES
         Route::post('/product-images/update', [ProductImageController::class, 'update'])->name('product-images.update');

@@ -7,6 +7,7 @@ use App\Models\Banner;
 use App\Models\TempImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class BannerController extends Controller
@@ -20,6 +21,7 @@ class BannerController extends Controller
         }
 
         $banners = $banners->paginate(5);
+        Session::put('page', 'banner');
         return view('admin.banners.banners', compact('banners'));
     }
 

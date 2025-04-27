@@ -151,7 +151,7 @@
 
             let url = '{{ route("admin.shipping.delete","ID") }}';
             let newUrl = url.replace("ID",id);
-            if(confirm("Êtes-vous sûr de vouloir supprimer?")){
+            if(confirm("Etes-vous sûr de vouloir supprimer")){
                 $.ajax({
                     url: newUrl,
                     type: 'DELETE',

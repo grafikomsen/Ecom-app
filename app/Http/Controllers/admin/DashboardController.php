@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class DashboardController extends Controller
 {
@@ -46,6 +47,7 @@ class DashboardController extends Controller
                         ->whereDate('created_at','<=',$currentDate)
                         ->sum('grand_total');
 
+        Session::put('page', 'dashboard');
         return view('admin.dashboard', compact('totalOrders','totalProducts','userOrders','totalRevenue','revenueThisMounth','revenueLastMounth','revenueLastThirtyDays','lastThirtyDayStartDate','lastMounthName'));
     }
 

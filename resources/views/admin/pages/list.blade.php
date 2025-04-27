@@ -69,7 +69,7 @@
                                 @endforeach
                             @else
                                 <tr>
-                                    <td class="5">Records not found</td>
+                                    <td class="text-uppercase fw-bolder text-center">La base de doonée est vide</td>
                                 </tr>
                             @endif
                         </tbody>
@@ -94,7 +94,7 @@
             let url = '{{ route("admin.pages.destroy","ID") }}';
             let newUrl = url.replace('ID',id);
 
-            if (confirm('Are you sure you want to delete')) {
+            if (confirm('Etes-vous sûr de vouloir supprimer')) {
                 $.ajax({
                     url: newUrl,
                     type: 'DELETE',

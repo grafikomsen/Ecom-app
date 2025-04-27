@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class OrderController extends Controller
 {
@@ -22,7 +23,7 @@ class OrderController extends Controller
         }
 
         $orders = $orders->paginate(10);
-
+        Session::put('page', 'order');
         return view('admin.orders.list', compact('orders'));
     }
 

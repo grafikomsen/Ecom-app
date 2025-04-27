@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Page;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class PageController extends Controller
@@ -19,6 +20,7 @@ class PageController extends Controller
         }
 
         $pages = $pages->paginate(8);
+        Session::put('page', 'pages');
         return view('admin.pages.list', compact('pages'));
     }
 

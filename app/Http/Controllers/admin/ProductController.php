@@ -11,6 +11,7 @@ use App\Models\SubCategory;
 use App\Models\TempImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
@@ -25,6 +26,7 @@ class ProductController extends Controller
         }
 
         $products = $products->paginate(10);
+        Session::put('page', 'product');
         return view('admin.products.list', compact('products'));
     }
 

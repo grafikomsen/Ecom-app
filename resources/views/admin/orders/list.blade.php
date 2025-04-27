@@ -75,7 +75,7 @@
                             @endforeach
                             @else
                                 <tr>
-                                    <td class="5">Enregistrements introuvables</td>
+                                    <td class="text-uppercase fw-bolder text-center">La base de doonée est vide</td>
                                 </tr>
                             @endif
                         </tbody>
